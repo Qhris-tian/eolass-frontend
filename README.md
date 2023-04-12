@@ -66,3 +66,31 @@ npm run test:e2e
 ```sh
 npm run lint
 ```
+
+## Project Setup With Docker
+
+Install both [docker](https://docs.docker.com/get-docker/) and [docker compose](https://docs.docker.com/compose/install/)
+
+### Build docker image
+
+```sh
+docker compose build
+```
+
+### Install dependencies
+
+```sh
+docker compose run --rm app npm install
+```
+
+### Start the container
+
+```sh
+docker compose up -d
+```
+
+### To stop the container
+
+```sh
+docker compose stop
+```
