@@ -3,10 +3,13 @@ export default [
     path: '/',
     name: 'dashboard',
     component: () => import('../../views/DashboardView.vue'),
+    redirect: {
+      name: 'catalog',
+    },
     children: [
       {
         path: '/catalog',
-        name: '.catalog',
+        name: 'catalog',
         component: () => import('../../views/dashboard/CatalogView.vue')
       },
       {
