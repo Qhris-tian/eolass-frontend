@@ -5,6 +5,10 @@
   >
     <div class="h-full pr-3 py-4 overflow-y-auto mt-12">
       <ul class="space-y-2">
+        <div class="flex text-gray pl-1 my-6">
+          <span class="heading-sm uppercase">Ezpin</span>
+          <hr  class="w-full relative top-[11px]" />
+        </div>
         <li class="sidebar-item">
           <router-link to="catalog" class="sidebar-link" active-class="sidebar-active">
             <SvgComponent name="layers" />
@@ -18,7 +22,11 @@
           </router-link>
         </li>
       </ul>
-      <ul class="pt-4 mt-4 space-y-2 border-t border-gray-200">
+      <ul class="pt-4 mt-4 space-y-2">
+        <div class="flex text-gray pl-1 my-6">
+          <span class="heading-sm uppercase">Eneba</span>
+          <hr  class="w-full relative top-[11px]" />
+        </div>
         <li class="sidebar-item">
           <router-link to="products" class="sidebar-link" active-class="sidebar-active">
             <SvgComponent name="package" />
