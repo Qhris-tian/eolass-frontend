@@ -1,7 +1,11 @@
 <template>
-  <main>
-    <Sidebar />
-    <RouterView />
+  <main class="flex">
+    <div class="w-1/12">
+      <Sidebar />
+    </div>
+    <div class="w-11/12">
+      <RouterView />
+    </div>
   </main>
 </template>
 

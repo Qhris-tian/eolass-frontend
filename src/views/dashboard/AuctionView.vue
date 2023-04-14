@@ -1,11 +1,12 @@
 <template>
     <div>
+        <Navbar iconName="eneba" />
         Auction
     </div>
 </template>
 
 <script setup lang="ts">
-
+import Navbar from '@/components/Nav-bar.vue'
 </script>
 
 <style scoped>

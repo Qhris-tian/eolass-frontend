@@ -1,10 +1,8 @@
 <template>
-    <div>
+   <div>
         <Navbar iconName="eneba" />
-    </div>
-    <div>
         Products
-    </div>
+   </div>
 </template>
 
 <script setup lang="ts">

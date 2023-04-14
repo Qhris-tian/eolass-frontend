@@ -1,12 +1,12 @@
 <template>
-    <div class="flex justify-between">
-        <div class="">
+    <div class="flex justify-between pt-5">
+        <div class="w-1/4">
             <SvgComponent :name=iconName class="eneba-svg" />
         </div>
-        <div class="">
+        <div class="w-2/4">
             <SearchBarComponent />
         </div>
-        <div class="">
+        <div class="w-1/4">
             
         </div>
     </div>
