@@ -1,0 +1,58 @@
+{
+    "data": [
+        {
+        "node": {
+            "id": "94aec9d8-b955-11eb-8455-76503aaeb092",
+            "product": {
+            "id": "c17fd750-6aa8-11eb-bc0f-4e1b39722069",
+            "name": "Resident Evil Village / Resident Evil 8 Steam Key GLOBAL"
+            },
+            "unitsSold": 9,
+            "onHold": 3,
+            "onHand": 20,
+            "declaredStock": 5,
+            "status": "ACTIVE",
+            "expiresAt": "2022-11-19T07:01:02+00:00",
+            "createdAt": "2021-05-20T10:24:41+00:00",
+            "autoRenew": true,
+            "price": {
+            "amount": 11500,
+            "currency": "EUR"
+            },
+            "position": 18,
+            "priceUpdateQuota": {
+            "quota": 10,
+            "nextFreeIn": null,
+            "totalFree": 10
+            }
+        }
+        },
+        {
+        "node": {
+            "id": "62b9dd9c-f9aa-11eb-aead-2a8031bec809",
+            "product": {
+            "id": "b74c8bf2-6ab8-11ea-b2ae-ded0de511d8d",
+            "name": "DOOM Eternal - Deluxe Bethesda.net Key GLOBAL"
+            },
+            "unitsSold": 1,
+            "onHold": 0,
+            "onHand": 1,
+            "declaredStock": null,
+            "status": "INACTIVE",
+            "expiresAt": "2022-11-03T07:12:57+00:00",
+            "createdAt": "2021-08-10T07:12:57+00:00",
+            "autoRenew": true,
+            "price": {
+            "amount": 1084,
+            "currency": "EUR"
+            },
+            "position": null,
+            "priceUpdateQuota": {
+            "quota": 10,
+            "nextFreeIn": null,
+            "totalFree": 10
+            }
+        }
+        }
+    ]
+  }
