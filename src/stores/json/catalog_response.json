@@ -1,0 +1,272 @@
+{
+    "results": [
+        {
+            "sku": 562,
+            "upc": 659245724761,
+            "title": "2,400 CALL OF DUTY: MODERN WARFARE POINTS",
+            "min_price": 19.99,
+            "max_price": 19.99,
+            "pre_order": false,
+            "activation_fee": 0.0,
+            "percentage_of_buying_price": 20.0,
+            "currency": {
+                "currency": "Dollars",
+                "symbol": "$",
+                "code": "USD"
+            },
+            "categories": [
+                {
+                    "name": "CALL OF DUTY"
+                },
+                {
+                    "name": "CALL OF DUTY"
+                }
+            ],
+            "regions": [
+                {
+                    "name": "Global",
+                    "code": "GLC"
+                }
+            ],
+            "image": "http://media.ezpaypin.com/media/products/images/2020/08/2400_CALL_OF_DUTY.jpg",
+            "description": "",
+            "showing_price": {
+                "price": 35.0,
+                "showing_currency": {
+                    "currency": "Lira",
+                    "symbol": "TL",
+                    "code": "TRY"
+                }
+            }
+        },
+        {
+            "sku": 1152,
+            "upc": 659245710948,
+            "title": "amazon Canada",
+            "min_price": 5.0,
+            "max_price": 500.0,
+            "pre_order": false,
+            "activation_fee": 0.0,
+            "percentage_of_buying_price": 10.0,
+            "currency": {
+                "currency": "Dollars",
+                "symbol": "CAD$",
+                "code": "CAD"
+            },
+            "categories": [
+                {
+                    "name": "amazon Canada"
+                }
+            ],
+            "regions": [
+                {
+                    "name": "Canada",
+                    "code": "CA"
+                }
+            ],
+            "image": "http://media.ezpaypin.com/media/products/images/2020/09/amazon.jpg",
+            "description": "",
+            "showing_price": null
+        },
+        {
+            "sku": 1159,
+            "upc": 659245799523,
+            "title": "Amazon DE",
+            "min_price": 10.0,
+            "max_price": 100.0,
+            "pre_order": true,
+            "activation_fee": 3.0942,
+            "percentage_of_buying_price": 0,
+            "currency": {
+                "currency": "Euro",
+                "symbol": "€",
+                "code": "EUR"
+            },
+            "categories": [
+                {
+                    "name": "amazon Germany"
+                }
+            ],
+            "regions": [
+                {
+                    "name": "Germany",
+                    "code": "DE"
+                }
+            ],
+            "image": "http://media.ezpaypin.com/media/products/images/2019/11/Image7_g0lgIVb.jpg",
+            "description": {
+                "content": [],
+                "barcode": null
+            },
+            "showing_price": null
+        },
+        {
+            "sku": 562,
+            "upc": 659245724761,
+            "title": "2,400 CALL OF DUTY: MODERN WARFARE POINTS",
+            "min_price": 19.99,
+            "max_price": 19.99,
+            "pre_order": false,
+            "activation_fee": 0.0,
+            "percentage_of_buying_price": 20.0,
+            "currency": {
+                "currency": "Dollars",
+                "symbol": "$",
+                "code": "USD"
+            },
+            "categories": [
+                {
+                    "name": "CALL OF DUTY"
+                },
+                {
+                    "name": "CALL OF DUTY"
+                }
+            ],
+            "regions": [
+                {
+                    "name": "Global",
+                    "code": "GLC"
+                }
+            ],
+            "image": "http://media.ezpaypin.com/media/products/images/2020/08/2400_CALL_OF_DUTY.jpg",
+            "description": "",
+            "showing_price": {
+                "price": 35.0,
+                "showing_currency": {
+                    "currency": "Lira",
+                    "symbol": "TL",
+                    "code": "TRY"
+                }
+            }
+        },
+        {
+            "sku": 1152,
+            "upc": 659245710948,
+            "title": "amazon Canada",
+            "min_price": 5.0,
+            "max_price": 500.0,
+            "pre_order": false,
+            "activation_fee": 0.0,
+            "percentage_of_buying_price": 10.0,
+            "currency": {
+                "currency": "Dollars",
+                "symbol": "CAD$",
+                "code": "CAD"
+            },
+            "categories": [
+                {
+                    "name": "amazon Canada"
+                }
+            ],
+            "regions": [
+                {
+                    "name": "Canada",
+                    "code": "CA"
+                }
+            ],
+            "image": "http://media.ezpaypin.com/media/products/images/2020/09/amazon.jpg",
+            "description": "",
+            "showing_price": null
+        },
+        {
+            "sku": 1159,
+            "upc": 659245799523,
+            "title": "Amazon DE",
+            "min_price": 10.0,
+            "max_price": 100.0,
+            "pre_order": true,
+            "activation_fee": 3.0942,
+            "percentage_of_buying_price": 0,
+            "currency": {
+                "currency": "Euro",
+                "symbol": "€",
+                "code": "EUR"
+            },
+            "categories": [
+                {
+                    "name": "amazon Germany"
+                }
+            ],
+            "regions": [
+                {
+                    "name": "Germany",
+                    "code": "DE"
+                }
+            ],
+            "image": "http://media.ezpaypin.com/media/products/images/2019/11/Image7_g0lgIVb.jpg",
+            "description": {
+                "content": [],
+                "barcode": null
+            },
+            "showing_price": null
+        },
+        {
+            "sku": 562,
+            "upc": 659245724761,
+            "title": "2,400 CALL OF DUTY: MODERN WARFARE POINTS",
+            "min_price": 19.99,
+            "max_price": 19.99,
+            "pre_order": false,
+            "activation_fee": 0.0,
+            "percentage_of_buying_price": 20.0,
+            "currency": {
+                "currency": "Dollars",
+                "symbol": "$",
+                "code": "USD"
+            },
+            "categories": [
+                {
+                    "name": "CALL OF DUTY"
+                },
+                {
+                    "name": "CALL OF DUTY"
+                }
+            ],
+            "regions": [
+                {
+                    "name": "Global",
+                    "code": "GLC"
+                }
+            ],
+            "image": "http://media.ezpaypin.com/media/products/images/2020/08/2400_CALL_OF_DUTY.jpg",
+            "description": "",
+            "showing_price": {
+                "price": 35.0,
+                "showing_currency": {
+                    "currency": "Lira",
+                    "symbol": "TL",
+                    "code": "TRY"
+                }
+            }
+        },
+        {
+            "sku": 1152,
+            "upc": 659245710948,
+            "title": "amazon Canada",
+            "min_price": 5.0,
+            "max_price": 500.0,
+            "pre_order": false,
+            "activation_fee": 0.0,
+            "percentage_of_buying_price": 10.0,
+            "currency": {
+                "currency": "Dollars",
+                "symbol": "CAD$",
+                "code": "CAD"
+            },
+            "categories": [
+                {
+                    "name": "amazon Canada"
+                }
+            ],
+            "regions": [
+                {
+                    "name": "Canada",
+                    "code": "CA"
+                }
+            ],
+            "image": "http://media.ezpaypin.com/media/products/images/2020/09/amazon.jpg",
+            "description": "",
+            "showing_price": null
+        }
+    ]
+}

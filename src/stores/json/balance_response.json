@@ -1,0 +1,42 @@
+[
+    {
+        "currency": {
+            "currency": "Dollars",
+            "symbol": "$",
+            "code": "USD"
+        },
+        "balance": 673.67
+    },
+    {
+        "currency": {
+            "currency": "Dollars",
+            "symbol": "CAD$",
+            "code": "CAD"
+        },
+        "balance": 49.5
+    },
+    {
+        "currency": {
+            "currency": "Euro",
+            "symbol": "€",
+            "code": "EUR"
+        },
+        "balance": 4.71
+    },
+    {
+        "currency": {
+            "currency": "Pounds",
+            "symbol": "£",
+            "code": "GBP"
+        },
+        "balance": 459.0
+    },
+    {
+        "currency": {
+            "currency": "TestService",
+            "symbol": "EZ",
+            "code": "EZ"
+        },
+        "balance": 9090.74
+    }
+]
