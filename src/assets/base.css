@@ -13,7 +13,7 @@
   }
 
   body {
-    @apply bg-light font-bold leading-4 text-black;
+    @apply bg-light leading-4 text-black;
   }
 
   h1 {
