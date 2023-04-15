@@ -7,13 +7,7 @@
             </header>
         </div>
         <div class="flex flex-wrap">
-            <ProductCard />
-            <ProductCard />
-            <ProductCard />
-            <ProductCard />
-            <ProductCard />
-            <ProductCard />
-            <ProductCard />
+            <ProductCard imageUrl="@/assets/test-image.png" name="FortNite" />
         </div>
    </div>
 </template>
