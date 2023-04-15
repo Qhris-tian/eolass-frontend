@@ -1,6 +1,6 @@
 <template>
   <div class="p-4 ml-[7rem]">
-    <header class="container relative flex justify-around items-center">
+    <header class="container relative flex justify-around items-center mb-4">
       <div class="logo">
         <SvgComponent name="ezpin" class="block text-purple w-[100px]" />
       </div>
@@ -38,7 +38,18 @@
         </label>
       </div>
     </header>
-    <div class="container w-full p-10">
+    <div class="flex justify-end mt-4">
+      <alert-component
+        v-show="showAlert"
+        :type="alertType ? 'success' : 'danger'"
+        :message="
+          alertType ? 'Order placed successfully!' : 'There was an error processing you order.'
+        "
+        class="w-[400px]"
+        @close-alert="showAlert = !showAlert"
+      />
+    </div>
+    <div class="container w-full p-10 pt-3">
       <div class="px-5 flex justify-between">
         <h4 class="heading-xl uppercase">Catalog</h4>
         <AccountBalanceComponent />
@@ -65,11 +76,20 @@
               {{ product.currency.symbol }} {{ product.min_price }} - {{ product.currency.symbol }}
               {{ product.max_price }}
             </p>
-            <button-component label="Order" class="!py-[0.6rem] mt-5" />
+            <button-component
+              label="Order"
+              class="!py-[0.6rem] mt-5"
+              @click="selectProduct(product)"
+            />
           </div>
         </div>
       </div>
     </div>
+    <CreateOrderModalVue
+      v-show="showCreateOrderModal"
+      :product="selectedProduct"
+      @close-modal="closeOrderModal"
+    />
   </div>
 </template>
 
@@ -77,7 +97,9 @@
 import { ref, watch, onMounted } from 'vue'
 import SvgComponent from '@/components/ui/SvgComponent.vue'
 import ButtonComponent from '@/components/ui/ButtonComponent.vue'
+import AlertComponent from '@/components/ui/AlertComponent.vue'
 import AccountBalanceComponent from '@/components/AccountBalanceComponent.vue'
+import CreateOrderModalVue from '@/components/CreateOrderModal.vue'
 
 import { useEnvironmentStore } from '@/stores/environment'
 import { useCatalogStore } from '@/stores/catalog'
@@ -100,6 +122,25 @@ function search() {
 const accountStore = useAccountStore()
 onMounted(() => accountStore.getAccountData())
 
+const showCreateOrderModal = ref(false)
+const selectedProduct = ref({})
+
+const selectProduct = (product: object) => {
+  selectedProduct.value = product
+
+  showCreateOrderModal.value = true
+}
+const showAlert = ref(false)
+const alertType = ref(false)
+
+function closeOrderModal(data: string) {
+  if (data !== 'none') {
+    showAlert.value = true
+    alertType.value = data === 'success'
+    window.scrollTo(0, 0)
+  }
+  showCreateOrderModal.value = false
+}
 </script>
 
 <style scoped>
