@@ -1,0 +1,43 @@
+{
+    "edges": [
+        {
+            "node": {
+                "id": "07e92bf8-3814-11ed-873b-2ab02f229afd",
+                "name": "Elden Ring Deluxe Edition XBOX LIVE Key TURKEY",
+                "languages": [
+                    "English"
+                ],
+                "drm": {
+                    "slug": "xbox"
+                },
+                "regions": [
+                    {
+                        "code": "turkey"
+                    }
+                ],
+                "releasedAt": "2022-02-25T00:00:00+00:00",
+                "createdAt": "2022-09-19T12:10:20+00:00",
+                "slug": "xbox-elden-ring-deluxe-edition-xbox-live-key-turkey",
+                "isSellable": true,
+                "type": {
+                    "value": "GAME"
+                },
+                "auctions": {
+                    "edges": [
+                        {
+                        "node": {
+                            "belongsToYou": false,
+                            "isInStock": true,
+                            "merchantName": "Other merchant",
+                            "price": {
+                            "amount": 5799,
+                            "currency": "EUR"
+                            }
+                        }
+                        }
+                    ]
+                }
+            }
+        }
+    ]
+}
