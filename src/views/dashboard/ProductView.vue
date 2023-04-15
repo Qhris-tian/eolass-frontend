@@ -1,6 +1,6 @@
 <template>
    <div>
-        <Navbar iconName="eneba" />
+        <Navbar iconName="eneba" v-bind:showSearchBar=true />
         Products
    </div>
 </template>

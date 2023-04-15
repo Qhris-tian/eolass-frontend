@@ -1,6 +1,6 @@
 <template>
     <div> 
-        <Navbar iconName="eneba" />
+        <Navbar iconName="eneba" v-bind:showSearchBar=false />
         <div class="mt-20">
             <AuctionTable />
         </div>

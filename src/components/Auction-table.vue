@@ -46,38 +46,61 @@
                 </tr>
             </thead>
             <tbody>
-                <tr v-for="(auction, index) in auctionStore.auctions" class="bg-white border-b border-[#ccc]">
-                    <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                        {{ auction.node.product.name }}
-                    </th>
-                    <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                        {{ auction.node.price.amount }} ({{ auction.node.price.currency }})
-                    </td>
-                    <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                        <button v-if="auction.node.status == 'ACTIVE'" class="outline outline-offset-2 outline-1 w-20 py-1 px-2 text-[#6AE86A] rounded">
-                            {{ auction.node.status }}
-                        </button>
-                        <button v-else class="outline outline-offset-2 outline-1 w-20 py-1 px-2 text-[#00B8D4] rounded">
-                            {{ auction.node.status }}
-                        </button>
-                    </td>
-                    <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                        {{ auction.node.unitsSold }}
-                    </td>
-                    <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                        {{ auction.node.onHand }}
-                    </td>
-                    <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                        {{ getFormattedDate(auction.node.expiresAt) }}
-                    </td>
-                    <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                <template v-for="(auction, index) in auctionStore.auctions">
+                    <tr class="bg-white border-b border-[#ccc]">
+                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                            {{ auction['node']['product']['name'] }}
+                        </th>
+                        <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                            {{ auction['node']['price']['amount'] }} ({{ auction['node']['price']['currency'] }})
+                        </td>
+                        <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                            <button v-if="auction['node']['status'] == 'ACTIVE'" class="outline outline-offset-2 outline-1 w-20 py-1 px-2 text-[#6AE86A] rounded">
+                                {{ auction['node']['status'] }}
+                            </button>
+                            <button v-else class="outline outline-offset-2 outline-1 w-20 py-1 px-2 text-[#00B8D4] rounded">
+                                {{ auction['node']['status'] }}
+                            </button>
+                        </td>
+                        <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                            {{ auction['node']['unitsSold'] }}
+                        </td>
+                        <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                            {{ auction['node']['onHand'] }}
+                        </td>
+                        <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                            {{ getFormattedDate(auction['node']['expiresAt']) }}
+                        </td>
+                        <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                            <div class="flex">
+                                <img src="@/assets/eye-on.svg" alt="n/a" width="20" height="20" class="cursor-pointer" @click="auctionViewElement = !auctionViewElement">
+                                <img src="@/assets/average-price.svg" alt="n/a" width="20" height="20">
+                                <img src="@/assets/update.svg" alt="n/a" width="20" height="20">
+                            </div>
+                        </td>
+                    </tr>
+                    <div class="py-2 pl-5 font-medium text-left" v-show="auctionViewElement">
                         <div class="flex">
-                            <img src="@/assets/eye-on.svg" alt="n/a" width="20" height="20">
-                            <img src="@/assets/average-price.svg" alt="n/a" width="20" height="20">
-                            <img src="@/assets/update.svg" alt="n/a" width="20" height="20">
+                            <div class="w-2/4">
+                                <div v-if="auction['node']['declaredStock'] != null">Declared Stock: {{ auction['node']['declaredStock'] }}</div>
+                                <div v-else class="">Declared Stock: N/A</div>
+                            </div>
+                            <div class="pl-20">Auto Renew: {{ auction['node']['autoRenew'] }}</div>
                         </div>
-                    </td>
-                </tr>
+                        <div class="flex">
+                            <div class="w-2/4">On Hold: {{ auction['node']['onHold'] }}</div>
+                            <div class="pl-20">
+                                <div v-if="auction['node']['position'] != null" class="">Position: {{ auction['node']['position'] }}</div>
+                                <div v-else>Position: N/A</div>
+                            </div>
+                            <!-- <div class="pl-20">
+                                <div>
+                                    {{ getFormattedDate(auction['node']['createdAt']) }}
+                                </div>
+                            </div> -->
+                        </div>
+                    </div>
+                </template>
             </tbody>
         </table>
     </div>
@@ -86,16 +109,21 @@
 
 <script setup lang="ts">
 import { useAuctionStore } from '@/stores/auctions'
-import { onMounted } from 'vue';
+import { ref, watch, onMounted } from 'vue';
 import SvgComponent from './ui/SvgComponent.vue'
 
 const auctionStore = useAuctionStore()
+let auctionViewElement = ref(false)
 
 onMounted(() => auctionStore.getAuctionData())
 
 function getFormattedDate(date: string) {
     const d = new Date(date)
-    return d.getDate() + '.' + (d.getMonth() + 1) + '.' + d.getFullYear();;
+    return d.getDate() + '.' + (d.getMonth() + 1) + '.' + d.getFullYear();
+}
+
+function toggleAuctionView(index: any) {
+    auctionViewElement = index;
 }
 
 </script>

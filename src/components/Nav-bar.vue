@@ -4,7 +4,7 @@
             <SvgComponent :name=iconName class="eneba-svg" />
         </div>
         <div class="w-2/4">
-            <SearchBarComponent />
+            <SearchBarComponent v-if="showSearchBar == true" />
         </div>
         <div class="w-1/4">
             
@@ -17,7 +17,8 @@ import SearchBarComponent from './ui/SearchBarComponent.vue';
 import SvgComponent from './ui/SvgComponent.vue'
 
 const props = defineProps<{
-    iconName: string
+    iconName: string,
+    showSearchBar: boolean
 }>()
 
 </script>
