@@ -7,7 +7,7 @@ export const useOrderStore = defineStore('order', () => {
 
     // function to make api request for order history api data.
     function getOrderHistoryData() {    
-      orderHistory.value = orderResponse.results
+      orderHistory.value = orderResponse
     }
 
   return { orderHistory, getOrderHistoryData }
