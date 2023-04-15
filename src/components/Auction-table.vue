@@ -1,8 +1,15 @@
 <template>
+
+    <div class="w-11/12 pt-5 flex justify-end">
+        <button class="bg-[#635FC7] py-3 px-5 mb-5 rounded hover:border border-[#E4EBFA] text-white text-[12px] font-medium flex justify-center items-center">
+            <img src="@/assets/plus.svg" width="23" height="23" class="pr-2" alt="">
+            <span>Create Auction</span>
+        </button>
+    </div>
     
     <div class="relative overflow-x-auto shadow-md w-11/12">
-        <table class="w-full text-sm text-center text-gray-500 dark:text-gray-400">
-            <thead class="text-xs text-gray-700 dark:text-gray-400 bg-white">
+        <table class="w-full text-[12px] text-center text-gray-500 dark:text-gray-400">
+            <thead class="text-gray-700 dark:text-gray-400 bg-white">
                 <tr class="border-b border-[#ccc]">
                     <th scope="col" class="px-6 py-3 border-r border-[#ccc]">
                         Product
@@ -74,9 +81,9 @@
                         <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                             <div class="flex">
                                 <img :src="auctionRowStates[index] == false || auctionRowStates[index] == null ? eyeOnIcon : eyeOffIcon" 
-                                    alt="n/a" width="20" height="20" class="cursor-pointer" @click="toggleAuctionView(index)">
-                                <img src="@/assets/average-price.svg" alt="n/a" width="20" height="20">
-                                <img src="@/assets/update.svg" alt="n/a" width="20" height="20">
+                                    alt="n/a" width="18" height="18" class="cursor-pointer" @click="toggleAuctionView(index)">
+                                <img src="@/assets/average-price.svg" alt="n/a" width="18" height="18">
+                                <img src="@/assets/update.svg" alt="n/a" width="18" height="18">
                             </div>
                         </td>
                     </tr>
@@ -106,7 +113,7 @@
         </table>
     </div>
 
-    <div class="w-11/12 pt-5 flex justify-end">
+    <div class="w-11/12 pt-5 flex justify-end text-[12px]">
         <button class="bg-[#E4EBFA] py-3 px-5 mr-2 rounded hover:border border-[#E4EBFA] text-[#828FA3] font-medium flex justify-center items-center">
             <img src="@/assets/back-icon.svg" class="pr-2" alt="">
             <span>Previous</span>
@@ -125,7 +132,6 @@ import { useAuctionStore } from '@/stores/auctions'
 import { onMounted, reactive } from 'vue'
 import eyeOnIcon from '@/assets/eye-on.svg'
 import eyeOffIcon from '@/assets/eye-off.svg'
-import SvgComponent from './ui/SvgComponent.vue'
 
 const auctionStore = useAuctionStore()
 let auctionRowStates:any[] = reactive([])

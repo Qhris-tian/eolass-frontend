@@ -1,7 +1,12 @@
 <template>
     <div> 
         <Navbar iconName="eneba" v-bind:showSearchBar=false />
-        <div class="mt-20">
+        <div class="mt-10">
+            <header>
+                <span>Auctions</span>
+            </header>
+        </div>
+        <div>
             <AuctionTable />
         </div>
     </div>
