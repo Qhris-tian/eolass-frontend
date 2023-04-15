@@ -46,7 +46,7 @@
                 </tr>
             </thead>
             <tbody>
-                <template v-for="(auction, index) in auctionStore.auctions">
+                <template v-for="(auction, index) in auctionStore.auctions" :key="index">
                     <tr class="bg-white border-b border-[#ccc]">
                         <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                             {{ auction['node']['product']['name'] }}
@@ -73,13 +73,13 @@
                         </td>
                         <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                             <div class="flex">
-                                <img src="@/assets/eye-on.svg" alt="n/a" width="20" height="20" class="cursor-pointer" @click="auctionViewElement = !auctionViewElement">
+                                <img src="@/assets/eye-on.svg" alt="n/a" width="20" height="20" class="cursor-pointer" @click="toggleAuctionView(index)">
                                 <img src="@/assets/average-price.svg" alt="n/a" width="20" height="20">
                                 <img src="@/assets/update.svg" alt="n/a" width="20" height="20">
                             </div>
                         </td>
                     </tr>
-                    <div class="py-2 pl-5 font-medium text-left" v-show="auctionViewElement">
+                    <div class="py-2 pl-5 font-medium text-left" :class="{ 'hidden': auctionRowStates[index] == false || auctionRowStates[index] == null }">
                         <div class="flex">
                             <div class="w-2/4">
                                 <div v-if="auction['node']['declaredStock'] != null">Declared Stock: {{ auction['node']['declaredStock'] }}</div>
@@ -109,11 +109,11 @@
 
 <script setup lang="ts">
 import { useAuctionStore } from '@/stores/auctions'
-import { ref, watch, onMounted } from 'vue';
+import { onMounted, reactive } from 'vue';
 import SvgComponent from './ui/SvgComponent.vue'
 
 const auctionStore = useAuctionStore()
-let auctionViewElement = ref(false)
+let auctionRowStates:any[] = reactive([])
 
 onMounted(() => auctionStore.getAuctionData())
 
@@ -123,7 +123,11 @@ function getFormattedDate(date: string) {
 }
 
 function toggleAuctionView(index: any) {
-    auctionViewElement = index;
+    if (auctionRowStates[index] == null) {
+        auctionRowStates[index] = true;
+    } else {
+        auctionRowStates[index] = !auctionRowStates[index]
+    }    
 }
 
 </script>
