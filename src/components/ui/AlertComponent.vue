@@ -1,19 +1,21 @@
 <template>
-  <div class="p-3 mb-3 rounded-lg border" :class="typeClass[props.type]" role="alert">
-    <div class="flex items-center justify-between">
-      <div class="flex items-center">
-        <svg-component :name="'info-circle'" class="w-5 h-5 mr-2" />
-        <h3 class="text-md font-medium">{{ message }}</h3>
+  <transition>
+    <div class="p-3 mb-3 rounded-lg border" :class="typeClass[props.type]" role="alert">
+      <div class="flex items-center justify-between">
+        <div class="flex items-center">
+          <svg-component :name="'info-circle'" class="w-5 h-5 mr-2" />
+          <h3 class="text-md font-medium">{{ message }}</h3>
+        </div>
+        <button type="button" @click="emit('close-alert')">
+          <svg-component :name="'close'" />
+        </button>
       </div>
-      <button type="button" @click="emit('close-alert')">
-              <svg-component :name="'close'" />
-      </button>
+      <div v-if="details" class="mt-2 mb-4 text-sm">
+        {{ details }}
+      </div>
+      <slot></slot>
     </div>
-    <div v-if="details" class="mt-2 mb-4 text-sm">
-      {{ details }}
-    </div>
-    <slot></slot>
-  </div>
+  </transition>
 </template>
 
 <script setup lang="ts">

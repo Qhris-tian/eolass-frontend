@@ -35,15 +35,15 @@
           </div>
         </div>
         <div class="w-[60%] px-5">
-          <span>
-            <p
-              v-if="canOrder"
-              class="text-center p-3 border mb-10"
-              :class="available ? 'border-purple text-purple' : 'border-red-500 text-red-500'"
-            >
-              {{ available ? 'Available' : 'Unavailable' }}
-            </p>
-          </span>
+          <transition>
+              <p
+                v-show="canOrder"
+                class="text-center p-3 border mb-10"
+                :class="available ? 'border-purple text-purple' : 'border-red-500 text-red-500'"
+              >
+                {{ available ? 'Available' : 'Unavailable' }}
+              </p>
+          </transition>
           <form @submit.prevent="request()">
             <div class="mb-2 flex items-center">
               <label class="mr-1 body-text w-20">Quantity</label>
