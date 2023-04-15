@@ -73,7 +73,8 @@
                         </td>
                         <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                             <div class="flex">
-                                <img src="@/assets/eye-on.svg" alt="n/a" width="20" height="20" class="cursor-pointer" @click="toggleAuctionView(index)">
+                                <img :src="auctionRowStates[index] == false || auctionRowStates[index] == null ? eyeOnIcon : eyeOffIcon" 
+                                    alt="n/a" width="20" height="20" class="cursor-pointer" @click="toggleAuctionView(index)">
                                 <img src="@/assets/average-price.svg" alt="n/a" width="20" height="20">
                                 <img src="@/assets/update.svg" alt="n/a" width="20" height="20">
                             </div>
@@ -105,11 +106,25 @@
         </table>
     </div>
 
+    <div class="w-11/12 pt-5 flex justify-end">
+        <button class="bg-[#E4EBFA] py-3 px-5 mr-2 rounded hover:border border-[#E4EBFA] text-[#828FA3] font-medium flex justify-center items-center">
+            <img src="@/assets/back-icon.svg" class="pr-2" alt="">
+            <span>Previous</span>
+        </button>
+
+        <button class="bg-[#E4EBFA] py-3 px-5 rounded hover:border border-[#E4EBFA] text-[#828FA3] font-medium flex justify-center items-center">
+            <span class="pr-2">Next</span>
+            <img src="@/assets/forward-icon.svg" class="pr-2" alt="">
+        </button>
+    </div>
+
 </template>
 
 <script setup lang="ts">
 import { useAuctionStore } from '@/stores/auctions'
-import { onMounted, reactive } from 'vue';
+import { onMounted, reactive } from 'vue'
+import eyeOnIcon from '@/assets/eye-on.svg'
+import eyeOffIcon from '@/assets/eye-off.svg'
 import SvgComponent from './ui/SvgComponent.vue'
 
 const auctionStore = useAuctionStore()
