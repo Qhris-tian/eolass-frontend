@@ -1,5 +1,15 @@
 <template>
   <div>
+    <select
+      v-model="perPage"
+      name="per-page"
+      class="m-1 p-2 ring-2 ring-gray/40 hover:ring-purple/40 rounded-md mb-3"
+    >
+      <option value="10">10</option>
+      <option value="15">15</option>
+      <option value="25">25</option>
+      <option value="50">50</option>
+    </select>
     <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
       <table class="w-full text-sm text-left text-gray-500" aria-label="Order Table">
         <thead class="text-xs text-gray uppercase bg-white">
@@ -15,7 +25,7 @@
           </tr>
         </thead>
         <tbody>
-          <template v-for="order in props.orderHistory" :key="order.reference_code">
+          <template v-for="order in props.orderHistory.results" :key="order.reference_code">
             <tr class="bg-white border border-line">
               <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
                 {{ order.product.title }}
@@ -32,7 +42,9 @@
               >
                 {{ order.is_completed ? 'Complete' : 'In Progress' }}
               </td>
-              <td class="capitalize px-6 py-4">{{ utils.formatDate(order.created_time, 'do MMM Y') }}</td>
+              <td class="capitalize px-6 py-4">
+                {{ utils.formatDate(order.created_time, 'do MMM Y') }}
+              </td>
               <td class="capitalize px-6 py-4 text-right">
                 <div class="flex">
                   <button @click="toggleRowDetails(order.reference_code)">
@@ -70,8 +82,8 @@
     </div>
     <nav class="flex items-center justify-between pt-4" aria-label="Order Table navigation">
       <span class="text-sm font-normal text-gray-500"
-        >Showing <span class="font-semibold text-gray-900">1-10</span> of
-        <span class="font-semibold text-gray-900">1000</span></span
+        >Showing <span class="font-semibold text-gray-900">{{ perPage }}</span> of
+        <span class="font-semibold text-gray-900">{{ orderHistory.count }}</span></span
       >
       <ul class="inline-flex items-center -space-x-px">
         <li class="mr-2">
@@ -110,11 +122,11 @@ const props = defineProps<{
   orderHistory: object
 }>()
 
+const perPage = ref(10)
 const detailsRow = ref({ id: false })
 const toggleRowDetails = (key) => (detailsRow.value[key] = !detailsRow.value[key])
 
 const utils = useUtils()
-
 </script>
 
 <style scoped>
