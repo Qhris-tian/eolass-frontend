@@ -28,7 +28,7 @@
           <template v-for="order in props.orderHistory.results" :key="order.reference_code">
             <tr class="bg-white border border-line">
               <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-                {{ order.product.title }}
+                {{ order.product.title }}({{ order.count }})
               </td>
               <td class="capitalize px-6 py-4 text-right">{{ order.total_customer_cost }}</td>
               <td class="uppercase px-6 py-4">
@@ -47,7 +47,7 @@
               </td>
               <td class="capitalize px-6 py-4 text-right">
                 <div class="flex">
-                  <button @click="toggleRowDetails(order.reference_code)">
+                  <button @click="toggleRowDetails(order.reference_code, order.is_completed)">
                     <svg-component
                       v-show="detailsRow[order.reference_code]"
                       :name="'eye-off'"
@@ -69,11 +69,20 @@
                   <span>Discount: {{ order.total_discounts }}</span>
                 </div>
               </td>
-              <td class="text-left" colspan="5">
+              <td class="text-left" colspan="4">
                 <div class="flex flex-col">
                   <span class="mr-[10rem]">Total Fees: {{ order.total_fees }}</span>
                   <span class="mr-[10rem]">Share Link: {{ order.share_link }}</span>
                 </div>
+              </td>
+              <td class="px-6 py-4">
+                <button
+                  v-if="order.is_completed"
+                  type="button"
+                  @click="orderCardToShow = order.reference_code"
+                >
+                  Show Cards
+                </button>
               </td>
             </tr>
           </template>
@@ -104,6 +113,11 @@
         </li>
       </ul>
     </nav>
+    <OrderCardsModal
+      v-if="orderCardToShow"
+      :order="orderCardToShow"
+      @close-modal="orderCardToShow = null"
+    />
   </div>
 </template>
 
@@ -111,6 +125,8 @@
 import SvgComponent from './ui/SvgComponent.vue'
 import { ref, defineProps } from 'vue'
 import { useUtils } from '@/composables/utils'
+import { useOrderStore } from '@/stores/order'
+import OrderCardsModal from './OrderCardsModal.vue'
 
 const statusClass = {
   accept: 'text-green-400 border-green-400',
@@ -122,11 +138,18 @@ const props = defineProps<{
   orderHistory: object
 }>()
 
+const orderStore = useOrderStore()
+const utils = useUtils()
+
 const perPage = ref(10)
 const detailsRow = ref({ id: false })
-const toggleRowDetails = (key) => (detailsRow.value[key] = !detailsRow.value[key])
+const toggleRowDetails = (key: string, getCards: boolean = true) => {
+  getCards ? orderStore.getOrderCards(key) : null
 
-const utils = useUtils()
+  detailsRow.value[key] = !detailsRow.value[key]
+}
+
+const orderCardToShow = ref<string | null>()
 </script>
 
 <style scoped>
