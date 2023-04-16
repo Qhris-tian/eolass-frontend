@@ -26,7 +26,7 @@
   </div>
 </template>
   
-  <script setup lang="ts">
+<script setup lang="ts">
 import { ref, watch, onMounted } from 'vue'
 import SvgComponent from '@/components/ui/SvgComponent.vue'
 import { useEnvironmentStore } from '@/stores/environment'
@@ -41,8 +41,5 @@ const orderStore = useOrderStore()
 onMounted(() => orderStore.getOrderHistoryData())
 </script>
   
-  <style scoped>
-.wrapper {
-  @apply p-4 ml-64;
-}
+<style scoped>
 </style>
