@@ -8,5 +8,10 @@ export const useUtils = () => {
       return date
     }
   }
-  return { formatDate }
+
+  function placeholder(data: any) {
+    return data ? data : 'N/A'
+  }
+
+  return { formatDate, placeholder }
 }
