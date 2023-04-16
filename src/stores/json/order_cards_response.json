@@ -1,0 +1,16 @@
+{
+  "results": [
+    {
+      "card_number": "ZNNPZRRYP49VT9UK",
+      "pin_code": "393145478240831916",
+      "claim_url": "https://vc.ezpaypin.com/9853476c-3b05-4871-a56f-9bb7eb33891d",
+      "expire_date": ""
+    },
+    {
+      "card_number": "NWUJ7LAR3KGTU77X",
+      "pin_code": "930854294202589407",
+      "claim_url": "https://vc.ezpaypin.com/db095ef3-7d21-4307-8cdc-3b1c0fa300c3",
+      "expire_date": ""
+    }
+  ]
+}
