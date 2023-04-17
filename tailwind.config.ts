@@ -15,7 +15,6 @@ module.exports = {
 				current: 'currentColor',
 				purple: '#635FC7',
 				'purple-light': '#A8A4FF',
-				gray: '#828FA3',
 				black: '#000112',
 				light: '#F4F7FD',
 				line: '#E4EBFA',
