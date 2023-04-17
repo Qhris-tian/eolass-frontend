@@ -16,7 +16,7 @@
         <div class="font-medium text-sm pt-5">
             <div class="flex justify-center">
                 <div class="w-full">
-                    <form action="" @submit="createAuction()">
+                    <!-- <form action=""> -->
                         <div class="flex">
                             <div class="mb-4 px-2 w-full md:w-6/12">
                                 <label for="auctionType" class="block mb-1 text-sm">Auction Type:</label>
@@ -47,16 +47,25 @@
                             </div>
                         </div>
 
-                        <div class="mb-4 px-2 w-full md:w-6/12">
+                        <!-- <div class="mb-4 px-2 w-full md:w-6/12">
                             <label for="keys" class="block mb-1 text-sm">Keys:</label>
                             <input id="keys" required class="w-full border px-4 py-2 rounded focus:border-blue-500 focus:shadow-outline outline-none" type="text" autofocus placeholder="Enter key" />
+                        </div> -->
+                        
+                        <div class="mb-4 px-2 w-full md:w-6/12">
+                            <label for="keys" class="block mb-1 text-sm">Keys:</label>
+                            <MultipleInputComponent />
                         </div>
                         
                         <div class="flex justify-end px-10">
-                            <button type="submit" class="focus:outline-none text-white bg-[#635FC7] hover:bg-[#635FC7] focus:ring-2 focus:ring-[#635FC7] font-medium rounded-lg text-sm px-5 py-2.5 mb-2 dark:bg-[#635FC7] dark:hover:bg-[#A8A4FF] dark:focus:ring-[#635FC7]">Proceed</button>
+                            <button type="submit" 
+                                @click="createAuction()"
+                                class="focus:outline-none text-white bg-[#635FC7] hover:bg-[#635FC7] focus:ring-2 focus:ring-[#635FC7] font-medium rounded-lg text-sm px-5 py-2.5 mb-2 dark:bg-[#635FC7] dark:hover:bg-[#A8A4FF] dark:focus:ring-[#635FC7]">
+                                Proceed
+                            </button>
                         </div>
 
-                    </form>
+                    <!-- </form> -->
                 </div>
             </div>
         </div>
@@ -66,6 +75,7 @@
 </template>
 
 <script setup lang="ts">
+import MultipleInputComponent from './ui/MultipleInputComponent.vue';
 
 defineProps({
     isOpen: Boolean,
