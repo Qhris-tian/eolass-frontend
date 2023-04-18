@@ -13,10 +13,14 @@
                     <span>Create Auction</span>
                 </button>
             </div>
-            <AuctionTable />
+            <AuctionTable @toggleUpdateAuctionModal="toggleUpdateAuctionModal" />
         </div>
         <CreateAuctionModal :isOpen="showCreateAuctionModal" @closeModal="showCreateAuctionModal = false"
             title="Call of Duty: Modern Warfare II" />
+
+        <UpdateAuctionModal :isUpdateAuctionModalOpen="showUpdateAuctionModal"
+        :auctionData="auctionData"
+         @closeUpdateAuctionModal="showUpdateAuctionModal = false" />
     </div>
 </template>
 
@@ -25,8 +29,16 @@ import { ref } from 'vue';
 import Navbar from '@/components/Nav-bar.vue';
 import AuctionTable from '@/components/Auction-table.vue';
 import CreateAuctionModal from '@/components/Create-auction-modal.vue';
+import UpdateAuctionModal from '@/components/Update-auction-modal.vue';
 
 let showCreateAuctionModal = ref(false);
+let showUpdateAuctionModal = ref(false);
+let auctionData = ref({});
+
+function toggleUpdateAuctionModal(auction:any) {
+    showUpdateAuctionModal.value = true;
+    auctionData = auction;
+}
 
 </script>
 

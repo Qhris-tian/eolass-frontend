@@ -107,7 +107,7 @@ defineProps({
     title: String
 });
 
-function updateNewKey(value) {
+function updateNewKey(value:any) {
     newKey.value = value;
 }
 
@@ -118,7 +118,7 @@ function addProductKey() {
     }
 }
 
-function removeProductKey(index) {
+function removeProductKey(index:any) {
     productKeys.splice(index, 1);
 }
 

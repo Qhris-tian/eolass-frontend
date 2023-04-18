@@ -76,7 +76,7 @@
                                 <img :src="auctionRowStates[index] == false || auctionRowStates[index] == null ? eyeOnIcon : eyeOffIcon" 
                                     alt="n/a" width="18" height="18" class="cursor-pointer" @click="toggleAuctionView(index)">
                                 <img src="@/assets/average-price.svg" alt="n/a" width="18" height="18">
-                                <img src="@/assets/update.svg" alt="n/a" width="18" height="18">
+                                <img src="@/assets/update.svg" alt="n/a" width="18" height="18" @click="$emit('toggleUpdateAuctionModal', auction)">
                             </div>
                         </td>
                     </tr>
