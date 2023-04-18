@@ -27,8 +27,13 @@
                                 </select>
                             </div>
                             <div class="w-full md:w-6/12 flex items-center md:pl-20">
-                                <label for="autoRenew" class="block mb-1 text-sm">AutoRenew:</label>
-                                <input type="checkbox" v-model="autoRenew" class="w-4 h-4 ml-5 rounded focus:ring-blue-500">
+                                <label for="autoRenew" class="block mb-1 text-sm mr-2">AutoRenew:</label>
+
+                                <label class="relative inline-flex items-center cursor-pointer">
+                                <input type="checkbox" value="" v-model="autoRenew" class="sr-only peer">
+                                <div class="w-11 h-6 bg-[#ccc] peer-focus:outline-none rounded-full peer dark:bg-[#A8A4FF] peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-white after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-[#A8A4FF] peer-checked:bg-[#A8A4FF]"></div>
+                                </label>
+
                             </div>
                         </div>
 
