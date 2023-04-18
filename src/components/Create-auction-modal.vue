@@ -68,7 +68,7 @@
                             <MultipleInputComponent v-model="newKey" @updateNewItem="updateNewKey" 
                                 @addProductKey="addProductKey"
                                 @removeProductKey="removeProductKey"
-                                :productKeys="productKeys"
+                                :items="productKeys"
                                 :newItem="newKey" />
                         </div>
                         
