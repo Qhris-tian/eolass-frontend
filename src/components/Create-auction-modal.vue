@@ -63,7 +63,7 @@
                             </div>
                         </div>
                         
-                        <div class="mb-4 px-2 w-full md:w-6/12">
+                        <div v-if="auctionType == 'plain'" class="mb-4 px-2 w-full md:w-6/12">
                             <label for="keys" class="block mb-1 text-sm">Keys:</label>
                             <MultipleInputComponent v-model="newKey" @updateNewItem="updateNewKey" 
                                 @addProductKey="addProductKey"
