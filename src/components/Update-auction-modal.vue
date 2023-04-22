@@ -27,7 +27,7 @@
                             <div class="flex">
                                 <div class="mb-4 px-2 w-full md:w-6/12">
                                     <label for="auctionType" class="block mb-1 text-sm">Auction Type:</label>
-                                    <select id="auctionType" class="w-full border px-4 pr-8 py-2 rounded focus:border-blue-500 focus:shadow-outline outline-none">
+                                    <select id="auctionType" v-model="auctionType" class="w-full border px-4 pr-8 py-2 rounded focus:border-blue-500 focus:shadow-outline outline-none">
                                         <option value="plain">Plain</option>
                                         <option value="preorder">Pre Order</option>
                                         <option value="declaredstock">Declared Stock</option>
@@ -60,17 +60,17 @@
                                     </div>
                                 </div>
 
-                                <!-- <div v-if="auctionType == 'preorder'" class="w-full md:w-6/12 flex items-center md:pl-20 pl-2">
+                                <div v-if="auctionType == 'preorder'" class="w-full md:w-6/12 flex items-center md:pl-20 pl-2">
                                     <label for="onHand" class="block mb-1 text-sm pr-4">On Hand:</label>
                                     <input id="onHand" v-model="onHand" required class="w-[40%] border px-4 py-2 rounded focus:border-blue-500 focus:shadow-outline outline-none" type="number" placeholder="onHand" />
                                 </div>
                                 <div v-if="auctionType == 'declaredstock'" class="w-full md:w-6/12 flex items-center md:pl-20 pl-2">
                                     <label for="declaredStock" class="block mb-1 text-sm pr-4">Declared Stock:</label>
                                     <input id="declaredStock" v-model="declaredStock" required class="w-[40%] border px-4 py-2 rounded focus:border-blue-500 focus:shadow-outline outline-none" type="number" placeholder="declared stock" />
-                                </div> -->
+                                </div>
                             </div>
 
-                            <div class="mb-4 px-2 w-full md:w-6/12">
+                            <div v-if="auctionType == 'plain'" class="mb-4 px-2 w-full md:w-6/12">
                                 <label for="keys" class="block mb-1 text-sm">Keys:</label>
                                 <MultipleInputComponent v-model="newKey" @updateNewItem="updateNewKey" 
                                     @addProductKey="addProductKey"
@@ -79,11 +79,11 @@
                                     :newItem="newKey" />
                             </div>
 
-                            <div class="mb-4 px-2 w-full md:w-6/12">
+                            <div v-if="auctionType == 'plain'" class="mb-4 px-2 w-full md:w-6/12">
                                 <label for="keys" class="block mb-1 text-sm">Existing Keys:</label>
                                 <div class="flex flex-wrap w-full items-center">
                                     <div v-for="(item, index) in existingKeys" :key="index" class="w-1/3 p-1">
-                                        <div class="bg-[#A8A4FF] rounded text-white flex justify-between p-1">
+                                        <div class="bg-[#00B8D4] rounded text-white flex justify-between p-1">
                                             <span class="">{{ item }}</span>
                                             <img src="@/assets/close-icon.svg" @click="removeExistingKey(index)" class="cursor-pointer hover:w-[15px] filter invert transition-all" width="10" height="10" alt="">
                                         </div>
@@ -91,7 +91,7 @@
                                 </div>
                             </div>
 
-                            <div class="mb-4 px-2 w-full md:w-6/12">
+                            <div v-if="auctionType == 'plain'" class="mb-4 px-2 w-full md:w-6/12">
                                 <label for="keys" class="block mb-1 text-sm">Removed Keys:</label>
                                 <div class="flex flex-wrap w-full items-center">
                                     <div v-for="(item, index) in removedKeys" :key="index" class="w-1/3 p-1">
@@ -130,6 +130,7 @@ const props = defineProps({
     auctionData: Object
 });
 
+let auctionType = ref('plain');
 let newKey = ref('');
 let productKeys:String[] = reactive([]);
 let updateFee = ref({
@@ -141,11 +142,15 @@ let removedKeys:String[] = reactive([]);
 let autoRenew = ref();
 let currency = ref();
 let amount = ref();
+let onHand = ref(0);
+let declaredStock = ref(0);
 
 watch(() => props.auctionData, (newAuctionData, oldAuctionData) => {
     autoRenew = newAuctionData?.node.autoRenew;
     currency = newAuctionData?.node.price.currency;
     amount = newAuctionData?.node.price.amount;
+    onHand = newAuctionData?.node.onHand;
+    declaredStock = newAuctionData?.node.declaredStock;
 })
 
 onMounted(() => {

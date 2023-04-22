@@ -6,13 +6,13 @@
     <div class="h-full pr-3 py-4 overflow-y-auto mt-12">
       <ul class="space-y-2">
         <li class="sidebar-item">
-          <router-link to="catalog" class="sidebar-link" active-class="sidebar-active">
+          <router-link to="/catalog" class="sidebar-link" active-class="sidebar-active">
             <SvgComponent name="layers" />
             <span class="ml-3">Catalog</span>
           </router-link>
         </li>
         <li class="sidebar-item">
-          <router-link to="orders" class="sidebar-link" active-class="sidebar-active">
+          <router-link to="/orders" class="sidebar-link" active-class="sidebar-active">
             <SvgComponent name="cart" width="24" />
             <span class="ml-3">Orders</span>
           </router-link>
@@ -20,13 +20,13 @@
       </ul>
       <ul class="pt-4 mt-4 space-y-2 border-t border-gray-200">
         <li class="sidebar-item">
-          <router-link to="products" class="sidebar-link" active-class="sidebar-active">
+          <router-link to="/products" class="sidebar-link" active-class="sidebar-active">
             <SvgComponent name="package" />
             <span class="ml-3">Products</span>
           </router-link>
         </li>
         <li class="sidebar-item">
-          <router-link to="auctions" class="sidebar-link" active-class="sidebar-active">
+          <router-link to="/auctions" class="sidebar-link" active-class="sidebar-active">
             <SvgComponent name="auction" />
             <span class="ml-3">Auctions</span>
           </router-link>
