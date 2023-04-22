@@ -7,15 +7,15 @@
       <ul class="space-y-2">
         <div class="flex text-gray pl-1 my-6">
           <span class="heading-sm uppercase">Ezpin</span>
-          <hr  class="w-full relative top-[11px]" />
+          <hr class="w-full relative top-[11px]" />
         </div>
-        <li class="sidebar-item">
+        <li class="sidebar-item heading-md">
           <router-link to="catalog" class="sidebar-link" active-class="sidebar-active">
             <SvgComponent name="layers" />
             <span class="ml-3">Catalog</span>
           </router-link>
         </li>
-        <li class="sidebar-item">
+        <li class="sidebar-item heading-md">
           <router-link to="orders" class="sidebar-link" active-class="sidebar-active">
             <SvgComponent name="cart" width="24" />
             <span class="ml-3">Orders</span>
@@ -25,15 +25,15 @@
       <ul class="pt-4 mt-4 space-y-2">
         <div class="flex text-gray pl-1 my-6">
           <span class="heading-sm uppercase">Eneba</span>
-          <hr  class="w-full relative top-[11px]" />
+          <hr class="w-full relative top-[11px]" />
         </div>
-        <li class="sidebar-item">
+        <li class="sidebar-item heading-md">
           <router-link to="products" class="sidebar-link" active-class="sidebar-active">
             <SvgComponent name="package" />
             <span class="ml-3">Products</span>
           </router-link>
         </li>
-        <li class="sidebar-item">
+        <li class="sidebar-item heading-md">
           <router-link to="auctions" class="sidebar-link" active-class="sidebar-active">
             <SvgComponent name="auction" />
             <span class="ml-3">Auctions</span>
@@ -50,7 +50,7 @@ import SvgComponent from './ui/SvgComponent.vue'
 
 <style scoped>
 .sidebar-item {
-  @apply heading-md my-6 text-purple;
+  @apply my-6 text-purple;
 }
 .sidebar-active {
   @apply text-white bg-purple-light flex items-center p-2;

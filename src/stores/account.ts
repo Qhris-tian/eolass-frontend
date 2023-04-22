@@ -1,10 +1,11 @@
-import { ref, type Ref } from 'vue'
+import { ref } from 'vue'
 import { defineStore } from 'pinia'
+import type { Balance } from '@/interfaces/balance'
 import accountResponse from './json/balance_response.json'
 
 export const useAccountStore = defineStore('account', () => {
-  const balance = ref([])
-  const currencies = ref([])
+  const balance = ref<Array<Balance>>([])
+  const currencies = ref<Array<String>>([])
   const displayBalance = ref(0.0)
 
   function getCurrencyBalance(currency: string = 'EUR'): number {

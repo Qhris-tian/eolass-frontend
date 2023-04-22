@@ -57,7 +57,7 @@
 
       <div class="flex flex-wrap">
         <div
-          v-for="(product, index) in catalogStore.catalog"
+          v-for="(product, index) in catalogStore.catalog?.results"
           :key="index"
           class="relative flex flex-col w-[17rem] bg-white border border-gray/30 rounded-lg shadow-sm ml-6 mt-10"
         >
@@ -104,6 +104,7 @@ import CreateOrderModalVue from '@/components/CreateOrderModal.vue'
 import { useEnvironmentStore } from '@/stores/environment'
 import { useCatalogStore } from '@/stores/catalog'
 import { useAccountStore } from '@/stores/account'
+import type { Result } from '@/interfaces/catalog'
 
 const environmentStore = useEnvironmentStore()
 const apiEnvironment = ref(environmentStore.environment)
@@ -123,9 +124,9 @@ const accountStore = useAccountStore()
 onMounted(() => accountStore.getAccountData())
 
 const showCreateOrderModal = ref(false)
-const selectedProduct = ref({})
+const selectedProduct = ref<Result | null>(null)
 
-const selectProduct = (product: object) => {
+const selectProduct = (product: Result) => {
   selectedProduct.value = product
 
   showCreateOrderModal.value = true
