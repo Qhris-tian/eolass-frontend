@@ -1,18 +1,26 @@
 import { ref } from 'vue'
 import { defineStore } from 'pinia'
-import orderResponse from './json/order_history_response.json'
+import orderHistoryResponse from './json/order_history_response.json'
 import orderCardsResponse from './json/order_cards_response.json'
+import type { OrderHistory } from '@/interfaces/orderHistory'
+import type { Cards } from '@/interfaces/orderCard'
 
 export const useOrderStore = defineStore('order', () => {
-  const orderHistory = ref({})
+  const orderHistory = ref<OrderHistory>({
+    count: 0,
+    next: null,
+    previous: null,
+    results: []
+  })
+
   function getOrderHistoryData() {
     // function to make api request for order history api data.
-    orderHistory.value = orderResponse
+    orderHistory.value = orderHistoryResponse
   }
 
-  const cards = ref({})
+  const cards = ref<Cards>({})
   function getOrderCards(reference: string) {
-    if (typeof (cards.value[reference]) === 'undefined') {      
+    if (typeof cards.value[reference] === 'undefined') {
       cards.value[reference] = orderCardsResponse.results
     }
   }

@@ -27,7 +27,7 @@
             >
               <td class="px-2 py-2 text-xs text-center">{{ card.card_number }}</td>
               <td class="px-2 py-2 text-xs text-center">{{ card.pin_code }}</td>
-              <td class="px-2 py-2 text-xs text-center">{{ utils.placeholder(card.expiry) }}</td>
+              <td class="px-2 py-2 text-xs text-center">{{ utils.placeholder(card.expire_date) }}</td>
               <td class="px-2 py-2 text-xs text-left">{{ card.claim_url }}</td>
             </tr>
           </tbody>

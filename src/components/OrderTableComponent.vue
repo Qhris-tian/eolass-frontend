@@ -32,7 +32,7 @@
               </td>
               <td class="capitalize px-6 py-4 text-right">{{ order.total_customer_cost }}</td>
               <td class="uppercase px-6 py-4">
-                <span class="border p-3 rounded-md" :class="statusClass[order.status_text]">{{
+                <span class="border p-3 rounded-md" :class="utils.status(order.status_text)">{{
                   order.status_text
                 }}</span>
               </td>
@@ -127,22 +127,19 @@ import { ref, defineProps } from 'vue'
 import { useUtils } from '@/composables/utils'
 import { useOrderStore } from '@/stores/order'
 import OrderCardsModal from './OrderCardsModal.vue'
-
-const statusClass = {
-  accept: 'text-green-400 border-green-400',
-  rejected: 'text-red-800 border-red-300',
-  pending: 'text-blue-400 border-blue-400'
-}
+import type { StringObject } from '@/interfaces'
+import type { OrderHistory } from '@/interfaces/orderHistory'
 
 const props = defineProps<{
-  orderHistory: object
+  orderHistory: OrderHistory
 }>()
 
 const orderStore = useOrderStore()
 const utils = useUtils()
 
 const perPage = ref(10)
-const detailsRow = ref({ id: false })
+const detailsRow = ref<StringObject>({})
+
 const toggleRowDetails = (key: string, getCards: boolean = true) => {
   getCards ? orderStore.getOrderCards(key) : null
 
