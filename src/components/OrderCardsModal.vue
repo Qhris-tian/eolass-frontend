@@ -43,7 +43,7 @@ import { useOrderStore } from '@/stores/order'
 import { useUtils } from '@/composables/utils'
 
 import SvgComponent from './ui/SvgComponent.vue'
-import Modal from './Modal.vue'
+import Modal from './BaseModal.vue'
 
 const emit = defineEmits(['close-modal'])
 

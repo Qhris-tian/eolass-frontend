@@ -1,5 +1,4 @@
 import type { Status } from '@/interfaces'
-import { StatusEnum } from '@/interfaces'
 import { format } from 'date-fns/fp'
 
 export const useUtils = () => {

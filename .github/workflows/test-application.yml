@@ -1,0 +1,17 @@
+name: Test Application
+
+on:
+  push:
+    branches: ["main", "staging"]
+  pull_request:
+    branches: ["main", "staging"]
+
+jobs:
+  lint-test:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - run: |
+            npm ci
+            npm run lint
+            npm run build
