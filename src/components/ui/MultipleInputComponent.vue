@@ -7,7 +7,7 @@
                 <img src="@/assets/close-icon.svg" @click="$emit('removeProductKey', index)" class="cursor-pointer hover:w-[15px] filter invert transition-all" width="10" height="10" alt="">
             </div>
         </div>
-        <input type="text" class="w-1/3 text-sm border-none" placeholder="enter key" v-bind:value="newItem" @input="$emit('updateNewItem', $event.target.value)" @keyup.enter="$emit('addProductKey')">
+        <input type="text" class="w-1/3 text-sm border-none" placeholder="enter key" v-bind:value="newItem" @input="$emit('updateNewItem', ($event.target as HTMLButtonElement)?.value)" @keyup.enter="$emit('addProductKey')">
     </div>
 
 </template>
