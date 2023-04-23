@@ -1,5 +1,5 @@
 <template>
-  <div id="modal-backdrop" class="modal-backdrop" @click="emit('close-modal', false)">
+  <div id="modal-backdrop" class="modal-backdrop" @click="handleBackdropClick">
     <div
       class="absolute z-50 bg-white rounded-md p-8 dark:bg-black-dark w-[500px] top-10"
       :class="props.contentClass"
@@ -21,6 +21,13 @@ const props = defineProps<{
   contentClass?: string
   position?: string
 }>()
+
+const handleBackdropClick = (event: Event) => {
+  const target = event.target as HTMLInputElement
+  if (target?.id === 'modal-backdrop') {
+    emit('close-modal', false)
+  }
+}
 </script>
 
 <style scoped>
