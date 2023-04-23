@@ -100,7 +100,7 @@
 
 <script setup lang="ts">
 import { defineEmits, defineProps, ref } from 'vue'
-import Modal from './Modal.vue'
+import Modal from './BaseModal.vue'
 import SvgComponent from './ui/SvgComponent.vue'
 import ButtonComponent from './ui/ButtonComponent.vue'
 import type { Result } from '@/interfaces/catalog'
