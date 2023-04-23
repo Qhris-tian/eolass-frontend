@@ -1,8 +1,8 @@
 <template>
-    <div> 
+    <div class="ml-[2rem] md:ml-[12rem]"> 
         <Navbar iconName="eneba" v-bind:showSearchBar=false />
         <div class="mt-10">
-            <header>
+            <header class="font-semibold">
                 <span>Auctions</span>
             </header>
         </div>

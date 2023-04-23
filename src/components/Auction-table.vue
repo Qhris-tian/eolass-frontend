@@ -111,12 +111,12 @@
     </div>
 
     <div class="w-11/12 pt-5 flex justify-end text-[12px]">
-        <button class="bg-[#E4EBFA] py-3 px-5 mr-2 rounded hover:border border-[#E4EBFA] text-[#828FA3] font-medium flex justify-center items-center">
+        <button class="bg-[#fff] py-3 px-5 mr-2 rounded border hover:bg-[#F4F7FD] border-[#E4EBFA] text-[#828FA3] font-medium flex justify-center items-center">
             <img src="@/assets/back-icon.svg" class="pr-2" alt="">
             <span>Previous</span>
         </button>
 
-        <button class="bg-[#E4EBFA] py-3 px-5 rounded hover:border border-[#E4EBFA] text-[#828FA3] font-medium flex justify-center items-center">
+        <button class="bg-[#fff] py-3 px-5 rounded border hover:bg-[#F4F7FD] border-[#E4EBFA] text-[#828FA3] font-medium flex justify-center items-center">
             <span class="pr-2">Next</span>
             <img src="@/assets/forward-icon.svg" class="pr-2" alt="">
         </button>
