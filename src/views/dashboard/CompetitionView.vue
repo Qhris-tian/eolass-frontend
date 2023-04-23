@@ -15,7 +15,7 @@
                     <span>MIN: 28.40</span>
                 </div>
                 <div>
-                    <button @click="" class="bg-[#635FC7] py-3 px-5 mb-5 rounded hover:border border-[#E4EBFA] text-white text-[12px] font-medium flex justify-center items-center">
+                    <button class="bg-[#635FC7] py-3 px-5 mb-5 rounded hover:border border-[#E4EBFA] text-white text-[12px] font-medium flex justify-center items-center">
                         <img src="@/assets/update.svg" width="23" height="23" class="pr-2" alt="">
                         <span>Update Auction</span>
                     </button>

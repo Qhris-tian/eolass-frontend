@@ -37,7 +37,7 @@ let auctionData = ref({});
 
 function toggleUpdateAuctionModal(auction:any) {
     showUpdateAuctionModal.value = true;
-    auctionData = auction;
+    auctionData.value = auction;
 }
 
 </script>

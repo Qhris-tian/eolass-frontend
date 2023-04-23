@@ -145,12 +145,12 @@ let amount = ref();
 let onHand = ref(0);
 let declaredStock = ref(0);
 
-watch(() => props.auctionData, (newAuctionData, oldAuctionData) => {
-    autoRenew = newAuctionData?.node.autoRenew;
-    currency = newAuctionData?.node.price.currency;
-    amount = newAuctionData?.node.price.amount;
-    onHand = newAuctionData?.node.onHand;
-    declaredStock = newAuctionData?.node.declaredStock;
+watch(() => props.auctionData, (newAuctionData) => {
+    autoRenew.value = newAuctionData?.node.autoRenew;
+    currency.value = newAuctionData?.node.price.currency;
+    amount.value = newAuctionData?.node.price.amount;
+    onHand.value = newAuctionData?.node.onHand;
+    declaredStock.value = newAuctionData?.node.declaredStock;
 })
 
 onMounted(() => {
