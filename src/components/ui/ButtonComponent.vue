@@ -51,7 +51,7 @@ defineProps({
 
 <style scoped>
 .btn {
-  @apply py-4 px-7 rounded-xl  text-center inline-flex items-center;
+  @apply py-4 px-7 rounded-xl text-center block items-center w-[100%];
 }
 
 .btn-primary {
@@ -71,11 +71,11 @@ defineProps({
 }
 
 .btn-danger {
-  @apply bg-red border-red text-white;
+  @apply bg-red-600 border-red-700 text-white;
 }
 
 .btn-danger:hover {
-  @apply bg-red-light border-red-light text-white;
+  @apply bg-red-400 border-red-500 text-white;
 }
 </style>
 
