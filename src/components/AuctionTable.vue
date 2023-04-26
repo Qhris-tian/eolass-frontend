@@ -1,7 +1,7 @@
 <template>
     
     <div class="relative overflow-x-auto shadow-md w-11/12">
-        <table class="w-full text-[12px] text-center text-gray-500 dark:text-gray-400">
+        <table class="w-full text-[12px] text-center text-gray-500 dark:text-gray-400" aria-label="Auction Table">
             <thead class="text-gray-700 dark:text-gray-400 bg-white">
                 <tr class="border-b border-[#ccc]">
                     <th scope="col" class="px-6 py-3 border-r border-[#ccc]">
@@ -58,7 +58,7 @@
                             <button v-if="auction['node']['status'] == 'ACTIVE'" class="outline outline-offset-2 outline-1 w-20 py-1 px-2 text-[#6AE86A] rounded">
                                 {{ auction['node']['status'] }}
                             </button>
-                            <button v-else class="outline outline-offset-2 outline-1 w-20 py-1 px-2 text-[#00B8D4] rounded">
+                            <button v-else class="outline outline-offset-2 outline-1 w-20 py-1 px-2 text-info rounded">
                                 {{ auction['node']['status'] }}
                             </button>
                         </td>
@@ -88,14 +88,14 @@
                         <div class="flex">
                             <div class="w-2/4">
                                 <div v-if="auction['node']['declaredStock'] != null">Declared Stock: {{ auction['node']['declaredStock'] }}</div>
-                                <div v-else class="">Declared Stock: N/A</div>
+                                <div v-else >Declared Stock: N/A</div>
                             </div>
                             <div class="pl-20">Auto Renew: {{ auction['node']['autoRenew'] }}</div>
                         </div>
                         <div class="flex">
                             <div class="w-2/4">On Hold: {{ auction['node']['onHold'] }}</div>
                             <div class="pl-20">
-                                <div v-if="auction['node']['position'] != null" class="">Position: {{ auction['node']['position'] }}</div>
+                                <div v-if="auction['node']['position'] != null" >Position: {{ auction['node']['position'] }}</div>
                                 <div v-else>Position: N/A</div>
                             </div>
                             <!-- <div class="pl-20">
@@ -111,12 +111,12 @@
     </div>
 
     <div class="w-11/12 pt-5 flex justify-end text-[12px]">
-        <button class="bg-[#fff] py-3 px-5 mr-2 rounded border hover:bg-[#F4F7FD] border-[#E4EBFA] text-[#828FA3] font-medium flex justify-center items-center">
+        <button class="bg-white py-3 px-5 mr-2 rounded border hover:bg-light border-line text-[#828FA3] font-medium flex justify-center items-center">
             <img src="@/assets/back-icon.svg" class="pr-2" alt="">
             <span>Previous</span>
         </button>
 
-        <button class="bg-[#fff] py-3 px-5 rounded border hover:bg-[#F4F7FD] border-[#E4EBFA] text-[#828FA3] font-medium flex justify-center items-center">
+        <button class="bg-white py-3 px-5 rounded border hover:bg-light border-line text-[#828FA3] font-medium flex justify-center items-center">
             <span class="pr-2">Next</span>
             <img src="@/assets/forward-icon.svg" class="pr-2" alt="">
         </button>
@@ -137,7 +137,7 @@ const handleUpdateAuctionModalToggle = (auction:Object) => {
 }
 
 const auctionStore = useAuctionStore()
-let auctionRowStates:any[] = reactive([])
+const auctionRowStates:any[] = reactive([])
 
 onMounted(() => auctionStore.getAuctionData())
 
