@@ -80,7 +80,7 @@
                                     <img src="@/assets/average-price.svg" alt="n/a" width="18" height="18">
                                 </router-link>
 
-                                <img src="@/assets/update.svg" alt="n/a" width="18" height="18" class="cursor-pointer" @click="$emit('toggleUpdateAuctionModal', auction)">
+                                <img src="@/assets/update.svg" alt="n/a" width="18" height="18" class="cursor-pointer" @click="handleUpdateAuctionModalToggle(auction)">
                             </div>
                         </td>
                     </tr>
@@ -126,9 +126,15 @@
 
 <script setup lang="ts">
 import { useAuctionStore } from '@/stores/auctions'
-import { onMounted, reactive } from 'vue'
+import { onMounted, reactive, defineEmits } from 'vue'
 import eyeOnIcon from '@/assets/eye-on.svg'
 import eyeOffIcon from '@/assets/eye-off.svg'
+
+const emit = defineEmits(['toggleUpdateAuctionModal']);
+
+const handleUpdateAuctionModalToggle = (auction:Object) => {
+    emit('toggleUpdateAuctionModal', auction);
+}
 
 const auctionStore = useAuctionStore()
 let auctionRowStates:any[] = reactive([])
