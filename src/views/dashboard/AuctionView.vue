@@ -34,10 +34,10 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
-import Navbar from '@/components/Nav-bar.vue'
-import AuctionTable from '@/components/Auction-table.vue'
-import CreateAuctionModal from '@/components/Create-auction-modal.vue'
-import UpdateAuctionModal from '@/components/Update-auction-modal.vue'
+import Navbar from '@/components/NavBar.vue'
+import AuctionTable from '@/components/AuctionTable.vue'
+import CreateAuctionModal from '@/components/CreateAuctionModal.vue'
+import UpdateAuctionModal from '@/components/UpdateAuctionModal.vue'
 
 let showCreateAuctionModal = ref(false)
 let showUpdateAuctionModal = ref(false)
