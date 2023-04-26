@@ -28,7 +28,7 @@
                     "code": "GLC"
                 }
             ],
-            "image": "http://media.ezpaypin.com/media/products/images/2020/08/2400_CALL_OF_DUTY.jpg",
+            "image": "https://media.ezpaypin.com/media/products/images/2020/08/2400_CALL_OF_DUTY.jpg",
             "description": "",
             "showing_price": {
                 "price": 35.0,
@@ -64,7 +64,7 @@
                     "code": "CA"
                 }
             ],
-            "image": "http://media.ezpaypin.com/media/products/images/2020/09/amazon.jpg",
+            "image": "https://media.ezpaypin.com/media/products/images/2020/09/amazon.jpg",
             "description": "",
             "showing_price": null
         },
@@ -93,7 +93,7 @@
                     "code": "DE"
                 }
             ],
-            "image": "http://media.ezpaypin.com/media/products/images/2019/11/Image7_g0lgIVb.jpg",
+            "image": "https://media.ezpaypin.com/media/products/images/2019/11/Image7_g0lgIVb.jpg",
             "description": {
                 "content": [],
                 "barcode": null
@@ -128,7 +128,7 @@
                     "code": "GLC"
                 }
             ],
-            "image": "http://media.ezpaypin.com/media/products/images/2020/08/2400_CALL_OF_DUTY.jpg",
+            "image": "https://media.ezpaypin.com/media/products/images/2020/08/2400_CALL_OF_DUTY.jpg",
             "description": "",
             "showing_price": {
                 "price": 35.0,
@@ -164,7 +164,7 @@
                     "code": "CA"
                 }
             ],
-            "image": "http://media.ezpaypin.com/media/products/images/2020/09/amazon.jpg",
+            "image": "https://media.ezpaypin.com/media/products/images/2020/09/amazon.jpg",
             "description": "",
             "showing_price": null
         },
@@ -193,7 +193,7 @@
                     "code": "DE"
                 }
             ],
-            "image": "http://media.ezpaypin.com/media/products/images/2019/11/Image7_g0lgIVb.jpg",
+            "image": "https://media.ezpaypin.com/media/products/images/2019/11/Image7_g0lgIVb.jpg",
             "description": {
                 "content": [],
                 "barcode": null
@@ -228,7 +228,7 @@
                     "code": "GLC"
                 }
             ],
-            "image": "http://media.ezpaypin.com/media/products/images/2020/08/2400_CALL_OF_DUTY.jpg",
+            "image": "https://media.ezpaypin.com/media/products/images/2020/08/2400_CALL_OF_DUTY.jpg",
             "description": "",
             "showing_price": {
                 "price": 35.0,
@@ -264,7 +264,7 @@
                     "code": "CA"
                 }
             ],
-            "image": "http://media.ezpaypin.com/media/products/images/2020/09/amazon.jpg",
+            "image": "https://media.ezpaypin.com/media/products/images/2020/09/amazon.jpg",
             "description": "",
             "showing_price": null
         }
