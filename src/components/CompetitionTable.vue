@@ -1,6 +1,6 @@
 <template>
     <div class="relative overflow-x-auto shadow-md w-11/12">
-        <table class="w-full text-[12px] text-center text-gray-500 dark:text-gray-400">
+        <table class="w-full text-[12px] text-center text-gray-500 dark:text-gray-400" aria-label="Auction Competition Table">
             <thead class="text-gray-700 dark:text-gray-400 bg-white">
                 <tr class="border-b border-[#ccc]">
                     <th scope="col" class="px-6 py-3 border-r border-[#ccc]">
