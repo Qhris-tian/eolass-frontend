@@ -18,7 +18,7 @@
     </header>
 
     <div class="px-[5rem]">
-      <div class="heading-xl mb-8">Orders</div>
+      <div class="heading-xl mb-8 uppercase">Orders</div>
       <div id="table">
         <order-table-component :order-history="orderStore.orderHistory"> </order-table-component>
       </div>
