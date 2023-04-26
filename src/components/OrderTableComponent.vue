@@ -16,8 +16,8 @@
           <tr>
             <th scope="col" class="px-6 py-3">Product</th>
             <th scope="col" class="px-6 py-3 text-right">Total Cost</th>
-            <th scope="col" class="px-6 py-3">Request Status</th>
-            <th scope="col" class="px-6 py-3">Execution Status</th>
+            <th scope="col" class="px-6 py-3 text-center">Request Status</th>
+            <th scope="col" class="px-6 py-3 text-center">Execution Status</th>
             <th scope="col" class="px-6 py-3">Date</th>
             <th scope="col" class="px-6 py-3">
               <span class="sr-only">Edit</span>
@@ -31,13 +31,13 @@
                 {{ order.product.title }}({{ order.count }})
               </td>
               <td class="capitalize px-6 py-4 text-right">{{ order.total_customer_cost }}</td>
-              <td class="uppercase px-6 py-4">
+              <td class="uppercase px-6 py-4 text-center">
                 <span class="border p-3 rounded-md" :class="utils.status(order.status_text)">{{
                   order.status_text
                 }}</span>
               </td>
               <td
-                class="uppercase px-6 py-4"
+                class="uppercase px-6 py-4 text-center"
                 :class="order.is_completed ? 'text-green-400' : 'text-blue-400'"
               >
                 {{ order.is_completed ? 'Complete' : 'In Progress' }}

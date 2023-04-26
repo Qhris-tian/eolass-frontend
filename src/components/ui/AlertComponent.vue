@@ -32,7 +32,6 @@ const props = defineProps<{
   type: string
   details?: string
 }>()
-
 </script>
 
 <style scoped>

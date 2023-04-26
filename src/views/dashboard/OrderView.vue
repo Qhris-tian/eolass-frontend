@@ -1,8 +1,8 @@
 <template>
-  <div class="p-4 ml-[7rem]">
+  <div class="md:p-4 md:ml-[7rem] ml-0 p-2">
     <header class="container relative flex justify-between items-center mb-8 px-[5rem]">
       <div class="logo">
-        <SvgComponent name="ezpin" class="block text-purple w-[100px]" />
+        <SvgComponent name="ezpin" class="block text-purple w-[100px] md:w-[80px]" />
       </div>
 
       <div class="environment">
@@ -18,7 +18,7 @@
     </header>
 
     <div class="px-[5rem]">
-      <div class="heading-xl mb-8">Orders</div>
+      <div class="heading-xl mb-8 uppercase">Orders</div>
       <div id="table">
         <order-table-component :order-history="orderStore.orderHistory"> </order-table-component>
       </div>

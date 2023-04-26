@@ -1,0 +1,43 @@
+{
+    "data": {
+        "S_product": {
+          "name": "Resident Evil Village / Resident Evil 8 Steam Key GLOBAL",
+          "slug": "steam-resident-evil-village-resident-evil-8-steam-key-global-10",
+          "regions": [
+            {
+              "code": "global"
+            }
+          ],
+          "drm": {
+            "slug": "steam"
+          },
+          "type": {
+            "value": "GAME"
+          },
+          "isSellable": true,
+          "auctions": {
+            "totalCount": 17,
+            "edges": [
+              {
+                "node": {
+                  "belongsToYou": false,
+                  "price": {
+                    "amount": 1815,
+                    "currency": "EUR"
+                  }
+                }
+              },
+              {
+                "node": {
+                  "belongsToYou": false,
+                  "price": {
+                    "amount": 1816,
+                    "currency": "EUR"
+                  }
+                }
+              }
+            ]
+          }
+        }
+      }
+}

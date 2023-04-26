@@ -11,6 +11,7 @@ module.exports = {
         primary: 'var(--color-primary)',
         secondary: 'rgba(var(--color-secondary), <alpha-value>)',
         danger: 'var(--color-dangger)',
+        info: 'var(--color-info)',
         transparent: 'transparent',
         current: 'currentColor',
         purple: '#635FC7',

@@ -10,13 +10,13 @@
           <hr class="w-full relative top-[11px]" />
         </div>
         <li class="sidebar-item heading-md">
-          <router-link to="catalog" class="sidebar-link" active-class="sidebar-active">
+          <router-link to="/catalog" class="sidebar-link" active-class="sidebar-active">
             <SvgComponent name="layers" />
             <span class="ml-3">Catalog</span>
           </router-link>
         </li>
         <li class="sidebar-item heading-md">
-          <router-link to="orders" class="sidebar-link" active-class="sidebar-active">
+          <router-link to="/orders" class="sidebar-link" active-class="sidebar-active">
             <SvgComponent name="cart" width="24" />
             <span class="ml-3">Orders</span>
           </router-link>
@@ -28,13 +28,13 @@
           <hr class="w-full relative top-[11px]" />
         </div>
         <li class="sidebar-item heading-md">
-          <router-link to="products" class="sidebar-link" active-class="sidebar-active">
+          <router-link to="/products" class="sidebar-link" active-class="sidebar-active">
             <SvgComponent name="package" />
             <span class="ml-3">Products</span>
           </router-link>
         </li>
         <li class="sidebar-item heading-md">
-          <router-link to="auctions" class="sidebar-link" active-class="sidebar-active">
+          <router-link to="/auctions" class="sidebar-link" active-class="sidebar-active">
             <SvgComponent name="auction" />
             <span class="ml-3">Auctions</span>
           </router-link>
