@@ -4,6 +4,7 @@ import orderHistoryResponse from './json/order_history_response.json'
 import orderCardsResponse from './json/order_cards_response.json'
 import type { OrderHistory } from '@/interfaces/orderHistory'
 import type { Cards } from '@/interfaces/orderCard'
+import axios from '@/configs/request'
 
 export const useOrderStore = defineStore('order', () => {
   const orderHistory = ref<OrderHistory>({
@@ -14,7 +15,11 @@ export const useOrderStore = defineStore('order', () => {
   })
 
   function getOrderHistoryData() {
-    // function to make api request for order history api data.
+    axios.get('/api/v1/orders/').then(({ data }) => {
+      console.log(data, orderHistoryResponse)
+
+      orderHistory.value = data
+    })
     orderHistory.value = orderHistoryResponse
   }
 

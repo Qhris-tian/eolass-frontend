@@ -1,4 +1,7 @@
 export interface Catalog {
+  count: number
+  next: string
+  previous: string
   results: Result[]
 }
 

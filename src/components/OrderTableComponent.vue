@@ -25,7 +25,7 @@
           </tr>
         </thead>
         <tbody>
-          <template v-for="order in props.orderHistory.results" :key="order.reference_code">
+          <template v-for="(order, index) in props.orderHistory.results" :key="index">
             <tr class="bg-white border border-line">
               <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
                 {{ order.product.title }}({{ order.count }})
