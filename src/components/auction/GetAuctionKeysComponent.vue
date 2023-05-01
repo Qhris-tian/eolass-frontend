@@ -66,7 +66,7 @@ import SvgComponent from '../ui/SvgComponent.vue';
 import type { Product, Cards } from '@/interfaces/inventory'
 import axios from '@/configs/request'
 
-const emit = defineEmits(['update-auction-keys'])
+const emit = defineEmits(['update-auction-keys', 'update-product-name'])
 
 const availableInventory = ref<Array<Product>>([])
 onMounted(() => {
@@ -110,6 +110,7 @@ function selectProduct(product: Product) {
       .then(({ data }) => {
         productCards.value = data
         searchedItems.value = []
+        emit('update-product-name', selectedProduct.value?.title ?? null)
       })
   }
   searchedItems.value = []

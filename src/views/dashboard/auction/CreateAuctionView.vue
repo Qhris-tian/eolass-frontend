@@ -5,11 +5,12 @@
         <create-auction-progress :step="step" />
       </div>
       <div>
-        <get-auction-keys-component v-show="step === 1" />
-        <get-auction-product-component v-show="step === 2" />
+        <get-auction-keys-component v-show="step === 1" @update-auction-keys="updateAuctionKeys"
+          @update-product-name="updateProductName" />
+        <get-auction-product-component v-show="step === 2" :product="productName" />
         <complete-auction-component v-show="step === 3" />
       </div>
-      <div class="flex">
+      <div class="flex justify-between">
         <button-component v-if="step > 1" type="button" :label="'Previous'" @click="step = step - 1" />
         <button-component v-if="step < 3" type="button" :label="'Next'" @click="step = step + 1" />
       </div>
@@ -26,6 +27,16 @@ import CreateAuctionProgress from '../../../components/auction/CreateAuctionProg
 import ButtonComponent from '@/components/ui/ButtonComponent.vue'
 
 const step = ref<number>(1)
+
+const auctionKeys = ref<Array<string>>()
+function updateAuctionKeys(keys: Array<string>) {
+  auctionKeys.value = keys
+}
+
+const productName = ref<string | null>(null)
+function updateProductName(product: string) {
+  productName.value = product
+}
 </script>
 
 <style scoped></style>
