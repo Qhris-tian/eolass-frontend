@@ -13,6 +13,7 @@
       <div class="flex justify-between">
         <button-component v-if="step > 1" type="button" :label="'Previous'" @click="step = step - 1" />
         <button-component v-if="step < 3" type="button" :label="'Next'" @click="step = step + 1" />
+        <button-component v-if="step === 3" type="button" :label="'Submit Auction'" />
       </div>
     </div>
   </div>
