@@ -1,47 +1,35 @@
 {
     "data": {
         "S_product": {
-          "name": "Resident Evil Village / Resident Evil 8 Steam Key GLOBAL",
-          "slug": "steam-resident-evil-village-resident-evil-8-steam-key-global-10",
+          "id": "64b399f7-b4b9-1b16-afa5-1526eb11e3a2",
+          "name": "Call of Duty: WWII",
+          "languages": [
+            "Afrikaans",
+            "Chinese",
+            "Danish"
+          ],
           "regions": [
             {
-              "code": "global"
+              "code": "oman"
             }
           ],
-          "drm": {
-            "slug": "steam"
-          },
+          "released_at": "2017-11-03T00:00:00+00:00",
+          "created_at": "2017-11-03T00:00:00+00:00",
+          "slug": "call-of-duty-wwii",
           "type": {
             "value": "GAME"
           },
-          "isSellable": true,
-          "auctions": {
-            "totalCount": 17,
-            "edges": [
-              {
-                "node": {
-                  "belongsToYou": false,
-                  "is_in_stock": false,
-                  "merchant_name": "sales@starterpacket.com TEST",
-                  "price": {
-                    "amount": 1815,
-                    "currency": "EUR"
-                  }
-                }
-              },
-              {
-                "node": {
-                  "belongsToYou": false,
-                  "is_in_stock": false,
-                  "merchant_name": "sales@starterpacket.com TEST",
-                  "price": {
-                    "amount": 1816,
-                    "currency": "EUR"
-                  }
-                }
+          "auctions": [
+            {
+              "belongs_to_you": false,
+              "is_in_stock": false,
+              "merchant_name": "sales@starterpacket.com TEST",
+              "price": {
+                "amount": 9999999,
+                "currency": "EUR"
               }
-            ]
-          }
+            }
+          ]
         }
       }
 }

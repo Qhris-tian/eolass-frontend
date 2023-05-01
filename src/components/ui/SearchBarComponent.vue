@@ -1,5 +1,5 @@
 <template>
-  <div class="mb-4 px-2 w-full" @keyup.enter="emit('triggerSearch')">
+  <div class="mb-4 px-2 w-full" @keyup.enter="emit('triggerSearch', searchParam)">
     <div class="relative">
       <div class="absolute left-0 inset-y-0 pl-3 flex items-center">
         <svg
@@ -17,14 +17,22 @@
         class="w-full bg-purple-light text-white text-center border pl-12 pr-4 py-2 rounded focus:border-purple-light focus:shadow-outline outline-none placeholder-white"
         type="text"
         placeholder="Search product"
+        v-model="searchParam"
       />
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
+import { ref } from 'vue';
+
 
 const emit = defineEmits(['triggerSearch'])
+const props = defineProps({
+  param: String
+})
+
+const searchParam = ref(props.param)
 
 </script>
 

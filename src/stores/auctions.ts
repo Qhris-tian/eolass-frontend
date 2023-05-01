@@ -19,7 +19,7 @@ const useSingleProductAuctionsStore = defineStore('singleProductAuctions', () =>
     const singleProductDetails = ref(<Product>{})
 
     function getSingleProductAuctionsData() {
-        singleProductAuctions.value = singleProductResponse.data.S_product.auctions.edges
+        singleProductAuctions.value = singleProductResponse.data.S_product.auctions
     }
 
     function getSingleProductDetails() {

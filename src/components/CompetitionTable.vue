@@ -19,16 +19,16 @@
             </thead>
             <tbody>
                 <template v-for="(auction, index) in productAuctions" :key="index">
-                    <tr v-if="!auction.node.belongsToYou" class="bg-white border-b border-[#ccc]">
+                    <tr v-if="!auction.belongs_to_you" class="bg-white border-b border-[#ccc]">
                         <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                            {{ auction.node.merchant_name }}
+                            {{ auction.merchant_name }}
                         </td>
                         <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                            {{ auction.node.price.currency }}
-                            {{ auction.node.price.amount }}
+                            {{ auction.price.currency }}
+                            {{ auction.price.amount }}
                         </th>
                         <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                            {{ auction.node.is_in_stock }}
+                            {{ auction.is_in_stock }}
                         </td>
                     </tr>
                 </template>
