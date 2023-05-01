@@ -5,6 +5,19 @@
                 <SearchBarComponent @trigger-search="searchProduct" param="" />
             </div>
         </div>
+        <transition>
+            <div class="flex justify-center">
+                <div class="mb-[30px] flex justify-center absolute z-10 border border-[#ccc] w-[50%]" v-if="showDropDown">
+                    <ul class="w-full bg-white">
+                        <li v-for="(product, index) in allSearchedProducts" :key="index"
+                            @click="selectProduct(index)"
+                            class="border-b p-3 cursor-pointer">
+                            {{ product.name }}
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </transition>
         <div v-if="productDetails != null">
             <div>
                 <h4>{{ productDetails.name }}</h4>
@@ -26,6 +39,8 @@ import SearchBarComponent from '@/components/ui/SearchBarComponent.vue';
 import CompetitionTable from '@/components/CompetitionTable.vue';
 
 const productDetails: any = ref({})
+const allSearchedProducts: any = ref([])
+let showDropDown = ref<boolean>(false)
 
 const props = defineProps({
     product: Object
@@ -42,12 +57,19 @@ const searchProduct = (param: string) => {
     try {
         axios.get(`${import.meta.env.VITE_APP_EOLASS_BACKEND_BASE_URL}/products/search?product=${param}&per_page=5`)
         .then((data) => {
-            productDetails.value = data.data.products[0]
+            showDropDown.value = true;
+            allSearchedProducts.value = data.data.products
+            console.log(allSearchedProducts.value)
         })
         
     } catch (error) {
         console.error(error)
     }
+}
+
+const selectProduct = (index: number) => {
+    showDropDown.value = false;
+    productDetails.value = allSearchedProducts.value[index]
 }
 
 </script>

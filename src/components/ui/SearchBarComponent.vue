@@ -1,5 +1,5 @@
 <template>
-  <div class="mb-4 px-2 w-full" @keyup.enter="emit('triggerSearch', searchParam)">
+  <div class="mb-1 px-2 w-full" @keyup.enter="emit('triggerSearch', searchParam)">
     <div class="relative">
       <div class="absolute left-0 inset-y-0 pl-3 flex items-center">
         <svg
