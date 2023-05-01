@@ -1,5 +1,5 @@
 <template>
-  <div class="ml-[2rem] mt-10 mr-10  py-10 px-10 border">
+  <div class="ml-[2rem] mt-10 mr-10  py-10 px-10">
     <CreateAuctionStepTwo />
   </div>
 </template>
