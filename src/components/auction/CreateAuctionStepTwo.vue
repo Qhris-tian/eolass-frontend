@@ -9,6 +9,10 @@
             <div class="flex justify-center">
                 <div class="mb-[30px] flex justify-center absolute z-10 border border-[#ccc] w-[50%]" v-if="showDropDown">
                     <ul class="w-full bg-white">
+                        <li v-if="allSearchedProducts.length == 0"
+                            class="p-3">
+                            No data found for your search
+                        </li>
                         <li v-for="(product, index) in allSearchedProducts" :key="index"
                             @click="selectProduct(index)"
                             class="border-b p-3 cursor-pointer">
