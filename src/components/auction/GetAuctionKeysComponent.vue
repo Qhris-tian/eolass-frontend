@@ -96,7 +96,6 @@ function searchInventory() {
     }
   }).then(({ data }) => {
     searchedItems.value = data
-    console.log(data);
   })
 }
 

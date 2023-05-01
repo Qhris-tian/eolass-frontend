@@ -16,8 +16,6 @@ export const useOrderStore = defineStore('order', () => {
 
   function getOrderHistoryData() {
     axios.get('/api/v1/orders/').then(({ data }) => {
-      console.log(data, orderHistoryResponse)
-
       orderHistory.value = data
     })
     orderHistory.value = orderHistoryResponse

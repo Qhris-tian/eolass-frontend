@@ -2,6 +2,9 @@
   <Modal :content-class="'w-[650px]'" position="top">
     <template v-slot:header>
       <div class="flex justify-between items-start">
+        <alert-component v-show="error" :type="'danger'"
+          :message="error ? error : 'There was an error processing you order.'" class="w-[400px]"
+          @close-alert="error = null" />
         <h1 class="text-lg mb-[24px] text-black dark:text-white capitalize">
           {{ props.product?.title }}
         </h1>
@@ -76,6 +79,7 @@ import { defineEmits, defineProps, ref } from 'vue'
 import Modal from './BaseModal.vue'
 import SvgComponent from './ui/SvgComponent.vue'
 import ButtonComponent from './ui/ButtonComponent.vue'
+import AlertComponent from './ui/AlertComponent.vue'
 import type { Result } from '@/interfaces/catalog'
 import axios from '@/configs/request'
 
@@ -87,6 +91,7 @@ const props = defineProps<{
 
 const available = ref(false)
 const canOrder = ref(false)
+const error = ref(null)
 
 const form = ref({
   price: null,
@@ -115,6 +120,10 @@ function checkAvailability() {
     available.value = data.availability
     canOrder.value = true
   })
+    .catch(({ response }) => {
+      console.log(response);
+      error.value = response
+    })
 }
 
 function order() {
