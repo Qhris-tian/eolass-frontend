@@ -6,13 +6,13 @@
     </div>
     <div>
       <div class="w-11/12 pt-5 flex justify-end">
-        <button
-          @click="showCreateAuctionModal = true"
+        <router-link
+          :to="{ name: 'auctions.create' }"
           class="bg-purple py-3 px-5 mb-5 rounded hover:border border-line text-white text-[12px] font-medium flex justify-center items-center"
         >
           <img src="@/assets/plus.svg" width="23" height="23" class="pr-2" alt="" />
           <span>Create Auction</span>
-        </button>
+        </router-link>
       </div>
       <AuctionTable @toggleUpdateAuctionModal="toggleUpdateAuctionModal" />
     </div>
