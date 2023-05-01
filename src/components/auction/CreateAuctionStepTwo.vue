@@ -8,7 +8,7 @@
         <transition>
             <div class="flex justify-center">
                 <div class="mb-[30px] flex justify-center absolute z-10 border border-[#ccc] w-[50%]" v-if="showDropDown">
-                    <ul class="w-full bg-white">
+                    <ul class="w-full bg-white max-h-[30vh] overflow-scroll">
                         <li v-if="allSearchedProducts.length == 0"
                             class="p-3">
                             No data found for your search
@@ -59,7 +59,7 @@ const searchProduct = (param: string) => {
     console.log(`searching for ${param}`);
 
     try {
-        axios.get(`${import.meta.env.VITE_APP_EOLASS_BACKEND_BASE_URL}/products/search?product=${param}&per_page=5`)
+        axios.get(`${import.meta.env.VITE_APP_EOLASS_BACKEND_BASE_URL}/products/search?product=${param}&per_page=10`)
         .then((data) => {
             showDropDown.value = true;
             allSearchedProducts.value = data.data.products
