@@ -78,7 +78,7 @@
             </p>
             <button-component
               label="Order"
-              class="!py-[0.6rem] mt-5"
+              class="!py-[0.6rem] mt-5 w-full"
               @click="selectProduct(product)"
             />
           </div>
