@@ -1,5 +1,5 @@
 <template>
-  <div class="mb-4 px-2 w-full">
+  <div class="mb-4 px-2 w-full" @keyup.enter="emit('triggerSearch')">
     <div class="relative">
       <div class="absolute left-0 inset-y-0 pl-3 flex items-center">
         <svg
@@ -23,6 +23,9 @@
 </template>
 
 <script setup lang="ts">
+
+const emit = defineEmits(['triggerSearch'])
+
 </script>
 
 <style lang="scss" scoped>
