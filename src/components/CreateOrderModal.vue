@@ -82,7 +82,7 @@
               </div>
               <button-component
                 :label="canOrder ? 'Confirm Order' : 'Check Availability'"
-                class="!py-2"
+                class="!py-2 w-full"
               />
             </div>
           </form>
