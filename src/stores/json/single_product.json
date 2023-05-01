@@ -21,6 +21,8 @@
               {
                 "node": {
                   "belongsToYou": false,
+                  "is_in_stock": false,
+                  "merchant_name": "sales@starterpacket.com TEST",
                   "price": {
                     "amount": 1815,
                     "currency": "EUR"
@@ -30,6 +32,8 @@
               {
                 "node": {
                   "belongsToYou": false,
+                  "is_in_stock": false,
+                  "merchant_name": "sales@starterpacket.com TEST",
                   "price": {
                     "amount": 1816,
                     "currency": "EUR"
