@@ -10,7 +10,7 @@
           <svg-component :name="'close'" />
         </button>
       </div>
-      <div v-if="details" class="mt-2 mb-4 text-sm">
+      <div v-if="details" class="mt-2 mb-4 text-xs sm:text-sm">
         {{ details }}
       </div>
       <slot></slot>

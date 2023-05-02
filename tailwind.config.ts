@@ -10,7 +10,7 @@ module.exports = {
       colors: {
         primary: 'var(--color-primary)',
         secondary: 'rgba(var(--color-secondary), <alpha-value>)',
-        danger: 'var(--color-dangger)',
+        danger: 'var(--color-danger)',
         info: 'var(--color-info)',
         transparent: 'transparent',
         current: 'currentColor',

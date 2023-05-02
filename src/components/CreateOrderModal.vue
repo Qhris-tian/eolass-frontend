@@ -131,7 +131,6 @@ function order() {
     ...form.value,
     product_id: props.product?.sku
   }).then(({ data }) => {
-    console.log(data);
     canOrder.value = false
     closeModal('success')
   })

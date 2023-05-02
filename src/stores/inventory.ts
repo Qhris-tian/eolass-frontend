@@ -11,6 +11,5 @@ export const useInventoryStore = defineStore('inventory', () => {
       inventory.value = data
     })
   }
-
   return { inventory, getInventoryData }
 })
