@@ -7,13 +7,15 @@
       <div>
         <get-auction-keys-component v-show="step === 1" @update-auction-keys="updateAuctionKeys"
           @update-product-name="updateProductName" />
-        <get-auction-product-component v-show="step === 2" :product="productName" />
-        <complete-auction-component v-show="step === 3" />
+        <get-auction-product-component v-show="step === 2" :product="productName"
+          @update-selected-product="updateSelectedProduct" />
+        <complete-auction-component v-show="step === 3" ref="CompleteAuctionComponentRef" 
+          :title="'fifa'" :product="selectedProduct" />
       </div>
       <div class="flex justify-between">
         <button-component v-if="step > 1" type="button" :label="'Previous'" @click="step = step - 1" />
         <button-component v-if="step < 3" type="button" :label="'Next'" @click="step = step + 1" />
-        <button-component v-if="step === 3" type="button" :label="'Submit Auction'" />
+        <button-component v-if="step === 3" type="button" :label="'Submit Auction'" @click="createAuction" />
       </div>
     </div>
   </div>
@@ -38,6 +40,17 @@ const productName = ref<string | null>(null)
 function updateProductName(product: string) {
   productName.value = product
 }
+
+const CompleteAuctionComponentRef: any = ref(null)
+function createAuction() {
+  CompleteAuctionComponentRef.value.createAuction()
+}
+
+const selectedProduct = ref<any>(null)
+function updateSelectedProduct(product: Object) {
+  selectedProduct.value = product
+}
+
 </script>
 
 <style scoped></style>

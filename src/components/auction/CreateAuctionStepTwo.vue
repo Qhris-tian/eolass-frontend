@@ -38,7 +38,7 @@
 </template>
 
 <script setup lang="ts">
-import { defineProps, ref, watch } from 'vue';
+import { defineProps, defineEmits, ref, watch } from 'vue';
 import axios from '@/configs/request';
 import SearchBarComponent from '@/components/ui/SearchBarComponent.vue';
 import CompetitionTable from '@/components/CompetitionTable.vue';
@@ -50,6 +50,8 @@ const showDropDown = ref<boolean>(false)
 const props = defineProps<{
     product: string | null
 }>()
+
+const emit = defineEmits(['update-selected-product'])
 
 const searchProduct = (param: string) => {
     axios.get(`/api/v1/products/search?product=${param}&per_page=10`)
@@ -64,6 +66,7 @@ const searchProduct = (param: string) => {
 const selectProduct = (index: number) => {
     showDropDown.value = false;
     productDetails.value = allSearchedProducts.value[index]
+    emit('update-selected-product', productDetails.value)
 }
 
 function disableDropDown() {
