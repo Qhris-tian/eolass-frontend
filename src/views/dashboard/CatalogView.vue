@@ -1,10 +1,10 @@
 <template>
   <div class="md:p-4 md:ml-[7rem] p-2">
-    <header class="container relative flex justify-around items-center mb-4">
-      <div class="hidden sm:block logo">
+    <header class="flex items-center mb-4 px-2 md:px-14">
+      <div class="hidden sm:block logo md:w-1/4">
         <SvgComponent name="ezpin" class="block text-purple w-[50px] md:w-[80px]" />
       </div>
-      <div>
+      <div class="w-full md:w-3/4 flex justify-between items-center">
         <form class="md:w-[500px]" @submit.prevent="search">
           <div class="flex items-center bg-purple-light border border-purple/50 rounded-full shadow-sm">
             <SvgComponent name="search" class="text-white w-5 sm:w-7 absolute ml-3 sm:ml-5" />
@@ -19,23 +19,14 @@
             </button>
           </div>
         </form>
-      </div>
-      <div class="environment">
-        <label class="relative inline-flex items-center cursor-pointer">
-          <input v-model="apiEnvironment" type="checkbox" value="" class="sr-only peer" />
-          <div
-            class="w-5 sm:w-11 h-3 sm:h-6 bg-gray-400 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0 sm:after:top-[2px] left-0  sm:after:left-[2px] after:bg-white after:border-gray after:border after:rounded-full after:h-3 after:w-3 sm:after:h-5 sm:after:w-5 after:transition-all peer-checked:bg-purple">
-          </div>
-
-          <span class="ml-3 heading-md text-gray-900">{{ apiEnvironment ? 'Live' : 'Test' }}</span>
-        </label>
+        <environment-component />
       </div>
     </header>
     <div class="flex justify-end mt-2 md:mt-4">
       <alert-component v-show="showAlert" :type="alertType ? 'success' : 'danger'" :message="alertType ? 'Order placed successfully!' : 'There was an error processing you order.'
         " class="w-[400px]" @close-alert="showAlert = !showAlert" />
     </div>
-    <div class="container w-full p-2 sm:p-5 md:p-10 pt-1 md:pt-3">
+    <div class="container w-full p-2 md:p-10 pt-1 md:pt-3">
       <div class="p-2 sm:px-5 flex justify-between">
         <h4 class="heading-xl uppercase">Catalog</h4>
         <AccountBalanceComponent />
@@ -58,7 +49,8 @@
             <p class="body-text">
               {{ product.currency.symbol }}{{ product.min_price }} - {{ product.currency.symbol }}{{ product.max_price }}
             </p>
-            <button-component label="Order" class="!py-[0.3rem] sm:!py-[0.6rem] mt-3 md:mt-5 w-full" @click="selectProduct(product)" />
+            <button-component label="Order" class="!py-[0.3rem] sm:!py-[0.6rem] mt-3 md:mt-5 w-full"
+              @click="selectProduct(product)" />
           </div>
         </div>
       </div>
@@ -74,15 +66,11 @@ import ButtonComponent from '@/components/ui/ButtonComponent.vue'
 import AlertComponent from '@/components/ui/AlertComponent.vue'
 import AccountBalanceComponent from '@/components/AccountBalanceComponent.vue'
 import CreateOrderModalVue from '@/components/CreateOrderModal.vue'
+import EnvironmentComponent from '@/components/EnvironmentComponent.vue'
 
-import { useEnvironmentStore } from '@/stores/environment'
 import { useCatalogStore } from '@/stores/catalog'
 import { useAccountStore } from '@/stores/account'
 import type { Result } from '@/interfaces/catalog'
-
-const environmentStore = useEnvironmentStore()
-const apiEnvironment = ref(environmentStore.environment)
-watch(apiEnvironment, () => environmentStore.toggle())
 
 const catalogStore = useCatalogStore()
 onMounted(() => catalogStore.getCatalogData())

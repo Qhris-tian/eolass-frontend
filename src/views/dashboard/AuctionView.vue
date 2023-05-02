@@ -10,7 +10,7 @@
           :to="{ name: 'auctions.create' }"
           class="bg-purple py-3 px-5 mb-5 rounded hover:border border-line text-white text-[12px] font-medium flex justify-center items-center"
         >
-          <img src="@/assets/plus.svg" width="23" height="23" class="pr-2" alt="" />
+        <svg-component :name="'plus'" class="w-[24px] pr-2 text-white" />
           <span>Create Auction</span>
         </router-link>
       </div>
@@ -36,6 +36,7 @@ import Navbar from '@/components/NavBar.vue'
 import AuctionTable from '@/components/AuctionTable.vue'
 import CreateAuctionModal from '@/components/CreateAuctionModal.vue'
 import UpdateAuctionModal from '@/components/UpdateAuctionModal.vue'
+import SvgComponent from '@/components/ui/SvgComponent.vue';
 
 const showCreateAuctionModal = ref<boolean>(false)
 const showUpdateAuctionModal = ref<boolean>(false)

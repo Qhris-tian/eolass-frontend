@@ -63,7 +63,7 @@
 <script setup lang="ts">
 import { ref, watch, onMounted, defineEmits } from 'vue';
 import SvgComponent from '../ui/SvgComponent.vue';
-import type { Product, Cards } from '@/interfaces/inventory'
+import type { Product, Card } from '@/interfaces/inventory'
 import axios from '@/configs/request'
 
 const emit = defineEmits(['update-auction-keys', 'update-product-name'])
@@ -100,7 +100,7 @@ function searchInventory() {
 }
 
 const selectedProduct = ref<Product>()
-const productCards = ref<Array<Cards>>([])
+const productCards = ref<Array<Card>>([])
 function selectProduct(product: Product) {
   if (product.sku !== selectedProduct.value?.sku) {
     selectedProduct.value = product
