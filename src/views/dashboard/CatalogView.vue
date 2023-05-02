@@ -50,7 +50,7 @@
               <img src="@/assets/default.svg" alt="Stack Overflow logo and icons and such" />
             </object>
           </a>
-          <div class="p-3 md:p-5">
+          <div class="p-2 md:p-5">
             <h4 class="mb-2 text-ellipsis overflow-hidden whitespace-nowrap heading-md capitalize">
               {{ product.title }}
             </h4>
@@ -58,7 +58,7 @@
             <p class="body-text">
               {{ product.currency.symbol }}{{ product.min_price }} - {{ product.currency.symbol }}{{ product.max_price }}
             </p>
-            <button-component label="Order" class="!py-[0.6rem] mt-3 md:mt-5 w-full" @click="selectProduct(product)" />
+            <button-component label="Order" class="!py-[0.3rem] sm:!py-[0.6rem] mt-3 md:mt-5 w-full" @click="selectProduct(product)" />
           </div>
         </div>
       </div>
