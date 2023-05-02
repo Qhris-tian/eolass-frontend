@@ -2,8 +2,8 @@
   <main>
     <Sidebar />
     <router-view v-slot="{ Component }">
-      <transition mode="out-in">
-        <component :is="Component" />
+      <transition mode="out-in" >
+        <component :is="Component" class="ml-[50px]" />
       </transition>
     </router-view>
   </main>

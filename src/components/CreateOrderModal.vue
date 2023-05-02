@@ -1,5 +1,5 @@
 <template>
-  <Modal :content-class="'w-[650px]'" position="top">
+  <Modal :content-class="'w-[350px] sm:w-[650px]'" position="top">
     <template v-slot:header>
       <div class="flex justify-between items-start">
         <alert-component v-show="error" :type="'danger'"
@@ -16,12 +16,12 @@
       </div>
     </template>
     <template v-slot:body>
-      <div class="flex items-end">
-        <div id="product-image" class="w-[40%]">
-          <object class="rounded-t-lg w-full min-h-[260px]" :data="props.product?.image" type="image/png">
+      <div class="flex flex-wrap items-end">
+        <div id="product-image" class="sm:w-[40%]">
+          <object class="hidden sm:block rounded-t-lg w-full min-h-[260px]" :data="props.product?.image" type="image/png">
             <img src="@/assets/default.svg" alt="Stack Overflow logo and icons and such" />
           </object>
-          <div class="bg-purple p-3 text-white">
+          <div class="sm:bg-purple p-3 sm:text-white body-text">
             <p class="p-1">
               Activation Fee: <span>{{ props.product?.activation_fee }}</span>
             </p>
@@ -33,9 +33,9 @@
             </p>
           </div>
         </div>
-        <div class="w-[60%] px-5">
+        <div class="w-full sm:w-[60%] px-5">
           <transition>
-            <p v-show="canOrder" class="text-center p-3 border mb-10"
+            <p v-show="canOrder" class="text-center p-2 sm:p-3 border mb-10"
               :class="available ? 'border-purple text-purple' : 'border-red-500 text-red-500'">
               {{ available ? 'Available' : 'Unavailable' }}
             </p>
@@ -62,7 +62,7 @@
               <button-component :label="canOrder ? 'Confirm Order' : 'Check Availability'" class="!py-2 w-full" />
             </div>
           </form>
-          <div id="description" class="mt-5 text-black/50">
+          <div id="description" class="hidden sm:block mt-5 text-black/50">
             <!-- {{ props.product.description }} -->
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt maxime eos maiores
             quia minima id, architecto rerum doloribus cupiditate mollitia provident quaerat placeat

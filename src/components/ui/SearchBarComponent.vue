@@ -20,7 +20,7 @@ import { ref, watch } from 'vue';
 
 const emit = defineEmits(['triggerSearch', 'disable-dropdown'])
 const props = defineProps<{
-  param: string | null
+  param?: string | null
 }>()
 
 
