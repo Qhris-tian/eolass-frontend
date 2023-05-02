@@ -1,7 +1,7 @@
 <template>
   <div class="ml-[2rem] mt-10 mr-10  py-10 px-10">
     <CreateAuctionForm ref="CreateAuctionFormRef" :title="props.title"
-      :product="props.product" />
+      :product="props.product" :auctionKeys="props.auctionKeys" />
   </div>
 </template>
 
@@ -17,7 +17,8 @@ const createAuction = () => {
 
 const props = defineProps({
   title: String,
-  product: Object
+  product: Object,
+  auctionKeys: Array
 })
 
 

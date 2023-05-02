@@ -119,7 +119,13 @@
 
 import { ref, reactive, defineExpose, onMounted } from 'vue'
 import MultipleInputComponent from './ui/MultipleInputComponent.vue'
-import Modal from './BaseModal.vue'
+import axios from '@/configs/request'
+
+const props = defineProps({
+  title: String,
+  product: Object,
+  auctionkeys: Array
+})
 
 const auctionType = ref('plain')
 const autoRenew = ref(false)
@@ -130,10 +136,6 @@ const productKeys: String[] = reactive([])
 const onHand = ref(0)
 const declaredStock = ref(0)
 
-const props = defineProps({
-  title: String,
-  product: Object
-})
 
 function updateNewKey(value: any) {
   newKey.value = value
@@ -153,7 +155,15 @@ function removeProductKey(index: any) {
 function createAuction() {
   console.log('creating auction...')
   const requestBody = getRequestBody()
-  console.log(requestBody)
+//   console.log(requestBody)
+
+  axios.post(`/api/v1/auctions/?type=${auctionType}`, requestBody)
+  .then(response => {
+    console.log(response)
+  })
+  .catch(error => {
+    console.log(error)
+  })
 
 }
 

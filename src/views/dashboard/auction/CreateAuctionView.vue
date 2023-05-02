@@ -10,7 +10,7 @@
         <get-auction-product-component v-show="step === 2" :product="productName"
           @update-selected-product="updateSelectedProduct" />
         <complete-auction-component v-show="step === 3" ref="CompleteAuctionComponentRef" 
-          :title="'fifa'" :product="selectedProduct" />
+          :title="productName" :product="selectedProduct" :auctionKeys="auctionKeys" />
       </div>
       <div class="flex justify-between">
         <button-component v-if="step > 1" type="button" :label="'Previous'" @click="step = step - 1" />
@@ -36,7 +36,7 @@ function updateAuctionKeys(keys: Array<string>) {
   auctionKeys.value = keys
 }
 
-const productName = ref<string | null>(null)
+const productName = ref<any>(null)
 function updateProductName(product: string) {
   productName.value = product
 }
