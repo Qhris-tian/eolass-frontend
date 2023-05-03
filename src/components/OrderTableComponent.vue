@@ -75,7 +75,7 @@
                   <span class="mr-[10rem]">Share Link: {{ order.share_link }}</span>
                 </div>
               </td>
-              <td class="px-1 sm:px-6 py-1 sm:py-4">
+              <td class="px-1 sm:px-6 py-1 sm:py-4 text-left">
                 <button
                   v-if="order.is_completed"
                   type="button"
