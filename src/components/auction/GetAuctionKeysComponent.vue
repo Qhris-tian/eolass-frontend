@@ -1,5 +1,5 @@
 <template>
-  <div class="w-450 container mx-auto my-5">
+  <div class="w-450 container mx-auto my-5 ml-[2rem] mt-10 mr-10  py-10 px-10">
     <div class="flex justify-center">
       <div class="relative my-3 w-[50%]">
         <form class="w-2/3" @submit.prevent="searchInventory">
