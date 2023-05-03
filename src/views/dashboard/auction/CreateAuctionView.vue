@@ -1,6 +1,6 @@
 <template>
   <div class="ml-[2rem] sm:ml-[12rem] mt-5">
-    <div>
+    <div class="px-5">
       <div class="md:pl-48">
         <create-auction-progress :step="step" />
       </div>
@@ -9,13 +9,12 @@
           @update-product-name="updateProductName" />
         <get-auction-product-component v-show="step === 2" :product="productName"
           @update-selected-product="updateSelectedProduct" />
-        <complete-auction-component v-show="step === 3" ref="CompleteAuctionComponentRef" 
-          :title="productName" :product="selectedProduct" :auctionKeys="auctionKeys" />
+        <complete-auction-component v-show="step === 3" ref="CompleteAuctionComponentRef" :title="productName"
+          :product="selectedProduct" :auctionKeys="auctionKeys" />
       </div>
-      <div class="flex justify-between">
-        <button-component v-if="step > 1" type="button" :label="'Previous'" @click="step = step - 1" />
-        <button-component v-if="step < 3" type="button" :label="'Next'" @click="step = step + 1" />
-        <!-- <button-component v-if="step === 3" type="button" :label="'Submit Auction'" @click="createAuction" /> -->
+      <div class="flex justify-between" :class="{ 'flex-row-reverse': step < 3 }">
+        <button-component v-if="step < 3" class="!px-8" type="button" :label="'Next'" @click="step = step + 1" />
+        <button-component v-if="step > 1" class="!px-8" type="button" :label="'Previous'" @click="step = step - 1" />
       </div>
     </div>
   </div>
