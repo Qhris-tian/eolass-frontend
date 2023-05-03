@@ -9,7 +9,7 @@
         <div class="flex justify-between items-center mb-2">
           <h2 class="text-sm md:text-lg">Available Inventory</h2>
           <div>
-            <input v-model="needle" type="text" placeholder="Search">
+            <input v-model="needle" type="text" placeholder="Search" class="h-7 md:h-8">
           </div>
         </div>
         <table class="w-full text-xs sm:text-sm text-left text-gray-500 " aria-label="Inventory Table">
@@ -41,7 +41,7 @@
           </tbody>
         </table>
       </div>
-      <div class="w-full md:w-2/5 sm:rounded-lg overflow-x-auto px-2 mt-3">
+      <div class="w-full md:w-2/5 sm:rounded-lg overflow-x-auto px-2 mt-3 md:mt-0">
         <div class="flex justify-between items-center">
           <h2 class="text-sm md:text-lg">
             {{ selectedProduct?.title ? selectedProduct?.title : 'Product' }} Keys
@@ -60,23 +60,25 @@
           <table class="w-full text-sm text-left text-gray-500" aria-label="Inventory Cards Table">
             <thead class="text-xs text-gray uppercase bg-white">
               <th scope="col" class="px-1 sm:px-4 py-1 sm:py-2 uppercase text-left">Number</th>
-              <th scope="col" class="px-1 sm:px-4 py-1 sm:py-2 uppercase text-left">Pin</th>
+              <th scope="col" class="px-1 sm:px-4 py-1 sm:py-2 uppercase text-center">Pin</th>
               <th scope="col" class="px-1 sm:px-4 py-1 sm:py-2 uppercase text-left">Expiry</th>
               <th scope="col" class="px-1 sm:px-4 py-1 sm:py-2 uppercase text-left">URL</th>
             </thead>
             <tbody>
               <template v-if="productCards?.length > 0">
                 <tr v-for="(card, index) in productCards" :key="index" class="bg-white border border-line">
-                  <td class="capitalize px-1 sm:px-6 py-1 sm:py-4 text-left">{{ card.card_number }}</td>
-                  <td class="capitalize px-1 sm:px-6 py-1 sm:py-4 text-left">{{ utils.placeholder(card.pin_code) }}</td>
-                  <td class="capitalize px-1 sm:px-6 py-1 sm:py-4 text-left">
+                  <td class="px-1 sm:px-6 py-1 sm:py-4 text-left text-xs">{{ card.card_number }}</td>
+                  <td class="px-1 sm:px-6 py-1 sm:py-4 text-left text-xs">{{ utils.placeholder(card.pin_code)
+                  }}</td>
+                  <td class="px-1 sm:px-6 py-1 sm:py-4 text-left text-xs">
                     {{ utils.placeholder(card.expire_date) }}</td>
-                  <td class="capitalize px-1 sm:px-6 py-1 sm:py-4 text-left">{{ utils.placeholder(card.claim_url) }}</td>
+                  <td class="px-1 sm:px-6 py-1 sm:py-4 text-left text-xs">{{ utils.placeholder(card.claim_url)
+                  }}</td>
                 </tr>
               </template>
               <template v-else>
                 <tr>
-                  <td colspan="4" class="text-center text-base text-gray-700 px-3 py-3">
+                  <td colspan="4" class="text-center text-base text-purple px-3 py-3">
                     Select product to display keys.
                   </td>
                 </tr>
@@ -164,6 +166,9 @@ function searchInventory() {
 }
 
 watch(needle, (value) => {
+  if (value.length > 6 && searchedProducts.value.length === 0) {
+    return
+  }
   searchInventory()
 })
 
