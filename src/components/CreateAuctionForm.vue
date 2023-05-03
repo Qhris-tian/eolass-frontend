@@ -3,6 +3,16 @@
         <div class="font-medium text-sm pt-5">
           <div class="flex justify-center">
             <div class="w-full">
+              <div class="flex justify-center">
+                <alert-component v-show="auctionError" :type="'danger'"
+                  :message="auctionError ? auctionError : 'There was an error creating auction.'" class="w-[400px]"
+                  @close-alert="auctionError = null" />
+              </div>
+              <div class="flex justify-center">
+                <alert-component v-show="auctionSuccess" :type="'success'"
+                :message="auctionSuccess ? auctionSuccess : 'Auction created successfully'" class="w-[400px]"
+                @close-alert="auctionSuccess = null" />
+              </div>
               <div class="flex">
                 <div class="mb-4 px-2 w-full md:w-6/12">
                   <label for="auctionType" class="block mb-1 text-sm">Auction Type:</label>
@@ -85,7 +95,7 @@
                 </div>
               </div>
 
-              <div v-if="auctionType == 'plain'" class="mb-4 px-2 w-full md:w-6/12">
+              <div v-if="auctionType != 'declaredstock'" class="mb-4 px-2 w-full md:w-6/12">
                 <label for="keys" class="block mb-1 text-sm"
                   >Keys
                   <small class="text-[#828FA3]">(Hit enter/return after each key)</small></label
@@ -99,16 +109,6 @@
                   :newItem="newKey"
                 />
               </div>
-
-              <!-- <div class="flex justify-end px-10">
-                <button
-                  type="submit"
-                  @click="createAuction()"
-                  class="focus:outline-none text-white bg-purple hover:bg-purple focus:ring-2 focus:ring-purple font-medium rounded-lg text-sm px-5 py-2.5 mb-2 dark:bg-purple dark:hover:bg-purple-light dark:focus:ring-purple"
-                >
-                  Proceed
-                </button>
-              </div> -->
             </div>
           </div>
         </div>
@@ -117,14 +117,15 @@
 
 <script lang="ts" setup>
 
-import { ref, reactive, defineExpose, onMounted } from 'vue'
+import { ref, reactive, defineExpose, onMounted, watch, computed } from 'vue'
 import MultipleInputComponent from './ui/MultipleInputComponent.vue'
+import AlertComponent from './ui/AlertComponent.vue'
 import axios from '@/configs/request'
 
 const props = defineProps({
   title: String,
   product: Object,
-  auctionkeys: Array
+  auctionKeys: Array
 })
 
 const auctionType = ref('plain')
@@ -132,10 +133,16 @@ const autoRenew = ref(false)
 const currency = ref('EUR')
 const amount = ref(0)
 const newKey = ref('')
-const productKeys: String[] = reactive([])
+// const productKeys: String[] = reactive([])
 const onHand = ref(0)
 const declaredStock = ref(0)
+const additionalKeys = ref([])
+const auctionError = ref(null)
+const auctionSuccess = ref(null)
 
+const productKeys = computed(() => {
+  return [...props.auctionKeys, ...additionalKeys.value]
+})
 
 function updateNewKey(value: any) {
   newKey.value = value
@@ -143,26 +150,36 @@ function updateNewKey(value: any) {
 
 function addProductKey() {
   if (newKey.value.trim() !== '') {
-    productKeys.push(newKey.value.trim())
+    additionalKeys.value.push(newKey.value.trim())
     newKey.value = ''
   }
 }
 
 function removeProductKey(index: any) {
-  productKeys.splice(index, 1)
+  additionalKeys.value.splice(index-props.auctionKeys?.length, 1)
 }
 
 function createAuction() {
   console.log('creating auction...')
-  const requestBody = getRequestBody()
-//   console.log(requestBody)
+  let requestBody = getRequestBody()
 
-  axios.post(`/api/v1/auctions/?type=${auctionType}`, requestBody)
+  const headers = {
+    'accept': 'application/json',
+    'Content-Type': 'application/json'
+  }
+  axios.post(`/api/v1/auctions/?type=${auctionType.value}`, requestBody, { headers })
   .then(response => {
-    console.log(response)
+    if(response.data.response.errors?.length > 0) {
+      console.error(response.data.response.errors[0].message)
+      auctionError.value = response.data.response.errors[0].message
+    } else {
+      console.log(response.data.response.data)
+      auctionSuccess.value = "Auction created successfully"
+    }
   })
-  .catch(error => {
-    console.log(error)
+  .catch(err => {
+    console.error(err)
+    auctionError.value = err
   })
 
 }
@@ -182,12 +199,12 @@ function getRequestBody() {
         }
     }
 
-    if (productKeys.length != 0 && auctionType.value == "plain") {
-        body["keys"] = productKeys
+    if (productKeys.value.length != 0 && (auctionType.value == "plain" || auctionType.value == "preorder")) {
+        body["keys"] = productKeys.value
     }
 
     if (auctionType.value == "preorder") {
-        body["onHand"] = onHand.value
+        body["onHand"] = productKeys.value?.length
     }
 
     if (auctionType.value == "declaredstock") {

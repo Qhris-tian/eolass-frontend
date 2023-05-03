@@ -31,7 +31,7 @@ import ButtonComponent from '@/components/ui/ButtonComponent.vue'
 
 const step = ref<number>(1)
 
-const auctionKeys = ref<Array<string>>()
+const auctionKeys = ref<Array<string>>([])
 function updateAuctionKeys(keys: Array<string>) {
   auctionKeys.value = keys
 }
