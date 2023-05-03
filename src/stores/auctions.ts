@@ -1,14 +1,16 @@
 import { ref } from 'vue'
 import { defineStore } from 'pinia'
 import type { Product } from '@/interfaces/auction'
-import auctionResponse from './json/auction_response.json'
 import singleProductResponse from './json/single_product.json'
+import axios from '@/configs/request'
 
 const useAuctionStore = defineStore('auctions', () => {
     const auctions = ref({})
 
     function getAuctionData() {
-        auctions.value = auctionResponse.data
+        axios.get(`/api/v1/auctions?page=1&limit=10`).then(({ data }) => {
+            auctions.value = data.auctions.edges
+        })
     }
 
     return { auctions, getAuctionData }
