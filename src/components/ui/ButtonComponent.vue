@@ -51,7 +51,7 @@ defineProps({
 
 <style scoped>
 .btn {
-  @apply py-4 px-7 rounded-xl text-center block items-center;
+  @apply py-2 px-4 rounded text-center block items-center;
 }
 
 .btn-primary {
