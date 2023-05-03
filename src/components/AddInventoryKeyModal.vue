@@ -73,8 +73,8 @@ function submitKeys() {
   if (props.product) {
 
     axios
-      .post(`/api/v1/inventory/${props.product.sku}/card`, {
-        ...form
+      .post(`/api/v1/inventory/${props.product.sku}/cards`, {
+        ...form.value
       })
       .then(({ data }) => {
         emit('close-modal', 'success')

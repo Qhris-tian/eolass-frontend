@@ -68,10 +68,10 @@
               <template v-if="productCards?.length > 0">
                 <tr v-for="(card, index) in productCards" :key="index" class="bg-white border border-line">
                   <td class="capitalize px-1 sm:px-6 py-1 sm:py-4 text-left">{{ card.card_number }}</td>
-                  <td class="capitalize px-1 sm:px-6 py-1 sm:py-4 text-left">{{ card.pin_code }}</td>
+                  <td class="capitalize px-1 sm:px-6 py-1 sm:py-4 text-left">{{ utils.placeholder(card.pin_code) }}</td>
                   <td class="capitalize px-1 sm:px-6 py-1 sm:py-4 text-left">
                     {{ utils.placeholder(card.expire_date) }}</td>
-                  <td class="capitalize px-1 sm:px-6 py-1 sm:py-4 text-left">{{ card.claim_url }}</td>
+                  <td class="capitalize px-1 sm:px-6 py-1 sm:py-4 text-left">{{ utils.placeholder(card.claim_url) }}</td>
                 </tr>
               </template>
               <template v-else>
