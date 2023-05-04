@@ -85,16 +85,16 @@
                         </td>
                     </tr>
                     <div class="py-2 pl-5 font-medium text-left" :class="{ 'hidden': auctionRowStates[index] == false || auctionRowStates[index] == null }">
-                        <div class="flex">
+                        <div class="flex w-full">
                             <div class="w-2/4">
                                 <div v-if="auction['node']['declaredStock'] != null">Declared Stock: {{ auction['node']['declaredStock'] }}</div>
                                 <div v-else >Declared Stock: N/A</div>
                             </div>
-                            <div class="pl-20">Auto Renew: {{ auction['node']['autoRenew'] }}</div>
+                            <div class="pl-2 w-2/4">Auto Renew: {{ auction['node']['autoRenew'] }}</div>
                         </div>
                         <div class="flex">
                             <div class="w-2/4">On Hold: {{ auction['node']['onHold'] }}</div>
-                            <div class="pl-20">
+                            <div class="pl-2">
                                 <div v-if="auction['node']['position'] != null" >Position: {{ auction['node']['position'] }}</div>
                                 <div v-else>Position: N/A</div>
                             </div>
