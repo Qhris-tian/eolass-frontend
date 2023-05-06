@@ -33,25 +33,8 @@
       </div>
 
       <div class="flex flex-wrap">
-        <div v-for="(product, index) in catalogStore.catalog?.results" :key="index"
-          class="relative flex flex-col w-[8rem] sm:w-[17rem] bg-white border border-gray/30 rounded-lg shadow-sm ml-2 md:ml-6 mt-5 md:mt-10">
-          <a href="#">
-            <!-- Remove height for images if api return fixed images -->
-            <object class="rounded-t-lg w-[100%] h-[80px] md:h-[250px]" :data="product.image" type="image/png">
-              <img src="@/assets/default.svg" alt="Stack Overflow logo and icons and such" />
-            </object>
-          </a>
-          <div class="p-2 md:p-5">
-            <h4 class="mb-2 text-ellipsis overflow-hidden whitespace-nowrap heading-md capitalize">
-              {{ product.title }}
-            </h4>
-            <p class="mb-2 heading-sm uppercase">{{ product.regions[0].name }}</p>
-            <p class="body-text">
-              {{ product.currency.symbol }}{{ product.min_price }} - {{ product.currency.symbol }}{{ product.max_price }}
-            </p>
-            <button-component label="Order" class="!py-[0.3rem] sm:!py-[0.6rem] mt-3 md:mt-5 w-full"
-              @click="selectProduct(product)" />
-          </div>
+        <div v-for="(product, index) in catalogStore.catalog?.results" :key="index">
+          <catalog-product-component :product="product" @select-product="selectProduct" />
         </div>
       </div>
     </div>
@@ -62,11 +45,11 @@
 <script setup lang="ts">
 import { ref, watch, onMounted } from 'vue'
 import SvgComponent from '@/components/ui/SvgComponent.vue'
-import ButtonComponent from '@/components/ui/ButtonComponent.vue'
 import AlertComponent from '@/components/ui/AlertComponent.vue'
 import AccountBalanceComponent from '@/components/AccountBalanceComponent.vue'
 import CreateOrderModalVue from '@/components/CreateOrderModal.vue'
 import EnvironmentComponent from '@/components/EnvironmentComponent.vue'
+import CatalogProductComponent from '@/components/catalog/CatalogProductComponent.vue'
 
 import { useCatalogStore } from '@/stores/catalog'
 import { useAccountStore } from '@/stores/account'
