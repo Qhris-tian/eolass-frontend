@@ -1,6 +1,5 @@
 import { ref } from 'vue'
 import { defineStore } from 'pinia'
-import orderHistoryResponse from './json/order_history_response.json'
 import orderCardsResponse from './json/order_cards_response.json'
 import type { OrderHistory } from '@/interfaces/orderHistory'
 import type { Cards } from '@/interfaces/orderCard'
@@ -14,11 +13,17 @@ export const useOrderStore = defineStore('order', () => {
     results: []
   })
 
-  function getOrderHistoryData() {
-    axios.get('/api/v1/orders/').then(({ data }) => {
-      orderHistory.value = data
-    })
-    orderHistory.value = orderHistoryResponse
+  function getOrderHistoryData(offset: number = 1, limit = 10) {
+    axios
+      .get('/api/v1/orders/', {
+        params: {
+          limit,
+          offset
+        }
+      })
+      .then(({ data }) => {
+        orderHistory.value = data
+      })
   }
 
   const cards = ref<Cards>({})
