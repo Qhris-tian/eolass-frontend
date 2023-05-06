@@ -152,12 +152,12 @@ const newKey = ref('')
 // const productKeys: String[] = reactive([])
 const onHand = ref(0)
 const declaredStock = ref<number|null>(null)
-const additionalKeys = ref([])
-const auctionError = ref(null)
-const auctionSuccess = ref(null)
+const additionalKeys = ref<String[]>([])
+const auctionError = ref<String|null>(null)
+const auctionSuccess = ref<String|null>(null)
 
 const productKeys = computed(() => {
-  return [...props.auctionKeys, ...additionalKeys.value]
+  return [...(props.auctionKeys ?? []), ...additionalKeys.value]
 })
 
 function updateNewKey(value: any) {
@@ -172,7 +172,9 @@ function addProductKey() {
 }
 
 function removeProductKey(index: any) {
-  additionalKeys.value.splice(index-props.auctionKeys?.length, 1)
+  if(props.auctionKeys){
+    additionalKeys.value.splice(index-props.auctionKeys?.length, 1)
+  }
 }
 
 function createAuction() {

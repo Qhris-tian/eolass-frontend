@@ -39,11 +39,12 @@ import CreateAuctionModal from '@/components/CreateAuctionModal.vue'
 import UpdateAuctionModal from '@/components/UpdateAuctionModal.vue'
 import SvgComponent from '@/components/ui/SvgComponent.vue';
 import axios from '@/configs/request'
+import type { Key } from '@/interfaces/auction'
 
 const showCreateAuctionModal = ref<boolean>(false)
 const showUpdateAuctionModal = ref<boolean>(false)
 const auctionData = ref({})
-const existingAuctionKeys = ref([])
+const existingAuctionKeys = ref<Array<Key>>([])
 
 function toggleUpdateAuctionModal(auction: any) {
   showUpdateAuctionModal.value = true

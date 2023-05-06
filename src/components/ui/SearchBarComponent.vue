@@ -27,7 +27,7 @@ const props = defineProps<{
 const searchParam = ref<string | null>()
 watch(() => props.param, (value) => searchParam.value = value)
 
-watch(searchParam, (value) => {
+watch(searchParam, (value: any) => {
   if (value?.length > 2) {
     emit('triggerSearch', value)
   }

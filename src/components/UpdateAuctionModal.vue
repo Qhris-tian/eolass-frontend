@@ -202,18 +202,19 @@
 </template>
 
 <script setup lang="ts">
-import { ref, reactive, watch, onMounted, defineProps, defineEmits } from 'vue'
+import { ref, reactive, watch, onMounted, defineProps, defineEmits, watchEffect } from 'vue'
 import MultipleInputComponent from './ui/MultipleInputComponent.vue'
 import Modal from './BaseModal.vue'
 import AlertComponent from './ui/AlertComponent.vue'
 import axios from '@/configs/request'
+import type { Key } from '@/interfaces/auction'
 
 const emit = defineEmits(['closeUpdateAuctionModal'])
 
 const props = defineProps({
   isUpdateAuctionModalOpen: Boolean,
   auctionData: Object,
-  existingAuctionKeys: Array
+  existingAuctionKeys: Array<Key>
 })
 
 const auctionType = ref('plain')
@@ -224,15 +225,15 @@ const updateFee = ref({
   amount: 2
 })
 // const existingKeys: String[] = reactive(['one', 'two', 'three'])
-const existingKeys = ref([])
-const removedKeys: String[] = reactive([])
+const existingKeys = ref<Array<Key>>([])
+const removedKeys: Array<Key> = reactive([])
 const autoRenew = ref()
 const currency = ref()
 const amount = ref()
 const onHand = ref(0)
 const declaredStock = ref(0)
 const auctionUpdateError = ref(null)
-const auctionUpdateSuccess = ref(null)
+const auctionUpdateSuccess = ref<String|null>(null)
 
 watch(
   () => props.auctionData,
@@ -247,10 +248,14 @@ watch(
 
 watch(
   () => props.existingAuctionKeys,
-  (newExistingAuctionKeys) => {
-    existingKeys.value = newExistingAuctionKeys
+  (newExistingAuctionKeys: Key[] | undefined) => {
+    existingKeys.value = newExistingAuctionKeys || []
   }
 )
+
+// watchEffect(() => {
+//   existingKeys.value = props.newExistingAuctionKeys
+// })
 
 onMounted(() => {
   // call s_keys endpoint with product id from auctionData
