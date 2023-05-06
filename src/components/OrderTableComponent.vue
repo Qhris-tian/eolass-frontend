@@ -1,14 +1,9 @@
 <template>
   <div>
-    <select
-      v-model="perPage"
-      name="per-page"
-      class="m-1 p-2 ring-2 ring-gray/40 hover:ring-purple/40 rounded-md mb-3"
-    >
+    <select v-model.number="perPage" name="per-page"
+      class="m-1 p-2 ring-2 ring-gray/40 hover:ring-purple/40 rounded-md mb-3">
       <option value="10">10</option>
       <option value="15">15</option>
-      <option value="25">25</option>
-      <option value="50">50</option>
     </select>
     <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
       <table class="w-full text-xs sm:text-sm text-left text-gray-500" aria-label="Order Table">
@@ -36,10 +31,8 @@
                   order.status_text
                 }}</span>
               </td>
-              <td
-                class="uppercase px-1 sm:px-6 py-1 sm:py-4 text-center"
-                :class="order.is_completed ? 'text-green-400' : 'text-blue-400'"
-              >
+              <td class="uppercase px-1 sm:px-6 py-1 sm:py-4 text-center"
+                :class="order.is_completed ? 'text-green-400' : 'text-blue-400'">
                 {{ order.is_completed ? 'Complete' : 'In Progress' }}
               </td>
               <td class="capitalize px-1 sm:px-6 py-1 sm:py-4">
@@ -48,16 +41,8 @@
               <td class="capitalize px-1 sm:px-6 py-1 sm:py-4 text-right">
                 <div class="flex">
                   <button @click="toggleRowDetails(order.reference_code, order.is_completed)">
-                    <svg-component
-                      v-show="detailsRow[order.reference_code]"
-                      :name="'eye-off'"
-                      class="text-purple"
-                    />
-                    <svg-component
-                      v-show="!detailsRow[order.reference_code]"
-                      :name="'eye'"
-                      class="text-purple"
-                    />
+                    <svg-component v-show="detailsRow[order.reference_code]" :name="'eye-off'" class="text-purple" />
+                    <svg-component v-show="!detailsRow[order.reference_code]" :name="'eye'" class="text-purple" />
                   </button>
                 </div>
               </td>
@@ -76,11 +61,7 @@
                 </div>
               </td>
               <td class="px-1 sm:px-6 py-1 sm:py-4 text-left">
-                <button
-                  v-if="order.is_completed"
-                  type="button"
-                  @click="orderCardToShow = order.reference_code"
-                >
+                <button v-if="order.is_completed" type="button" @click="orderCardToShow = order.reference_code">
                   Show Cards
                 </button>
               </td>
@@ -90,15 +71,16 @@
       </table>
     </div>
     <nav class="flex items-center justify-between pt-4" aria-label="Order Table navigation">
-      <span class="text-xs sm:text-sm font-normal text-gray-500"
-        >Showing <span class="font-semibold text-gray-900">{{ perPage }}</span> of
-        <span class="font-semibold text-gray-900">{{ orderHistory.count }}</span></span
-      >
+      <span class="text-xs sm:text-sm font-normal text-gray-500">Showing <span class="font-semibold text-gray-900">
+          {{ (perPage * currentPage) > props.orderHistory.count ? props.orderHistory.count : perPage * currentPage }}
+        </span>
+        of
+        <span class="font-semibold text-gray-900">{{ props.orderHistory.count }}</span></span>
       <ul class="inline-flex items-center -space-x-px">
         <li class="mr-2">
           <button
             class="flex items-center p-1 sm:px-3 sm:py-2 leading-tight text-gray-500 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 hover:text-gray-700"
-          >
+            :disabled="utils.isEmpty(props.orderHistory.previous)" @click="previousPage()">
             <SvgComponent name="chevron-left" />
             <span>Previous</span>
           </button>
@@ -106,24 +88,20 @@
         <li>
           <button
             class="flex items-center p-1 sm:px-3 sm:py-2 leading-tight text-gray-500 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 hover:text-gray-700"
-          >
+            :disabled="utils.isEmpty(props.orderHistory.next)" @click="nextPage()">
             <span>Next</span>
             <SvgComponent name="chevron-right" />
           </button>
         </li>
       </ul>
     </nav>
-    <OrderCardsModal
-      v-if="orderCardToShow"
-      :order="orderCardToShow"
-      @close-modal="orderCardToShow = null"
-    />
+    <OrderCardsModal v-if="orderCardToShow" :order="orderCardToShow" @close-modal="orderCardToShow = null" />
   </div>
 </template>
 
 <script setup lang="ts">
 import SvgComponent from './ui/SvgComponent.vue'
-import { ref, defineProps } from 'vue'
+import { ref, defineProps, watch } from 'vue'
 import { useUtils } from '@/composables/utils'
 import { useOrderStore } from '@/stores/order'
 import OrderCardsModal from './OrderCardsModal.vue'
@@ -138,6 +116,25 @@ const orderStore = useOrderStore()
 const utils = useUtils()
 
 const perPage = ref(10)
+const currentPage = ref(1)
+
+const previousPage = () => {
+  if (currentPage.value > 1) {
+    currentPage.value = currentPage.value - 1
+  }
+}
+
+const nextPage = () => {
+  const tick = (props.orderHistory.count / perPage.value) - currentPage.value
+  if (tick > 0.0) {
+    currentPage.value = currentPage.value + 1
+  }
+}
+
+watch(perPage, () => currentPage.value = 1)
+watch(currentPage, () => orderStore.getOrderHistoryData(currentPage.value, perPage.value))
+
+
 const detailsRow = ref<StringObject>({})
 
 const toggleRowDetails = (key: string, getCards: boolean = true) => {
@@ -149,5 +146,4 @@ const toggleRowDetails = (key: string, getCards: boolean = true) => {
 const orderCardToShow = ref<string | null>()
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>
