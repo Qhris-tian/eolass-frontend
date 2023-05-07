@@ -15,3 +15,8 @@ export interface Key {
         state: string
     }
 }
+
+export interface Fee {
+    amount: number
+    currency: string
+}
