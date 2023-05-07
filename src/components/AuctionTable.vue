@@ -76,7 +76,7 @@
                                 <img :src="auctionRowStates[index] == false || auctionRowStates[index] == null ? eyeOnIcon : eyeOffIcon" 
                                     alt="n/a" width="18" height="18" class="cursor-pointer" @click="toggleAuctionView(index)">
                                 
-                                <router-link :to="getCompetitionPageUrl(auction['node']['id'])" :auction="auction">
+                                <router-link :to="{name: 'competition', params: {id: auction['node']['id'], productId: auction['node']['product']['id']}}">
                                     <img src="@/assets/average-price.svg" alt="n/a" width="18" height="18">
                                 </router-link>
 
@@ -154,7 +154,8 @@ function toggleAuctionView(index: any) {
     }    
 }
 
-function getCompetitionPageUrl(id: string): string {
+function getCompetitionPageUrl(id: string, productId: string): string {
+    // console.log(productId)
     return `auction/${id}/competition`;
 }
 

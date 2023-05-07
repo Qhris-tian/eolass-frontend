@@ -10,9 +10,9 @@
     <div>
       <div class="w-11/12 pt-5 flex justify-between items-center">
         <div class="w-[40%] md:w-[30%] flex justify-between font-medium text-[13px] mb-5">
-          <span>AVERAGE: 31.63</span>
-          <span>MAX: 34.38</span>
-          <span>MIN: 28.40</span>
+          <span>AVERAGE: {{ singleProductStore.auctionsAverage }}</span>
+          <span>MAX: {{ singleProductStore.auctionsMax }}</span>
+          <span>MIN: {{ singleProductStore.auctionsMin }}</span>
         </div>
         <div>
           <button
@@ -34,12 +34,15 @@ import CompetitionTable from '@/components/CompetitionTable.vue'
 
 import { useSingleProductAuctionsStore } from '@/stores/auctions'
 import { onMounted } from 'vue'
+import { useRoute } from 'vue-router'
 
 const singleProductStore = useSingleProductAuctionsStore()
+const route = useRoute()
+const productId: string = typeof route.params.productId === 'string' ? route.params.productId: route.params.productId[0]
 
 onMounted(() => {
-  singleProductStore.getSingleProductDetails()
-  singleProductStore.getSingleProductAuctionsData()
+  singleProductStore.getSingleProductDetails(productId)
+  // singleProductStore.getSingleProductAuctionsData()
 })
 </script>
 
