@@ -3,7 +3,7 @@
     <Navbar iconName="eneba" :showSearchBar="false" />
     <div class="mt-10">
       <header>
-        <span>Auctions for {{ singleProductStore.singleProductDetails.name }}</span>
+        <span>Auctions for {{ singleProductStore.singleProductDetails?.name }}</span>
       </header>
     </div>
 
