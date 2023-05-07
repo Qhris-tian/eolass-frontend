@@ -27,14 +27,19 @@
 
     <template v-slot:body>
       <div>
-        <!-- <div class="flex justify-center">
+        <div class="flex justify-center">
+          <div class="w-[50%] mt-2 text-center font-medium text-[#00B8D4]">
+            <small>Remaining quota: {{ props.auctionData?.node.priceUpdateQuota.quota }}</small>
+          </div>
+        </div>
+        <div v-if="props.auctionData?.node.priceUpdateQuota.quota <= 0" class="flex justify-center">
           <div class="bg-light w-[50%] mt-5 p-2 text-center font-medium text-[#FDBF45]">
             <span>
-              Price Update Fee: {{ updateFee.currency == 'USD' ? '$' : updateFee.currency }}
-              {{ updateFee.amount }}
+              Price Update Fee: {{ priceUpdateFee?.currency == 'EUR'  ? '€' : priceUpdateFee?.currency }}
+              {{ priceUpdateFee?.amount }}
             </span>
           </div>
-        </div> -->
+        </div>
         <div class="flex justify-center">
           <alert-component v-show="auctionUpdateError" :type="'danger'"
             :message="auctionUpdateError ? auctionUpdateError : 'There was an error updating auction.'" class="w-[400px]"
@@ -207,7 +212,7 @@ import MultipleInputComponent from './ui/MultipleInputComponent.vue'
 import Modal from './BaseModal.vue'
 import AlertComponent from './ui/AlertComponent.vue'
 import axios from '@/configs/request'
-import type { Key } from '@/interfaces/auction'
+import type { Key, Fee } from '@/interfaces/auction'
 
 const emit = defineEmits(['closeUpdateAuctionModal'])
 
@@ -234,6 +239,7 @@ const onHand = ref(0)
 const declaredStock = ref(0)
 const auctionUpdateError = ref(null)
 const auctionUpdateSuccess = ref<String|null>(null)
+const priceUpdateFee = ref<Fee>()
 
 watch(
   () => props.auctionData,
@@ -253,12 +259,18 @@ watch(
   }
 )
 
-// watchEffect(() => {
-//   existingKeys.value = props.newExistingAuctionKeys
-// })
 
 onMounted(() => {
   // call s_keys endpoint with product id from auctionData
+
+  // get fees
+  axios.get(`/api/v1/auctions/fee?currency=EUR&type=AUCTION_PRICE_UPDATE`)
+  .then(response => {
+    priceUpdateFee.value = response.data.response.data.T_countFee.fee
+  })
+  .catch(err => {
+    err.response.data.errors
+  })
 })
 
 function updateNewKey(value: any) {

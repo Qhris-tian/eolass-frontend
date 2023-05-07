@@ -50,7 +50,7 @@ function toggleUpdateAuctionModal(auction: any) {
   showUpdateAuctionModal.value = true
   auctionData.value = auction
   // make request to get keys for current auction
-  axios.get(`/api/v1/auctions/keys/${auction.node.id}`)
+  axios.get(`/api/v1/auctions/keys/${auction.node.id}?limit=10`)
   .then((data) => {
     existingAuctionKeys.value = data.data.response.data.S_keys.edges
   })
