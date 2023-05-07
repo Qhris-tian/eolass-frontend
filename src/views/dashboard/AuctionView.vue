@@ -25,6 +25,7 @@
     <UpdateAuctionModal
       :isUpdateAuctionModalOpen="showUpdateAuctionModal"
       :auctionData="auctionData"
+      :existingAuctionKeys="existingAuctionKeys"
       @closeUpdateAuctionModal="showUpdateAuctionModal = false"
     />
   </div>
@@ -37,14 +38,23 @@ import AuctionTable from '@/components/AuctionTable.vue'
 import CreateAuctionModal from '@/components/CreateAuctionModal.vue'
 import UpdateAuctionModal from '@/components/UpdateAuctionModal.vue'
 import SvgComponent from '@/components/ui/SvgComponent.vue';
+import axios from '@/configs/request'
+import type { Key } from '@/interfaces/auction'
 
 const showCreateAuctionModal = ref<boolean>(false)
 const showUpdateAuctionModal = ref<boolean>(false)
 const auctionData = ref({})
+const existingAuctionKeys = ref<Array<Key>>([])
 
 function toggleUpdateAuctionModal(auction: any) {
   showUpdateAuctionModal.value = true
   auctionData.value = auction
+  // make request to get keys for current auction
+  axios.get(`/api/v1/auctions/keys/${auction.node.id}?limit=10`)
+  .then((data) => {
+    existingAuctionKeys.value = data.data.response.data.S_keys.edges
+  })
+
 }
 </script>
 

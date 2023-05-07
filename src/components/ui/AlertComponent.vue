@@ -28,7 +28,7 @@ const emit = defineEmits(['close-alert'])
 const utils = useUtils()
 
 const props = defineProps<{
-  message: string
+  message: String
   type: string
   details?: string
 }>()
