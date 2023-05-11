@@ -33,11 +33,11 @@ const useSingleProductAuctionsStore = defineStore('singleProductAuctions', () =>
             singleProductAuctions.value = data.auctions
 
             const prices: any = singleProductAuctions.value?.map(auction => auction.price.amount)
-            auctionsMax = Math.max(...prices)
-            auctionsMin = Math.min(...prices)
+            auctionsMax.value = Math.max(...prices)
+            auctionsMin.value = Math.min(...prices)
             const totalAuctionsAmount = singleProductAuctions.value?.reduce((acc, item) => acc + item.price.amount, 0)
             if(singleProductAuctions.value !== undefined && totalAuctionsAmount !== undefined) {
-                auctionsAverage = totalAuctionsAmount / singleProductAuctions.value.length
+                auctionsAverage.value = totalAuctionsAmount / singleProductAuctions.value.length
             }
         })
     }
