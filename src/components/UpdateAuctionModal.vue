@@ -8,7 +8,7 @@
       <header>
         <div class="flex justify-between font-medium">
           <div class="w-full flex justify-center text-center">
-            Update Auction for<br />
+            Update Auction for
             {{ props.auctionData?.node.product.name }}
           </div>
           <div>
