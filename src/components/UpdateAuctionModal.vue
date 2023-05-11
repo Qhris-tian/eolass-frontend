@@ -329,7 +329,8 @@ function getRequestBody() {
     price: {
         amount: amount.value,
         currency: currency.value
-    }
+    },
+    autoRenew: autoRenew.value
   }
 
   if (productKeys.length != 0 && (auctionType.value == "plain" || auctionType.value == "preorder")) {
