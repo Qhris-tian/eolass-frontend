@@ -6,14 +6,22 @@ import axios from '@/configs/request'
 
 const useAuctionStore = defineStore('auctions', () => {
     const auctions = ref({})
+    const endCursor = ref<string>()
+    const startCursor = ref<string>()
+    const hasNextPage = ref()
+    const hasPreviousPage = ref()
 
-    function getAuctionData() {
-        axios.get(`/api/v1/auctions?page=1&limit=10`).then(({ data }) => {
+    function getAuctionData(page = "") {
+        axios.get(`/api/v1/auctions?page=${page}&limit=5`).then(({ data }) => {
             auctions.value = data.auctions.edges
+            endCursor.value = data.auctions.pageInfo.endCursor
+            startCursor.value = data.auctions.pageInfo.startCursor
+            hasNextPage.value = data.auctions.pageInfo.hasNextPage
+            hasPreviousPage.value = data.auctions.pageInfo.hasPreviousPage
         })
     }
 
-    return { auctions, getAuctionData }
+    return { auctions, getAuctionData, endCursor, startCursor, hasNextPage, hasPreviousPage }
 });
 
 const useSingleProductAuctionsStore = defineStore('singleProductAuctions', () => {

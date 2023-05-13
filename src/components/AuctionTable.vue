@@ -111,12 +111,18 @@
     </div>
 
     <div class="w-11/12 pt-5 flex justify-end text-[12px]">
-        <button class="bg-white py-3 px-5 mr-2 rounded border hover:bg-light border-line text-[#828FA3] font-medium flex justify-center items-center">
+        <button
+            class="bg-white py-3 px-5 mr-2 rounded border hover:bg-light border-line text-[#828FA3] 
+            font-medium flex justify-center items-center"
+            @click="paginateAuctions(auctionStore.startCursor)">
             <img src="@/assets/back-icon.svg" class="pr-2" alt="">
             <span>Previous</span>
         </button>
 
-        <button class="bg-white py-3 px-5 rounded border hover:bg-light border-line text-[#828FA3] font-medium flex justify-center items-center">
+        <button 
+            class="bg-white py-3 px-5 rounded border hover:bg-light border-line text-[#828FA3] 
+            font-medium flex justify-center items-center"
+            @click="paginateAuctions(auctionStore.endCursor)">
             <span class="pr-2">Next</span>
             <img src="@/assets/forward-icon.svg" class="pr-2" alt="">
         </button>
@@ -140,6 +146,10 @@ const auctionStore = useAuctionStore()
 const auctionRowStates:any[] = reactive([])
 
 onMounted(() => auctionStore.getAuctionData())
+
+function paginateAuctions(cursor: string | undefined)  {
+    auctionStore.getAuctionData(cursor);
+}
 
 function getFormattedDate(date: string) {
     const d = new Date(date)
