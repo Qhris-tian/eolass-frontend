@@ -137,6 +137,7 @@ import { ref, reactive, defineExpose, onMounted, watch, computed } from 'vue'
 import MultipleInputComponent from './ui/MultipleInputComponent.vue'
 import AlertComponent from './ui/AlertComponent.vue'
 import axios from '@/configs/request'
+import router from '@/router'
 
 const props = defineProps({
   title: String,
@@ -200,6 +201,7 @@ function createAuction() {
     } else {
       console.log(response.data.response.data)
       auctionSuccess.value = "Auction created successfully"
+      router.push("/auctions")
     }
   })
   .catch(err => {
