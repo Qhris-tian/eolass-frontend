@@ -36,6 +36,11 @@ export default [
         path: '/product/:productId/auction/:id/competition',
         name: 'competition',
         component: () => import('../../views/dashboard/CompetitionView.vue')
+      },
+      {
+        path: '/transactions',
+        name: 'transactions',
+        component: () => import('../../views/dashboard/TransactionView.vue')
       }
     ]
   }
