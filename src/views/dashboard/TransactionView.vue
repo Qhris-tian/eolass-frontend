@@ -22,6 +22,8 @@
 <script setup lang="ts">
 import Navbar from '@/components/NavBar.vue'
 import TransactionTable from '@/components/TransactionTable.vue';
+import SvgComponent from '@/components/ui/SvgComponent.vue';
+
 </script>
 
 <style scoped>
