@@ -1,4 +1,5 @@
 export interface Product {
+    id: string
     name: string
     slug: string
     regions: any[]
@@ -6,6 +7,18 @@ export interface Product {
     type: object
     // isSellable: boolean
     auctions: object
+}
+
+export interface Price {
+    amount: number
+    currency: string
+}
+
+export interface Auction {
+    belongs_to_you: boolean
+    is_in_stock: boolean
+    merchant_name: string
+    price: Price
 }
 
 export interface Key {

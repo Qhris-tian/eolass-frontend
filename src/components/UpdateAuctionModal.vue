@@ -8,7 +8,7 @@
       <header>
         <div class="flex justify-between font-medium">
           <div class="w-full flex justify-center text-center">
-            Update Auction for<br />
+            Update Auction for
             {{ props.auctionData?.node.product.name }}
           </div>
           <div>
@@ -329,7 +329,8 @@ function getRequestBody() {
     price: {
         amount: amount.value,
         currency: currency.value
-    }
+    },
+    autoRenew: autoRenew.value
   }
 
   if (productKeys.length != 0 && (auctionType.value == "plain" || auctionType.value == "preorder")) {

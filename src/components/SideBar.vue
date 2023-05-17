@@ -31,6 +31,12 @@
             <span class="hidden sm:block ml-3">Auctions</span>
           </router-link>
         </li>
+        <li class="sidebar-item heading-md">
+          <router-link to="/transactions" class="sidebar-link" active-class="sidebar-active">
+            <SvgComponent name="transaction" />
+            <span class="hidden sm:block ml-3">Transactions</span>
+          </router-link>
+        </li>
       </ul>
     </div>
   </aside>
