@@ -76,7 +76,7 @@ function submitKeys() {
       .post(`/api/v1/inventory/${props.product.sku}/cards`, {
         ...form.value
       })
-      .then(({ data }) => {
+      .then(() => {
         emit('close-modal', 'success')
       })
       .catch(() => (error.value = 'There was an error adding this key.'))

@@ -35,26 +35,37 @@
         <div v-if="props.auctionData?.node.priceUpdateQuota.quota <= 0" class="flex justify-center">
           <div class="bg-light w-[50%] mt-5 p-2 text-center font-medium text-[#FDBF45]">
             <span>
-              Price Update Fee: {{ priceUpdateFee?.currency == 'EUR'  ? '€' : priceUpdateFee?.currency }}
+              Price Update Fee:
+              {{ priceUpdateFee?.currency == 'EUR' ? '€' : priceUpdateFee?.currency }}
               {{ priceUpdateFee?.amount }}
             </span>
           </div>
         </div>
         <div class="flex justify-center">
-          <alert-component v-show="auctionUpdateError" :type="'danger'"
-            :message="auctionUpdateError ? auctionUpdateError : 'There was an error updating auction.'" class="w-[400px]"
-            @close-alert="auctionUpdateError = null" />
+          <alert-component
+            v-show="auctionUpdateError"
+            :type="'danger'"
+            :message="
+              auctionUpdateError ? auctionUpdateError : 'There was an error updating auction.'
+            "
+            class="w-[400px]"
+            @close-alert="auctionUpdateError = null"
+          />
         </div>
         <div class="flex justify-center">
-            <alert-component v-show="auctionUpdateSuccess" :type="'success'"
-            :message="auctionUpdateSuccess ? auctionUpdateSuccess : 'Auction updated successfully'" class="w-[400px]"
-            @close-alert="auctionUpdateSuccess = null" />
+          <alert-component
+            v-show="auctionUpdateSuccess"
+            :type="'success'"
+            :message="auctionUpdateSuccess ? auctionUpdateSuccess : 'Auction updated successfully'"
+            class="w-[400px]"
+            @close-alert="auctionUpdateSuccess = null"
+          />
         </div>
         <div class="font-medium text-sm pt-5">
           <div class="flex justify-center">
             <div class="w-full">
               <div class="flex justify-between">
-                <div class="mb-4 px-2 w-full ">
+                <div class="mb-4 px-2 w-full">
                   <label for="auctionType" class="block mb-1 text-sm">Auction Type:</label>
                   <select
                     id="auctionType"
@@ -105,10 +116,7 @@
                   </div>
                 </div>
 
-                <div
-                  v-if="auctionType == 'preorder'"
-                  class="w-full flex items-center pl-2"
-                >
+                <div v-if="auctionType == 'preorder'" class="w-full flex items-center pl-2">
                   <label for="onHand" class="block mb-1 text-sm pr-4">On Hand:</label>
                   <input
                     id="onHand"
@@ -119,10 +127,7 @@
                     placeholder="onHand"
                   />
                 </div>
-                <div
-                  v-if="auctionType == 'declaredstock'"
-                  class="w-full flex items-center pl-2"
-                >
+                <div v-if="auctionType == 'declaredstock'" class="w-full flex items-center pl-2">
                   <label for="declaredStock" class="block mb-1 text-sm pr-4">Declared Stock:</label>
                   <input
                     id="declaredStock"
@@ -134,8 +139,6 @@
                   />
                 </div>
               </div>
-
-              
 
               <div v-if="auctionType != 'declaredstock'" class="mb-4 px-2 w-full">
                 <label for="keys" class="block mb-1 text-sm"
@@ -207,7 +210,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, reactive, watch, onMounted, defineProps, defineEmits, watchEffect } from 'vue'
+import { ref, reactive, watch, onMounted, defineProps, defineEmits } from 'vue'
 import MultipleInputComponent from './ui/MultipleInputComponent.vue'
 import Modal from './BaseModal.vue'
 import AlertComponent from './ui/AlertComponent.vue'
@@ -225,11 +228,7 @@ const props = defineProps({
 const auctionType = ref('plain')
 const newKey = ref('')
 const productKeys: String[] = reactive([])
-const updateFee = ref({
-  currency: 'USD',
-  amount: 2
-})
-// const existingKeys: String[] = reactive(['one', 'two', 'three'])
+
 const existingKeys = ref<Array<Key>>([])
 const removedKeys: Array<Key> = reactive([])
 const autoRenew = ref()
@@ -238,7 +237,7 @@ const amount = ref()
 const onHand = ref(0)
 const declaredStock = ref(0)
 const auctionUpdateError = ref(null)
-const auctionUpdateSuccess = ref<String|null>(null)
+const auctionUpdateSuccess = ref<String | null>(null)
 const priceUpdateFee = ref<Fee>()
 
 watch(
@@ -259,18 +258,15 @@ watch(
   }
 )
 
-
 onMounted(() => {
-  // call s_keys endpoint with product id from auctionData
-
-  // get fees
-  axios.get(`/api/v1/auctions/fee?currency=EUR&type=AUCTION_PRICE_UPDATE`)
-  .then(response => {
-    priceUpdateFee.value = response.data.response.data.T_countFee.fee
-  })
-  .catch(err => {
-    err.response.data.errors
-  })
+  axios
+    .get(`/api/v1/auctions/fee?currency=EUR&type=AUCTION_PRICE_UPDATE`)
+    .then((response) => {
+      priceUpdateFee.value = response.data.response.data.T_countFee.fee
+    })
+    .catch((err) => {
+      err.response.data.errors
+    })
 })
 
 function updateNewKey(value: any) {
@@ -302,48 +298,50 @@ function updateAuction() {
   console.log('updating auction...')
   const body = getRequestBody()
 
-  const headers = {
-    'accept': 'application/json',
-    'Content-Type': 'application/json'
-  }
-
-  axios.put(`/api/v1/auctions/${props.auctionData?.node.id}?type=${auctionType.value}`, body, { headers })
-  .then(response => {
-    if(response.data.response.errors?.length > 0) {
-      console.error(response.data.response.errors[0].message)
-      auctionUpdateError.value = response.data.response.errors[0].message
-    } else {
-      auctionUpdateSuccess.value = "Auction updated successfully"
-      console.log(response.data.response.data)
-    }
-  })
-  .catch(err => {
-    console.log(err.response.data.errors)
-    auctionUpdateError.value = err.response.data.errors
-  })
+  axios
+    .put(`/api/v1/auctions/${props.auctionData?.node.id}?type=${auctionType.value}`, body)
+    .then((response) => {
+      if (response.data.response.errors?.length > 0) {
+        console.error(response.data.response.errors[0].message)
+        auctionUpdateError.value = response.data.response.errors[0].message
+      } else {
+        auctionUpdateSuccess.value = 'Auction updated successfully'
+        console.log(response.data.response.data)
+      }
+    })
+    .catch((err) => {
+      console.log(err.response.data.errors)
+      auctionUpdateError.value = err.response.data.errors
+    })
 }
 
 function getRequestBody() {
   const body: any = {
     id: props.auctionData?.node.id,
     price: {
-        amount: amount.value,
-        currency: currency.value
+      amount: amount.value,
+      currency: currency.value
     },
     autoRenew: autoRenew.value
   }
 
-  if (productKeys.length != 0 && (auctionType.value == "plain" || auctionType.value == "preorder")) {
-      body["addedKeys"] = productKeys
+  if (
+    productKeys.length != 0 &&
+    (auctionType.value == 'plain' || auctionType.value == 'preorder')
+  ) {
+    body['addedKeys'] = productKeys
   }
 
-  if (removedKeys.length != 0 && (auctionType.value == "plain" || auctionType.value == "preorder")) {
+  if (
+    removedKeys.length != 0 &&
+    (auctionType.value == 'plain' || auctionType.value == 'preorder')
+  ) {
     const removedKeysHolder: String[] = []
-    removedKeys.forEach(key => {
+    removedKeys.forEach((key) => {
       removedKeysHolder.push(key.node.id)
-    });
+    })
 
-    body["removedKeys"] = removedKeysHolder
+    body['removedKeys'] = removedKeysHolder
   }
 
   return body

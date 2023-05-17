@@ -41,9 +41,6 @@ function updateProductName(product: string) {
 }
 
 const CompleteAuctionComponentRef: any = ref(null)
-function createAuction() {
-  CompleteAuctionComponentRef.value.createAuction()
-}
 
 const selectedProduct = ref<any>(null)
 function updateSelectedProduct(product: Object) {
