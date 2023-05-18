@@ -10,7 +10,7 @@
           <svg-component :name="'close'" />
         </button>
       </div>
-      <div v-if="details" class="mt-2 mb-4 text-sm">
+      <div v-if="details" class="mt-2 mb-4 text-xs sm:text-sm">
         {{ details }}
       </div>
       <slot></slot>
@@ -28,7 +28,7 @@ const emit = defineEmits(['close-alert'])
 const utils = useUtils()
 
 const props = defineProps<{
-  message: string
+  message: String
   type: string
   details?: string
 }>()

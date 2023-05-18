@@ -31,5 +31,24 @@ export const useUtils = () => {
 
     return null
   }
-  return { formatDate, placeholder, status }
+
+  function isEmpty(data: any | Array<any>) {
+    if (typeof data === 'undefined' || data === null) {
+      return true
+    }
+
+    if (typeof data === 'object') {
+      return data.length === 0
+    }
+
+    if (typeof data === 'string') {
+      return data.trim() === ''
+    }
+  }
+
+  function toAmount(value: number) {
+    return value.toFixed(2)
+  }
+
+  return { formatDate, placeholder, status, isEmpty, toAmount }
 }

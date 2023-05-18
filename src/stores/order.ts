@@ -1,9 +1,8 @@
 import { ref } from 'vue'
 import { defineStore } from 'pinia'
-import orderHistoryResponse from './json/order_history_response.json'
-import orderCardsResponse from './json/order_cards_response.json'
 import type { OrderHistory } from '@/interfaces/orderHistory'
 import type { Cards } from '@/interfaces/orderCard'
+import axios from '@/configs/request'
 
 export const useOrderStore = defineStore('order', () => {
   const orderHistory = ref<OrderHistory>({
@@ -13,15 +12,25 @@ export const useOrderStore = defineStore('order', () => {
     results: []
   })
 
-  function getOrderHistoryData() {
-    // function to make api request for order history api data.
-    orderHistory.value = orderHistoryResponse
+  function getOrderHistoryData(offset: number = 1, limit = 10) {
+    axios
+      .get('/api/v1/orders/', {
+        params: {
+          limit,
+          offset
+        }
+      })
+      .then(({ data }) => {
+        orderHistory.value = data
+      })
   }
 
   const cards = ref<Cards>({})
   function getOrderCards(reference: string) {
     if (typeof cards.value[reference] === 'undefined') {
-      cards.value[reference] = orderCardsResponse.results
+      axios
+        .get(`/api/v1/orders/${reference}/cards`)
+        .then(({ data }) => (cards.value[reference] = data.results))
     }
   }
 

@@ -25,23 +25,23 @@
   }
 
   .heading-xl {
-    @apply font-bold text-2xl leading-8;
+    @apply font-bold text-base md:text-2xl leading-8;
   }
 
   .heading-lg {
-    @apply font-bold text-lg leading-6;
+    @apply font-bold text-sm md:text-lg leading-6;
   }
 
   .heading-sm {
-    @apply font-bold text-xs leading-4 tracking-widest;
+    @apply font-bold text-xs sm:leading-4 tracking-wide sm:tracking-widest;
   }
 
   .heading-md {
-    @apply font-bold text-base leading-5;
+    @apply font-bold text-xs sm:text-base leading-3 sm:leading-5;
   }
 
   .body-text {
-    @apply font-medium text-base leading-6;
+    @apply font-normal sm:font-medium text-sm leading-4 sm:leading-6;
   }
 
   .body-text-md {

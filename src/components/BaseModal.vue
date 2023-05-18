@@ -1,7 +1,7 @@
 <template>
   <div id="modal-backdrop" class="modal-backdrop" @click="handleBackdropClick">
     <div
-      class="absolute z-50 bg-white rounded-md p-8 dark:bg-black-dark w-[500px] top-10"
+      class="absolute z-50 bg-white rounded-md p-3 sm:p-8 dark:bg-black-dark w-[350px] max-h-[90vh] overflow-y-scroll sm:w-[500px] top-10"
       :class="props.contentClass"
     >
       <slot name="header"></slot>

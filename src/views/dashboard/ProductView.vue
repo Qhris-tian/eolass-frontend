@@ -1,13 +1,20 @@
 <template>
-  <div class="ml-[2rem] md:ml-[12rem]">
-    <Navbar iconName="eneba" :showSearchBar="true" />
-    <h4 class="heading-xl uppercase">Products</h4>
+  <div class="md:p-4 md:ml-[7rem] p-2">
+    <div class="px-2 md:px-14">
+      <h4 class="heading-xl uppercase mb-4">Inventory</h4>
+      <inventory-table />
+    </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import Navbar from '@/components/NavBar.vue'
+import { onMounted } from 'vue';
+import InventoryTable from '@/components/InventoryTable.vue'
+import { useInventoryStore } from '@/stores/inventory'
+
+const inventoryStore = useInventoryStore()
+onMounted(() => inventoryStore.getInventoryData())
+
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>

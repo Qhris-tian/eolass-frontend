@@ -76,7 +76,7 @@
                                 <img :src="auctionRowStates[index] == false || auctionRowStates[index] == null ? eyeOnIcon : eyeOffIcon" 
                                     alt="n/a" width="18" height="18" class="cursor-pointer" @click="toggleAuctionView(index)">
                                 
-                                <router-link :to="getCompetitionPageUrl(auction['node']['id'])" :auction="auction">
+                                <router-link :to="{name: 'competition', params: {id: auction['node']['id'], productId: auction['node']['product']['id']}}">
                                     <img src="@/assets/average-price.svg" alt="n/a" width="18" height="18">
                                 </router-link>
 
@@ -85,16 +85,16 @@
                         </td>
                     </tr>
                     <div class="py-2 pl-5 font-medium text-left" :class="{ 'hidden': auctionRowStates[index] == false || auctionRowStates[index] == null }">
-                        <div class="flex">
+                        <div class="flex w-full">
                             <div class="w-2/4">
                                 <div v-if="auction['node']['declaredStock'] != null">Declared Stock: {{ auction['node']['declaredStock'] }}</div>
                                 <div v-else >Declared Stock: N/A</div>
                             </div>
-                            <div class="pl-20">Auto Renew: {{ auction['node']['autoRenew'] }}</div>
+                            <div class="pl-2 w-2/4">Auto Renew: {{ auction['node']['autoRenew'] }}</div>
                         </div>
                         <div class="flex">
                             <div class="w-2/4">On Hold: {{ auction['node']['onHold'] }}</div>
-                            <div class="pl-20">
+                            <div class="pl-2">
                                 <div v-if="auction['node']['position'] != null" >Position: {{ auction['node']['position'] }}</div>
                                 <div v-else>Position: N/A</div>
                             </div>
@@ -111,12 +111,18 @@
     </div>
 
     <div class="w-11/12 pt-5 flex justify-end text-[12px]">
-        <button class="bg-white py-3 px-5 mr-2 rounded border hover:bg-light border-line text-[#828FA3] font-medium flex justify-center items-center">
+        <button
+            class="bg-white py-3 px-5 mr-2 rounded border hover:bg-light border-line text-[#828FA3] 
+            font-medium flex justify-center items-center"
+            @click="paginateAuctions(auctionStore.startCursor)">
             <img src="@/assets/back-icon.svg" class="pr-2" alt="">
             <span>Previous</span>
         </button>
 
-        <button class="bg-white py-3 px-5 rounded border hover:bg-light border-line text-[#828FA3] font-medium flex justify-center items-center">
+        <button 
+            class="bg-white py-3 px-5 rounded border hover:bg-light border-line text-[#828FA3] 
+            font-medium flex justify-center items-center"
+            @click="paginateAuctions(auctionStore.endCursor)">
             <span class="pr-2">Next</span>
             <img src="@/assets/forward-icon.svg" class="pr-2" alt="">
         </button>
@@ -141,6 +147,10 @@ const auctionRowStates:any[] = reactive([])
 
 onMounted(() => auctionStore.getAuctionData())
 
+function paginateAuctions(cursor: string | undefined)  {
+    auctionStore.getAuctionData(cursor);
+}
+
 function getFormattedDate(date: string) {
     const d = new Date(date)
     return d.getDate() + '.' + (d.getMonth() + 1) + '.' + d.getFullYear();
@@ -154,9 +164,10 @@ function toggleAuctionView(index: any) {
     }    
 }
 
-function getCompetitionPageUrl(id: string): string {
-    return `auction/${id}/competition`;
-}
+// function getCompetitionPageUrl(id: string, productId: string): string {
+//     // console.log(productId)
+//     return `auction/${id}/competition`;
+// }
 
 </script>
 

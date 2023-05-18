@@ -6,13 +6,13 @@
     </div>
     <div>
       <div class="w-11/12 pt-5 flex justify-end">
-        <button
-          @click="showCreateAuctionModal = true"
+        <router-link
+          :to="{ name: 'auctions.create' }"
           class="bg-purple py-3 px-5 mb-5 rounded hover:border border-line text-white text-[12px] font-medium flex justify-center items-center"
         >
-          <img src="@/assets/plus.svg" width="23" height="23" class="pr-2" alt="" />
+        <svg-component :name="'plus'" class="w-[24px] pr-2 text-white" />
           <span>Create Auction</span>
-        </button>
+        </router-link>
       </div>
       <AuctionTable @toggleUpdateAuctionModal="toggleUpdateAuctionModal" />
     </div>
@@ -25,6 +25,7 @@
     <UpdateAuctionModal
       :isUpdateAuctionModalOpen="showUpdateAuctionModal"
       :auctionData="auctionData"
+      :existingAuctionKeys="existingAuctionKeys"
       @closeUpdateAuctionModal="showUpdateAuctionModal = false"
     />
   </div>
@@ -36,14 +37,24 @@ import Navbar from '@/components/NavBar.vue'
 import AuctionTable from '@/components/AuctionTable.vue'
 import CreateAuctionModal from '@/components/CreateAuctionModal.vue'
 import UpdateAuctionModal from '@/components/UpdateAuctionModal.vue'
+import SvgComponent from '@/components/ui/SvgComponent.vue';
+import axios from '@/configs/request'
+import type { Key } from '@/interfaces/auction'
 
 const showCreateAuctionModal = ref<boolean>(false)
 const showUpdateAuctionModal = ref<boolean>(false)
 const auctionData = ref({})
+const existingAuctionKeys = ref<Array<Key>>([])
 
 function toggleUpdateAuctionModal(auction: any) {
   showUpdateAuctionModal.value = true
   auctionData.value = auction
+  // make request to get keys for current auction
+  axios.get(`/api/v1/auctions/keys/${auction.node.id}?limit=10`)
+  .then((data) => {
+    existingAuctionKeys.value = data.data.response.data.S_keys.edges
+  })
+
 }
 </script>
 

@@ -1,6 +1,6 @@
 <template>
   <div class="flex flex-wrap w-full p-2 items-center border rounded">
-    <div v-for="(item, index) in items" :key="index" class="w-1/3 p-1">
+    <div v-for="(item, index) in items" :key="index" class="w-full md:w-1/2 p-1">
       <div class="bg-purple-light rounded text-white flex justify-between p-1">
         <span>{{ item }}</span>
         <img
@@ -16,7 +16,7 @@
     <input
       v-model="multiInput"
       type="text"
-      class="w-1/3 text-sm border-line"
+      class="w-full md:w-1/2 text-sm border-line"
       placeholder="Enter key"
       @input="emit('updateNewItem', multiInput)"
       @keyup.enter="addkey()"
