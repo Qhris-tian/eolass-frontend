@@ -46,6 +46,11 @@
                 </tr>
             </thead>
             <tbody>
+                <template v-if="auctionStore.auctions?.length == 0">
+                    <div class="flex justify-center p-2">
+                        No auctions available
+                    </div>
+                </template>
                 <template v-for="(auction, index) in auctionStore.auctions" :key="index">
                     <tr class="bg-white border-b border-[#ccc]">
                         <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
