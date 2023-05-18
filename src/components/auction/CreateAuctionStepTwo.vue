@@ -1,7 +1,7 @@
 <template>
     <div class="">
-        <div class="w-full flex justify-center">
-            <div class="md:w-[40%]">
+        <div class="w-full flex justify-center items-center">
+            <div class="md:w-[50%]">
                 <SearchBarComponent :param="props.product" @trigger-search="searchProduct"
                     @disable-dropdown="disableDropDown" />
             </div>

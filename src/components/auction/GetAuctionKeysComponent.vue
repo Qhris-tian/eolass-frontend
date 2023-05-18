@@ -1,22 +1,22 @@
 <template>
-  <div class="w-450 container mx-auto my-5 ml-[2rem] mt-10 mr-10  py-10 px-10">
+  <div class="w-450 container mx-auto my-5 ml-[2rem] mr-10 py-6 sm:px-10">
     <div class="flex justify-center">
       <div class="relative my-3 w-[50%]">
-        <form class="w-2/3" @submit.prevent="searchInventory">
+        <form @submit.prevent="searchInventory">
           <div class="flex items-center bg-purple-light border border-purple/50 rounded h-10 shadow-sm">
             <svg-component name="search" class="text-white w-6 h-6 absolute ml-5" />
 
             <div class="w-full rounded">
               <input v-model="needle" type="text" aria-label="Search catalog" placeholder="Search inventory"
                 autocomplete="off"
-                class="flex bg-transparent h-[40px] md:h-[60px] w-[100%] placeholder:text-white text-center indent-[55px] text-white border-0 focus:outline-none relative z-10" />
+                class="flex bg-transparent h-[40px] md:h-[60px] w-[100%] placeholder:text-white text-center text-white border-0 focus:outline-none relative z-10" />
             </div>
             <button v-show="needle" type="button" class="btn mr-6" @click="needle = null">
               <svg-component name="close" class="text-white" />
             </button>
           </div>
         </form>
-        <div class="absolute z-10 bg-white rounded-b-lg shadow-md mt-2 w-2/3">
+        <div class="absolute z-10 bg-white rounded-b-lg shadow-md mt-2 w-full">
           <ul v-if="showSearch">
             <li v-for="(item, index) in searchedItems" :key="index" @click="selectProduct(item)"
               class="w-full text-gray-700 p-4 mt-2 bg-white cursor-pointer hover:bg-gray-100">

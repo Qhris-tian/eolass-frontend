@@ -46,5 +46,9 @@ export const useUtils = () => {
     }
   }
 
-  return { formatDate, placeholder, status, isEmpty }
+  function toAmount(value: number) {
+    return value.toFixed(2)
+  }
+
+  return { formatDate, placeholder, status, isEmpty, toAmount }
 }
