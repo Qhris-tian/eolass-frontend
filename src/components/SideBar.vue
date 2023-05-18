@@ -3,8 +3,8 @@
     class="fixed top-0 left-0 z-40 w-15 sm:w-30 bg-white h-screen transition-transform sm:translate-x-0"
     aria-label="Sidebar"
   >
-    <div class="h-full sm:pr-3 py-4 overflow-y-auto mt-12">
-      <ul class="space-y-2">
+    <div class="h-full sm:pr-3 py-4 overflow-y-auto mt-12 sm:mt-20 2xl:mt-24">
+      <ul>
         <li class="sidebar-item heading-md">
           <router-link to="/catalog" class="sidebar-link" active-class="sidebar-active">
             <SvgComponent name="layers" />
@@ -17,8 +17,6 @@
             <span class="hidden sm:block ml-3">Orders</span>
           </router-link>
         </li>
-      </ul>
-      <ul class="pt-4 mt-4 space-y-2">
         <li class="sidebar-item heading-md">
           <router-link to="/products" class="sidebar-link" active-class="sidebar-active">
             <SvgComponent name="inventory" />

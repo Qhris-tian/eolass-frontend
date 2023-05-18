@@ -1,5 +1,5 @@
 <template>
-  <div class="md:p-4 md:ml-[7rem] p-2">
+  <div class="md:p-4 lg:p-8 md:ml-[7rem] p-2">
     <header class="container relative flex justify-between items-center mb-3 sm:mb-8 px-2 md:px-14">
       <div class="logo">
         <SvgComponent name="ezpin" class="block text-purple w-[50px] sm:w-[100px] md:w-[80px]" />
