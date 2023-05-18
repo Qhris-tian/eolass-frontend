@@ -130,7 +130,7 @@ function order() {
   axios.post(`/api/v1/orders/`, {
     ...form.value,
     product_id: props.product?.sku
-  }).then(({ data }) => {
+  }).then(() => {
     canOrder.value = false
     closeModal('success')
   })

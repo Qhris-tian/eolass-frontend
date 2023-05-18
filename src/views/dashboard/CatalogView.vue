@@ -1,5 +1,5 @@
 <template>
-  <div class="md:p-4 md:ml-[7rem] p-2">
+  <div class="md:p-4 lg:p-8 md:ml-[7rem] p-2">
     <header class="flex items-center mb-4 px-2 md:px-14">
       <div class="hidden sm:block logo md:w-1/4">
         <SvgComponent name="ezpin" class="block text-purple w-[50px] md:w-[80px]" />
@@ -26,13 +26,13 @@
       <alert-component v-show="showAlert" :type="alertType ? 'success' : 'danger'" :message="alertType ? 'Order placed successfully!' : 'There was an error processing you order.'
         " class="w-[400px]" @close-alert="showAlert = !showAlert" />
     </div>
-    <div class="container w-full p-2 md:p-10 pt-1 md:pt-3">
+    <div class="w-full p-2 md:p-10 pt-1 md:pt-3">
       <div class="p-2 sm:px-5 flex justify-between">
         <h4 class="heading-xl uppercase">Catalog</h4>
         <AccountBalanceComponent />
       </div>
 
-      <div class="flex flex-wrap">
+      <div class="flex flex-wrap justify-between">
         <div v-for="(product, index) in catalogStore.catalog?.results" :key="index">
           <catalog-product-component :product="product" @select-product="selectProduct" />
         </div>

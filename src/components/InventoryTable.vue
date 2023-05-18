@@ -1,29 +1,43 @@
 <template>
   <div>
     <div class="flex flex-row-reverse">
-      <alert-component v-show="showAlert" :type="'success'" :message="alertMessage" class="w-full md:w-3/5"
-        @close-alert="showAlert = !showAlert" />
+      <alert-component
+        v-show="showAlert"
+        :type="'success'"
+        :message="alertMessage"
+        class="w-full md:w-3/5"
+        @close-alert="showAlert = !showAlert"
+      />
     </div>
     <div class="relative flex flex-wrap">
       <div class="w-full md:w-3/5 sm:rounded-lg overflow-x-auto px-2">
         <div class="flex justify-between items-center mb-2">
           <h2 class="text-sm md:text-lg">Available Inventory</h2>
           <div>
-            <input v-model="needle" type="text" placeholder="Search" class="h-7 md:h-8">
+            <input v-model="needle" type="text" placeholder="Search" class="h-7 md:h-8" />
           </div>
         </div>
-        <table class="w-full text-xs sm:text-sm text-left text-gray-500 " aria-label="Inventory Table">
+        <table
+          class="w-full text-xs sm:text-sm text-left text-gray-500"
+          aria-label="Inventory Table"
+        >
           <thead class="text-xs text-gray uppercase bg-white">
             <tr>
               <th scope="col" class="px-1 sm:px-4 py-1 sm:py-2 uppercase text-left">Product</th>
               <th scope="col" class="px-1 sm:px-4 py-1 sm:py-2 uppercase text-center">Region</th>
-              <th scope="col" class="px-1 sm:px-4 py-1 sm:py-2 uppercase text-center">Created Date</th>
+              <th scope="col" class="px-1 sm:px-4 py-1 sm:py-2 uppercase text-center">
+                Created Date
+              </th>
             </tr>
           </thead>
           <tbody>
-            <template v-if="inventory.length > 0">
-              <tr v-for="(product, index) in inventory" :key="index"
-                class="bg-white border border-line cursor-pointer hover:bg-gray-100" @click="selectProduct(product)">
+            <template v-if="false">
+              <tr
+                v-for="(product, index) in inventory"
+                :key="index"
+                class="bg-white border border-line cursor-pointer hover:bg-gray-100"
+                @click="selectProduct(product)"
+              >
                 <td class="capitalize px-1 sm:px-6 py-1 sm:py-4 text-left">{{ product.title }}</td>
                 <td class="capitalize px-1 sm:px-6 py-1 sm:py-4 text-center">
                   {{ utils.placeholder(product.region) }}
@@ -35,7 +49,8 @@
             </template>
             <template v-else>
               <tr>
-                <td colspan="3" class="text-center">{{ message }}</td>
+                <td v-if="!inventoryStore.inventoryLoaded" colspan="3" class="text-center pt-3">{{ message }}</td>
+                <td v-else colspan="3" class="text-center pt-3">No inventory available. Add product on the catalog page</td>
               </tr>
             </template>
           </tbody>
@@ -48,9 +63,11 @@
           </h2>
 
           <div>
-            <button v-if="selectedProduct"
+            <button
+              v-if="selectedProduct"
               class="bg-purple px-3 py-2 rounded text-white text-[12px] flex justify-center items-center"
-              @click="showAddKeyModal = true">
+              @click="showAddKeyModal = true"
+            >
               <svg-component :name="'plus'" class="w-4" />
               <span>Add Key</span>
             </button>
@@ -66,14 +83,23 @@
             </thead>
             <tbody>
               <template v-if="productCards?.length > 0">
-                <tr v-for="(card, index) in productCards" :key="index" class="bg-white border border-line">
-                  <td class="px-1 sm:px-6 py-1 sm:py-4 text-left text-xs">{{ card.card_number }}</td>
-                  <td class="px-1 sm:px-6 py-1 sm:py-4 text-left text-xs">{{ utils.placeholder(card.pin_code)
-                  }}</td>
+                <tr
+                  v-for="(card, index) in productCards"
+                  :key="index"
+                  class="bg-white border border-line"
+                >
                   <td class="px-1 sm:px-6 py-1 sm:py-4 text-left text-xs">
-                    {{ utils.placeholder(card.expire_date) }}</td>
-                  <td class="px-1 sm:px-6 py-1 sm:py-4 text-left text-xs">{{ utils.placeholder(card.claim_url)
-                  }}</td>
+                    {{ card.card_number }}
+                  </td>
+                  <td class="px-1 sm:px-6 py-1 sm:py-4 text-left text-xs">
+                    {{ utils.placeholder(card.pin_code) }}
+                  </td>
+                  <td class="px-1 sm:px-6 py-1 sm:py-4 text-left text-xs">
+                    {{ utils.placeholder(card.expire_date) }}
+                  </td>
+                  <td class="px-1 sm:px-6 py-1 sm:py-4 text-left text-xs">
+                    {{ utils.placeholder(card.claim_url) }}
+                  </td>
                 </tr>
               </template>
               <template v-else>
@@ -88,8 +114,11 @@
         </div>
       </div>
     </div>
-    <add-inventory-key-modal v-show="selectedProduct && showAddKeyModal" :product="selectedProduct"
-      @close-modal="closeAddKeyModal" />
+    <add-inventory-key-modal
+      v-show="selectedProduct && showAddKeyModal"
+      :product="selectedProduct"
+      @close-modal="closeAddKeyModal"
+    />
   </div>
 </template>
 
@@ -107,7 +136,7 @@ const utils = useUtils()
 
 const inventoryStore = useInventoryStore()
 
-const message = ref<string>("Loading inventory")
+const message = ref<string>('Loading inventory')
 
 const inventory = computed(() => {
   if (searching.value || needle.value.length) {
@@ -125,7 +154,7 @@ function selectProduct(product: Product, refresh: boolean = false) {
 
     axios
       .get(`/api/v1/inventory/${product.sku}/cards`)
-      .then(({ data }) => productCards.value = data)
+      .then(({ data }) => (productCards.value = data))
   }
 }
 
@@ -137,7 +166,7 @@ function closeAddKeyModal(state: string) {
   showAddKeyModal.value = false
   if (state === 'success' && selectedProduct.value) {
     showAlert.value = true
-    alertMessage.value = "Key addded sucessfully."
+    alertMessage.value = 'Key addded sucessfully.'
     selectProduct(selectedProduct.value, true)
   }
 }
@@ -150,19 +179,21 @@ function searchInventory() {
   searching.value = true
   message.value = 'Searching ...'
 
-  axios.get('/api/v1/inventory/search', {
-    params: {
-      name: needle.value
-    }
-  }).then(({ data }) => {
-    if (typeof data !== 'undefined') {
-      searchedProducts.value = data
-    }
-  }).finally(() => {
-    searching.value = false
-    message.value = 'No result found'
-
-  })
+  axios
+    .get('/api/v1/inventory/search', {
+      params: {
+        name: needle.value
+      }
+    })
+    .then(({ data }) => {
+      if (typeof data !== 'undefined') {
+        searchedProducts.value = data
+      }
+    })
+    .finally(() => {
+      searching.value = false
+      message.value = 'No result found'
+    })
 }
 
 watch(needle, (value) => {
@@ -171,8 +202,6 @@ watch(needle, (value) => {
   }
   searchInventory()
 })
-
-
 </script>
 
 <style scoped></style>

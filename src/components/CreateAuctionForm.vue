@@ -61,7 +61,7 @@
 
                       <div
                         v-if="auctionType == 'preorder'"
-                        class="w-full md:w-6/12 flex items-center md:pl-20 pl-2 hidden"
+                        class="w-full md:w-6/12 flex items-center md:pl-20 pl-2"
                       >
                         <label for="onHand" class="block mb-1 text-sm pr-4">On Hand:</label>
                         <input
@@ -133,7 +133,7 @@
 
 <script lang="ts" setup>
 
-import { ref, reactive, defineExpose, onMounted, watch, computed } from 'vue'
+import { ref, defineExpose, computed } from 'vue'
 import MultipleInputComponent from './ui/MultipleInputComponent.vue'
 import AlertComponent from './ui/AlertComponent.vue'
 import axios from '@/configs/request'
@@ -180,7 +180,7 @@ function removeProductKey(index: any) {
 
 function createAuction() {
   console.log('creating auction...')
-  let requestBody = getRequestBody()
+  const requestBody = getRequestBody()
 
   if (productKeys.value.length < 1 && auctionType.value != "declaredstock") {
     auctionError.value = "Please you need to select keys"

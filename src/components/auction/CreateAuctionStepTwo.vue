@@ -1,7 +1,7 @@
 <template>
     <div class="">
-        <div class="w-full flex justify-center">
-            <div class="md:w-[40%]">
+        <div class="w-full flex justify-center items-center">
+            <div class="md:w-[50%]">
                 <SearchBarComponent :param="props.product" @trigger-search="searchProduct"
                     @disable-dropdown="disableDropDown" />
             </div>
@@ -38,7 +38,7 @@
 </template>
 
 <script setup lang="ts">
-import { defineProps, defineEmits, ref, watch } from 'vue';
+import { defineProps, defineEmits, ref } from 'vue';
 import axios from '@/configs/request';
 import SearchBarComponent from '@/components/ui/SearchBarComponent.vue';
 import CompetitionTable from '@/components/CompetitionTable.vue';

@@ -1,7 +1,6 @@
 import { ref } from 'vue'
 import { defineStore } from 'pinia'
-import type { Product, Auction } from '@/interfaces/auction'
-import singleProductResponse from './json/single_product.json'
+import type { Product, Auction, CreateAuctionForm } from '@/interfaces/auction'
 import axios from '@/configs/request'
 
 const useAuctionStore = defineStore('auctions', () => {
@@ -21,15 +20,19 @@ const useAuctionStore = defineStore('auctions', () => {
         })
     }
 
-    return { auctions, getAuctionData, endCursor, startCursor, hasNextPage, hasPreviousPage }
+    function createAuction(type:string, auctionForm: CreateAuctionForm) {
+        return axios.post(`/api/v1/auctions/?type=${type}`, {...auctionForm})
+    }
+
+    return { auctions, getAuctionData, createAuction, endCursor, startCursor, hasNextPage, hasPreviousPage }
 });
 
 const useSingleProductAuctionsStore = defineStore('singleProductAuctions', () => {
     const singleProductAuctions = ref<Array<Auction>>()
     const singleProductDetails = ref(<Product>{})
-    let auctionsMax: any = ref<number>()
-    let auctionsMin: any = ref<number>()
-    let auctionsAverage: any = ref<number>()
+    const auctionsMax: any = ref<number>()
+    const auctionsMin: any = ref<number>()
+    const auctionsAverage: any = ref<number>()
 
     function getSingleProductAuctionsData() {
         // singleProductAuctions.value = singleProductResponse.data.S_product.auctions

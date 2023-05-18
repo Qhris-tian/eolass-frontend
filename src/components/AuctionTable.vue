@@ -169,10 +169,10 @@ function toggleAuctionView(index: any) {
     }    
 }
 
-function getCompetitionPageUrl(id: string, productId: string): string {
-    // console.log(productId)
-    return `auction/${id}/competition`;
-}
+// function getCompetitionPageUrl(id: string, productId: string): string {
+//     // console.log(productId)
+//     return `auction/${id}/competition`;
+// }
 
 </script>
 
