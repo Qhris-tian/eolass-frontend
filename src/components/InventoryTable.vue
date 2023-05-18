@@ -31,7 +31,7 @@
             </tr>
           </thead>
           <tbody>
-            <template v-if="false">
+            <template v-if="inventory.length > 0">
               <tr
                 v-for="(product, index) in inventory"
                 :key="index"
