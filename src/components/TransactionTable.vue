@@ -34,6 +34,33 @@
                 </tr>
             </thead>
             <tbody>
+                <template v-if="transactionStore.transactions?.length == 0">
+                    <div class="flex justify-center p-2">
+                        No transactions available
+                    </div>
+                </template>
+                <template v-else v-for="(transaction, index) in transactionStore.transactions" :key="index">
+                    <tr class="bg-white border-b border-[#ccc]">
+                        <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                            {{ transaction['node']['code'] }}
+                        </td>
+                        <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                            {{ transaction['node']['money']['amount'] }} ({{ transaction['node']['money']['currency'] }})
+                        </td>
+                        <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                            {{ transaction['node']['status'] }}
+                        </td>
+                        <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                            {{ transaction['node']['orderNumber'] }}
+                        </td>
+                        <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                            {{ getFormattedDate(transaction['node']['createdAt']) }}
+                        </td>
+                        <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                            Actions
+                        </td>
+                    </tr>
+                </template>
             </tbody>
         </table>
     </div>
@@ -47,6 +74,10 @@ const transactionStore = useTransactionStore()
 
 onMounted(() => transactionStore.getTransactionData())
 
+function getFormattedDate(date: string) {
+    const d = new Date(date)
+    return d.getDate() + '.' + (d.getMonth() + 1) + '.' + d.getFullYear();
+}
 
 </script>
 
