@@ -5,7 +5,7 @@ import singleProductResponse from './json/single_product.json'
 import axios from '@/configs/request'
 
 const useAuctionStore = defineStore('auctions', () => {
-    const auctions = ref({})
+    const auctions = ref()
     const endCursor = ref<string>()
     const startCursor = ref<string>()
     const hasNextPage = ref()
