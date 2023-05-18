@@ -1,5 +1,5 @@
 <template>
-  <div class="md:p-4 md:ml-[7rem] p-2">
+  <div class="p-2 md:p-4 lg:p-8 md:ml-[7rem]">
     <div class="px-2 md:px-14">
       <h4 class="heading-xl uppercase mb-4">Inventory</h4>
       <inventory-table />
