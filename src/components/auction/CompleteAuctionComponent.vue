@@ -97,19 +97,19 @@ const autoRenew = computed({
 })
 
 const auctionType = computed({
-  get() {
+  get(): string | null {
     return props.form.type
   },
-  set(newValue: string) {
+  set(newValue: string | null) {
     emit('update-form', { type: newValue })
   }
 })
 
 const amount = computed({
-  get() {
+  get(): number | null {
     return props.form.price.amount
   },
-  set(newValue: number) {
+  set(newValue: number | null) {
     console.log(newValue)
 
     emit('update-form', { price: { amount: newValue, currency: props.form.price.currency } })
@@ -117,7 +117,7 @@ const amount = computed({
 })
 
 const currency = computed({
-  get() {
+  get(): string {
     return props.form.price.currency
   },
   set(newValue: string) {
@@ -137,10 +137,10 @@ const currency = computed({
 // })
 
 const declaredStock = computed({
-  get() {
+  get(): number | null {
     return props.form.declaredStock
   },
-  set(newValue: string) {
+  set(newValue: number | null) {
     emit('update-form', { declaredStock: newValue })
   }
 })
