@@ -35,7 +35,7 @@
             </thead>
             <tbody>
                 <template v-if="transactionStore.transactions?.length == 0">
-                    <div class="flex justify-center p-2">
+                    <div class="text-center p-2">
                         No transactions available
                     </div>
                 </template>
