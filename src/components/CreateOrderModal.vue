@@ -161,7 +161,7 @@ function checkAvailability() {
     })
 }
 
-const isBusy = ref<boolean>()
+const isBusy = ref<boolean>(false)
 function order() {
   isBusy.value = true
   axios

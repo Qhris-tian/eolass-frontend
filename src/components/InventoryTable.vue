@@ -48,9 +48,13 @@
               </tr>
             </template>
             <template v-else>
-              <tr>
-                <td v-if="!inventoryStore.inventoryLoaded" colspan="3" class="text-center pt-3">{{ message }}</td>
-                <td v-else colspan="3" class="text-center pt-3">No inventory available. Add product on the catalog page</td>
+              <tr class="bg-white border border-line cursor-pointer hover:bg-gray-100">
+                <td v-if="!inventoryStore.inventoryLoaded" colspan="3" class="text-center pt-3">
+                  {{ message }}
+                </td>
+                <td v-else colspan="3" class="text-center text-purple p-3">
+                  No inventory available. Add product on the catalog page
+                </td>
               </tr>
             </template>
           </tbody>
@@ -103,7 +107,7 @@
                 </tr>
               </template>
               <template v-else>
-                <tr>
+                <tr class="bg-white border border-line cursor-pointer hover:bg-gray-100">
                   <td colspan="4" class="text-center text-base text-purple px-3 py-3">
                     Select product to display keys.
                   </td>
