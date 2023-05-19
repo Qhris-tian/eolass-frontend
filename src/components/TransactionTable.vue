@@ -35,9 +35,9 @@
             </thead>
             <tbody>
                 <template v-if="transactionStore.transactions?.length == 0">
-                    <div class="text-center p-2">
-                        No transactions available
-                    </div>
+                    <tr class="bg-white border-b border-[#ccc]">
+                        <td colspan="6" class="text-purple text-center p-3">No transactions available</td>
+                    </tr>
                 </template>
                 <template v-else v-for="(transaction, index) in transactionStore.transactions" :key="index">
                     <tr class="bg-white border-b border-[#ccc]">
