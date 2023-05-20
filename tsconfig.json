@@ -14,12 +14,16 @@
   "compilerOptions": {
     "jsx": "preserve",
     "target": "ESNext",
-    "module": "ESNext",
+    "lib": [
+      "ES2017",
+    ],
     "moduleResolution": "Node",
     "skipLibCheck": true,
     "strict": true,
     "allowJs": true,
+    "checkJs": true,
     "noEmit": true,
     "resolveJsonModule": true,
+    "esModuleInterop": true
   }
 }

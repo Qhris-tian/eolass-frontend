@@ -145,6 +145,8 @@ function closeModal(data: string) {
 }
 
 function checkAvailability() {
+  isBusy.value = true
+
   axios
     .get(`/api/v1/catalogs/${props.product?.sku}/availability`, {
       params: {
@@ -156,12 +158,13 @@ function checkAvailability() {
       canOrder.value = true
     })
     .catch(({ response }) => {
-      console.log(response)
       error.value = response
     })
+    .finally(() => (isBusy.value = false))
 }
 
 const isBusy = ref<boolean>()
+
 function order() {
   isBusy.value = true
   axios
@@ -172,6 +175,9 @@ function order() {
     .then(() => {
       canOrder.value = false
       closeModal('success')
+    })
+    .catch(({ response }) => {
+      error.value = response[0].detail
     })
     .finally(() => (isBusy.value = false))
 }
