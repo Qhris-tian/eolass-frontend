@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, onMounted } from 'vue'
+import { ref, onBeforeMount } from 'vue'
 
 const props = defineProps<{
   name: string
@@ -7,14 +7,16 @@ const props = defineProps<{
 
 const icon = ref({})
 
+const entries: [string, any][] = Object.entries(import.meta.glob('@/assets/*.svg', { as: 'raw' }))
+
 const icons = Object.fromEntries(
-  Object.entries(import.meta.glob('@/assets/*.svg', { as: 'raw' })).map(([key, value]) => {
-    const filename = key.split('/').pop()!.split('.').shift()
+  entries.map(([key, value]) => {
+    const filename = key.match(/\/([^/]+)\.svg$/)?.[1]
     return [filename, value]
   })
 )
 
-onMounted(async () => {
+onBeforeMount(async () => {
   icon.value = props.name && (await icons?.[props.name]?.())
 })
 </script>

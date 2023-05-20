@@ -12,10 +12,10 @@ export const useCatalogStore = defineStore('catalog', () => {
   })
 
   function getCatalogData() {
-    axios.get('/api/v1/catalogs/').then(({ data }) => {
-      catalog.value = data
-    })
+    return axios.get('/api/v1/catalogs/')
   }
 
-  return { catalog, getCatalogData }
+  const setCatalogData = (data: Catalog) => (catalog.value = data)
+
+  return { catalog, getCatalogData, setCatalogData }
 })

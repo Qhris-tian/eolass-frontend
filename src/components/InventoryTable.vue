@@ -50,7 +50,7 @@
             <template v-else>
               <tr class="bg-white border border-line cursor-pointer hover:bg-gray-100">
                 <td v-if="!inventoryStore.inventoryLoaded" colspan="3" class="text-center pt-3">
-                  {{ message }}
+                  <dot-loader-component :type="DotType.flashing" />
                 </td>
                 <td v-else colspan="3" class="text-center text-purple p-3">
                   No inventory available. Add product on the catalog page
@@ -108,8 +108,11 @@
               </template>
               <template v-else>
                 <tr class="bg-white border border-line cursor-pointer hover:bg-gray-100">
-                  <td colspan="4" class="text-center text-base text-purple px-3 py-3">
-                    Select product to display keys.
+                  <td colspan="4" v-if="loadingProductCard">
+                    <dot-loader-component :type="DotType.flashing" />
+                  </td>
+                  <td v-else colspan="4" class="text-center text-base text-purple px-3 py-3">
+                    {{ selectedProduct ? 'No keys available' : 'Select product to display keys.' }}
                   </td>
                 </tr>
               </template>
@@ -135,7 +138,8 @@ import { useInventoryStore } from '@/stores/inventory'
 import AlertComponent from '@/components/ui/AlertComponent.vue'
 import SvgComponent from '@/components/ui/SvgComponent.vue'
 import AddInventoryKeyModal from '@/components/AddInventoryKeyModal.vue'
-
+import DotLoaderComponent from './ui/DotLoaderComponent.vue'
+import { DotType } from '@/enums/dottype'
 const utils = useUtils()
 
 const inventoryStore = useInventoryStore()
@@ -151,14 +155,17 @@ const inventory = computed(() => {
 
 const productCards = ref<Array<Card>>([])
 const selectedProduct = ref<Product | null>(null)
+const loadingProductCard = ref<boolean>(false)
 
 function selectProduct(product: Product, refresh: boolean = false) {
+  loadingProductCard.value = true
   if (product.sku !== selectedProduct.value?.sku || refresh) {
     selectedProduct.value = product
 
     axios
       .get(`/api/v1/inventory/${product.sku}/cards`)
       .then(({ data }) => (productCards.value = data))
+      .finally(() => (loadingProductCard.value = false))
   }
 }
 
