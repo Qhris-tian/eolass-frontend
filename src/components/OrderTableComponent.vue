@@ -92,7 +92,12 @@
           </template>
           <template v-else>
             <tr class="bg-white border border-line">
-              <td colspan="6" class="text-center text-purple p-3">There was an error fetching the order.</td>
+              <td v-if="!orderStore.orderHistoryLoaded" colspan="6" class="text-center pt-3">
+                <dot-loader-component :type="DotType.collision" />
+              </td>
+              <td v-else colspan="6" class="text-center text-purple p-3">
+                There was an error loading your orders
+              </td>
             </tr>
           </template>
         </tbody>
@@ -150,6 +155,8 @@ import { useOrderStore } from '@/stores/order'
 import OrderCardsModal from './OrderCardsModal.vue'
 import type { StringObject } from '@/interfaces'
 import type { OrderHistory } from '@/interfaces/orderHistory'
+import { DotType } from '@/enums/dottype'
+import DotLoaderComponent from './ui/DotLoaderComponent.vue'
 
 const props = defineProps<{
   orderHistory: OrderHistory

@@ -11,6 +11,7 @@ export const useOrderStore = defineStore('order', () => {
     previous: null,
     results: []
   })
+  const orderHistoryLoaded = ref<boolean>(false)
 
   function getOrderHistoryData(offset: number = 1, limit = 10) {
     axios
@@ -23,7 +24,10 @@ export const useOrderStore = defineStore('order', () => {
       .then(({ data }) => {
         orderHistory.value = data
       })
+      .finally(() => (orderHistoryLoaded.value = true))
   }
+
+  const setOrderHistoryData = (data: OrderHistory) => (orderHistory.value = data)
 
   const cards = ref<Cards>({})
   function getOrderCards(reference: string) {
@@ -34,5 +38,12 @@ export const useOrderStore = defineStore('order', () => {
     }
   }
 
-  return { orderHistory, cards, getOrderHistoryData, getOrderCards }
+  return {
+    orderHistory,
+    cards,
+    orderHistoryLoaded,
+    getOrderHistoryData,
+    getOrderCards,
+    setOrderHistoryData
+  }
 })
