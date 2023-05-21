@@ -6,6 +6,17 @@
                     @disable-dropdown="disableDropDown" />
             </div>
         </div>
+        <div class="flex justify-center">
+          <alert-component
+            v-show="rateLimitError"
+            :type="'danger'"
+            :message="
+              rateLimitError ? rateLimitError : ''
+            "
+            class="w-[600px]"
+            @close-alert="rateLimitError = null"
+          />
+        </div>
         <transition>
             <div class="flex justify-center">
                 <div class="mb-[30px] flex justify-center absolute z-10 border border-[#ccc] w-[50%]" v-if="showDropDown">
@@ -42,10 +53,12 @@ import { defineProps, defineEmits, ref } from 'vue';
 import axios from '@/configs/request';
 import SearchBarComponent from '@/components/ui/SearchBarComponent.vue';
 import CompetitionTable from '@/components/CompetitionTable.vue';
+import AlertComponent from '../ui/AlertComponent.vue';
 
 const productDetails: any = ref({})
 const allSearchedProducts: any = ref([])
 const showDropDown = ref<boolean>(false)
+const rateLimitError = ref<string | null>(null)
 
 const props = defineProps<{
     product: string | null
@@ -58,8 +71,12 @@ const searchProduct = (param: string) => {
         .then((data) => {
             showDropDown.value = true;
             allSearchedProducts.value = data.data.products
-        }).catch(({ response }) => {
-            console.error(response)
+        }).catch(error => {
+            console.log(`err: ${error}`)
+            if (error.code == "ERR_NETWORK") {
+                rateLimitError.value = "You've reached your limit of 2000 requests in 10 minutes. Try again later.";
+                console.log(rateLimitError.value)
+            }
         })
 }
 

@@ -9,6 +9,7 @@ const useAuctionStore = defineStore('auctions', () => {
     const startCursor = ref<string>()
     const hasNextPage = ref()
     const hasPreviousPage = ref()
+    const rateLimitError = ref<string | null>(null)
 
     function getAuctionData(page = "") {
         axios.get(`/api/v1/auctions?page=${page}&limit=5`).then(({ data }) => {
@@ -18,13 +19,19 @@ const useAuctionStore = defineStore('auctions', () => {
             hasNextPage.value = data.auctions.pageInfo.hasNextPage
             hasPreviousPage.value = data.auctions.pageInfo.hasPreviousPage
         })
+        .catch(error => {
+            if (error.code == "ERR_NETWORK") {
+                rateLimitError.value = "You've reached your limit of 2000 requests in 10 minutes. Try again later.";
+                console.log(rateLimitError.value)
+            }
+          })
     }
 
     function createAuction(type:string, auctionForm: CreateAuctionForm) {
         return axios.post(`/api/v1/auctions/?type=${type}`, {...auctionForm})
     }
 
-    return { auctions, getAuctionData, createAuction, endCursor, startCursor, hasNextPage, hasPreviousPage }
+    return { auctions, getAuctionData, createAuction, endCursor, startCursor, hasNextPage, hasPreviousPage, rateLimitError }
 });
 
 const useSingleProductAuctionsStore = defineStore('singleProductAuctions', () => {

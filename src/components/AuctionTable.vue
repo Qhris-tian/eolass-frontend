@@ -1,6 +1,26 @@
 <template>
     
     <div class="relative overflow-x-auto shadow-md w-11/12">
+        <div class="flex justify-center">
+          <alert-component
+            v-show="auctionStore.rateLimitError"
+            :type="'danger'"
+            :message="
+              auctionStore.rateLimitError ? auctionStore.rateLimitError : ''
+            "
+            class="w-[600px]"
+            @close-alert="auctionStore.rateLimitError = null"
+          />
+        </div>
+        <!-- <div class="mb-2">
+          <select v-model="auctionStatus" name="auction-status" id="auction-status" class="px-4 py-2 border border-[#ccc]">
+            <option value="ACTIVE">ACTIVE</option>
+            <option value="INACTIVE">INACTIVE</option>
+            <option value="CONFIRMATION_PENDING">CONFIRMATION_PENDING</option>
+            <option value="REJECTED">REJECTED</option>
+            <option value="DISABLED">DISABLED</option>
+          </select>
+        </div> -->
         <table class="w-full text-[12px] text-center text-gray-500 dark:text-gray-400" aria-label="Auction Table">
             <thead class="text-gray-700 dark:text-gray-400 bg-white">
                 <tr class="border-b border-[#ccc]">
@@ -137,15 +157,18 @@
 
 <script setup lang="ts">
 import { useAuctionStore } from '@/stores/auctions'
-import { onMounted, reactive, defineEmits } from 'vue'
+import { onMounted, reactive, defineEmits, ref } from 'vue'
 import eyeOnIcon from '@/assets/eye-on.svg'
 import eyeOffIcon from '@/assets/eye-off.svg'
+import AlertComponent from './ui/AlertComponent.vue'
 
 const emit = defineEmits(['toggleUpdateAuctionModal']);
 
 const handleUpdateAuctionModalToggle = (auction:Object) => {
     emit('toggleUpdateAuctionModal', auction);
 }
+
+// const auctionStatus = ref("ACTIVE");
 
 const auctionStore = useAuctionStore()
 const auctionRowStates:any[] = reactive([])
