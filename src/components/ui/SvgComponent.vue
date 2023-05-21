@@ -22,5 +22,5 @@ onBeforeMount(async () => {
 </script>
 
 <template>
-  <span v-if="props.name" v-html="icon"></span>
+  <span v-if="props.name && typeof icon === 'string'" v-html="icon"></span>
 </template>

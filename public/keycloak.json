@@ -1,0 +1,11 @@
+{
+    "realm": "eolass",
+    "auth-server-url": "https://lemur-5.cloud-iam.com/auth/",
+    "ssl-required": "external",
+    "resource": "eolass-frontend",
+    "public-client": true,
+    "confidential-port": 0
+}
+
+
+

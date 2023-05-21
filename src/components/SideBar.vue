@@ -3,7 +3,11 @@
     class="fixed top-0 left-0 z-40 w-15 sm:w-30 bg-white h-screen transition-transform sm:translate-x-0"
     aria-label="Sidebar"
   >
-    <div class="h-full sm:pr-3 py-4 overflow-y-auto mt-12 sm:mt-20 2xl:mt-24">
+    <div class="flex justify-center items-center flex-col pt-16">
+      <SvgComponent name="circle-user" class="block text-purple w-16 pb-4" />
+      {{ KeyCloakService.getUserName() }}
+    </div>
+    <div class=" sm:pr-3 overflow-y-auto sm:pt-20 2xl:pt-24">
       <ul>
         <li class="sidebar-item heading-md">
           <router-link to="/catalog" class="sidebar-link" active-class="sidebar-active">
@@ -37,11 +41,29 @@
         </li>
       </ul>
     </div>
+    <div class="absolute bottom-3 w-full flex justify-center">
+    <button-component
+      :label="'Logout'"
+      :loading-label="'Logging Out'"
+      :is-loading="isBusy"
+      class="btn"
+      @click="logout"
+    /></div>
   </aside>
 </template>
 
 <script setup lang="ts">
+import { ref } from 'vue'
+import ButtonComponent from './ui/ButtonComponent.vue'
 import SvgComponent from './ui/SvgComponent.vue'
+import KeyCloakService from '@/authentication/KeycloakService'
+
+const isBusy = ref<boolean>(false)
+const logout = () => {
+  isBusy.value = true
+
+  KeyCloakService.callLogOut()
+}
 </script>
 
 <style scoped>
