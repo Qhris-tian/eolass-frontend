@@ -3,7 +3,11 @@
     class="fixed top-0 left-0 z-40 w-15 sm:w-30 bg-white h-screen transition-transform sm:translate-x-0"
     aria-label="Sidebar"
   >
-    <div class="h-[95%] sm:pr-3 overflow-y-auto pt-12 sm:pt-20 2xl:pt-24">
+    <div class="flex justify-center items-center flex-col pt-16">
+      <SvgComponent name="circle-user" class="block text-purple w-16 pb-4" />
+      {{ KeyCloakService.getUserName() }}
+    </div>
+    <div class=" sm:pr-3 overflow-y-auto sm:pt-20 2xl:pt-24">
       <ul>
         <li class="sidebar-item heading-md">
           <router-link to="/catalog" class="sidebar-link" active-class="sidebar-active">
@@ -37,7 +41,7 @@
         </li>
       </ul>
     </div>
-    <div class="flex justify-center">
+    <div class="absolute bottom-3 w-full flex justify-center">
     <button-component
       :label="'Logout'"
       :loading-label="'Logging Out'"
