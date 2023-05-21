@@ -71,9 +71,8 @@ const searchProduct = (param: string) => {
         .then((data) => {
             showDropDown.value = true;
             allSearchedProducts.value = data.data.products
-        }).catch(error => {
-            console.log(`err: ${error}`)
-            if (error.code == "ERR_NETWORK") {
+        }).catch(({response}) => {
+            if (response.status == 429) {
                 rateLimitError.value = "You've reached your limit of 2000 requests in 10 minutes. Try again later.";
                 console.log(rateLimitError.value)
             }

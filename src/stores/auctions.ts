@@ -19,8 +19,8 @@ const useAuctionStore = defineStore('auctions', () => {
             hasNextPage.value = data.auctions.pageInfo.hasNextPage
             hasPreviousPage.value = data.auctions.pageInfo.hasPreviousPage
         })
-        .catch(error => {
-            if (error.code == "ERR_NETWORK") {
+        .catch(({response}) => {
+            if (response.status == 429) {
                 rateLimitError.value = "You've reached your limit of 2000 requests in 10 minutes. Try again later.";
                 console.log(rateLimitError.value)
             }
