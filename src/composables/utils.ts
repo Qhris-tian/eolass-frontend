@@ -50,5 +50,10 @@ export const useUtils = () => {
     return value.toFixed(2)
   }
 
-  return { formatDate, placeholder, status, isEmpty, toAmount }
+  function toTitleCase(sentence: string) {
+    const copy = sentence.toLowerCase()
+    return copy.charAt(0).toUpperCase() + copy.slice(1)
+  }
+
+  return { formatDate, placeholder, status, isEmpty, toAmount, toTitleCase }
 }
