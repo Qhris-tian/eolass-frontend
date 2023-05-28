@@ -41,7 +41,7 @@
         </li>
         <li class="sidebar-item heading-md">
           <router-link to="/settings" class="sidebar-link" active-class="sidebar-active">
-            <SvgComponent name="credit-card" />
+            <SvgComponent name="setting" />
             <span class="hidden sm:block ml-3">Settings</span>
           </router-link>
         </li>

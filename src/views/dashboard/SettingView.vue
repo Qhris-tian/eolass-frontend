@@ -19,8 +19,8 @@
 
       <div class="p-3 pt-20 bg-white">
         <div class="flex flex-wrap">
-          <div class="md:w-[50%] w-[100%]">
-            <div class="flex justify-between w-[70%] items-center">
+          <div class="md:w-[40%] w-[100%]">
+            <div class="flex justify-between w-[70%] md:w-[100%] items-center">
               <div class="flex items-center">
                 <span class="">Spending Limit</span>
                 <svg-component :name="'info-circle'" class="w-[30px] pl-2 text-[#635FC7]" />
