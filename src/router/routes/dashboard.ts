@@ -41,6 +41,11 @@ export default [
         path: '/transactions',
         name: 'transactions',
         component: () => import('../../views/dashboard/TransactionView.vue')
+      },
+      {
+        path: '/settings',
+        name: 'settings',
+        component: () => import('../../views/dashboard/SettingView.vue')
       }
     ]
   }

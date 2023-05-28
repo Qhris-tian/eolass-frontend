@@ -39,6 +39,12 @@
             <span class="hidden sm:block ml-3">Transactions</span>
           </router-link>
         </li>
+        <li class="sidebar-item heading-md">
+          <router-link to="/settings" class="sidebar-link" active-class="sidebar-active">
+            <SvgComponent name="credit-card" />
+            <span class="hidden sm:block ml-3">Settings</span>
+          </router-link>
+        </li>
       </ul>
     </div>
     <div class="absolute bottom-3 w-full flex justify-center">
