@@ -69,6 +69,9 @@
             </div>
           </div>
         </div>
+        <div class="flex justify-end mx-8 sm:mx-16">
+          <button-component class="!px-8" type="button" :label="'Save'" @click="saveSetting" />
+        </div>
       </div>
     </div>
   </div>
@@ -77,6 +80,11 @@
 <script setup lang="ts">
 import Navbar from '@/components/NavBar.vue'
 import SvgComponent from '@/components/ui/SvgComponent.vue'
+import ButtonComponent from '@/components/ui/ButtonComponent.vue'
+
+function saveSetting() {
+  console.log('saving...')
+}
 </script>
 
 <style scoped></style>
