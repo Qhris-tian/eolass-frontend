@@ -18,7 +18,7 @@ const Login = (onAuthenticatedCallback: CallbackOneParam) => {
     })
 }
 
-const userName = (): string | undefined => keycloakInstance?.tokenParsed?.preferred_username
+const userName = (): string | undefined => `${keycloakInstance?.tokenParsed?.given_name} ${keycloakInstance?.tokenParsed?.family_name}`
 
 const token = (): string | undefined => keycloakInstance?.token
 

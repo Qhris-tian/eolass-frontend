@@ -1,22 +1,24 @@
 <template>
   <Modal :content-class="'w-[350px] sm:w-[650px]'" position="top">
     <template v-slot:header>
-      <div class="flex justify-between items-start">
+      <div>
+        <div class="flex justify-between items-start">
+          <h1 class="text-lg mb-[24px] text-black dark:text-white capitalize">
+            {{ props.product?.title }}
+          </h1>
+          <div>
+            <button type="button" @click="closeModal('none')">
+              <SvgComponent name="close" />
+            </button>
+          </div>
+        </div>
         <alert-component
           v-show="error"
           :type="'danger'"
-          :message="error ? error : 'There was an error processing you order.'"
-          class="w-[400px]"
+          :message="error ? utils.toTitleCase(error) : utils.toTitleCase('There was an error processing you order.')"
+          class="w-full"
           @close-alert="error = null"
         />
-        <h1 class="text-lg mb-[24px] text-black dark:text-white capitalize">
-          {{ props.product?.title }}
-        </h1>
-        <div>
-          <button type="button" @click="closeModal('none')">
-            <SvgComponent name="close" />
-          </button>
-        </div>
       </div>
     </template>
     <template v-slot:body>
@@ -115,12 +117,14 @@ import ButtonComponent from './ui/ButtonComponent.vue'
 import AlertComponent from './ui/AlertComponent.vue'
 import type { Result } from '@/interfaces/catalog'
 import axios from '@/configs/request'
+import { useUtils } from '@/composables/utils'
 
 const emit = defineEmits(['close-modal'])
 
 const props = defineProps<{
   product: Result | null
 }>()
+const utils = useUtils()
 
 const available = ref(false)
 const canOrder = ref(false)
@@ -176,9 +180,15 @@ function order() {
       canOrder.value = false
       closeModal('success')
     })
-    .catch(({ response }) => {
-      error.value = response[0].detail
-    })
+    .catch(
+      ({
+        response: {
+          data: { errors }
+        }
+      }) => {
+        error.value = errors[0].detail
+      }
+    )
     .finally(() => (isBusy.value = false))
 }
 

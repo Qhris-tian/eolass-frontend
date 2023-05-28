@@ -1,5 +1,5 @@
 <template>
-    <div class="relative flex flex-col w-[8rem] sm:w-[17rem] 2xl:w-[19rem] bg-white border border-gray/30 rounded-lg shadow-sm ml-2 md:ml-6
+    <div class="relative w-[47%] md:w-[22%] 2xl:w-[15%] bg-white border border-line rounded-lg shadow-sm ml-2 md:ml-6
         mt-5 md:mt-10">
         <div class="relative">
             <object class="rounded-t-lg w-[100%] h-[80px] md:h-[200px]" :data="product.image" type="image/jpg">
