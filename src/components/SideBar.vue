@@ -3,11 +3,11 @@
     class="fixed top-0 left-0 z-40 w-15 sm:w-30 bg-white h-screen transition-transform sm:translate-x-0"
     aria-label="Sidebar"
   >
-    <div class="flex justify-center items-center flex-col pt-16">
+    <div class="flex justify-center items-center flex-col pt-16 capitalize">
       <SvgComponent name="circle-user" class="block text-purple w-16 pb-4" />
       {{ KeyCloakService.getUserName() }}
     </div>
-    <div class=" sm:pr-3 overflow-y-auto sm:pt-20 2xl:pt-24">
+    <div class=" sm:pr-3 overflow-y-auto sm:pt-11 2xl:pt-24">
       <ul>
         <li class="sidebar-item heading-md">
           <router-link to="/catalog" class="sidebar-link" active-class="sidebar-active">

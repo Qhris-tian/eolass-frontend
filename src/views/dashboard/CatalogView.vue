@@ -52,10 +52,10 @@
 
       <div v-if="fetchError" class="text-center text-purple">There was error fetching the catalog.</div>
 
-      <div v-else class="flex flex-wrap justify-between">
-        <div v-for="(product, index) in catalogStore.catalog?.results" :key="index">
+      <div v-else class="flex flex-wrap">
+        <template v-for="(product, index) in catalogStore.catalog?.results" :key="index">
           <catalog-product-component :product="product" @select-product="selectProduct" />
-        </div>
+        </template>
       </div>
     </div>
     <CreateOrderModalVue
