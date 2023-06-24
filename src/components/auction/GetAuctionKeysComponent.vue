@@ -1,6 +1,6 @@
 <template>
   <div class="w-450 container mx-auto my-5 ml-[2rem] mr-10 py-6 sm:px-10">
-    <h2 class="heading-lg mb-4">Select Keys</h2>
+    <h2 class="heading-lg mb-4 dark:text-white">Select Keys</h2>
     <div class="flex justify-center">
       <div class="relative my-3 w-[50%]">
         <form @submit.prevent="searchInventory">
@@ -40,7 +40,7 @@
     </div>
     <div class="flex flex-wrap mt-10">
       <div class="w-full md:max-w-[45%] px-3 order-2 md:order-1">
-        <p class="heading-lg">Available Inventory</p>
+        <p class="heading-lg dark:text-[#ccc]">Available Inventory</p>
         <ul>
           <li
             class="border p-3 border-line bg-white hover:bg-gray-50"
@@ -57,7 +57,7 @@
         </ul>
       </div>
       <div class="w-full md:max-w-[55%] px-3 order-1 md:order-2">
-        <p class="heading-lg">
+        <p class="heading-lg dark:text-white">
           {{ selectedProduct?.title ? selectedProduct?.title : 'Product' }} Keys
         </p>
         <ul v-if="productCards.length > 0">
@@ -70,11 +70,11 @@
                 class="w-4 h-4 bg-line border-line rounded-md accent-purple"
                 :value="card.card_number"
               />
-              <label :for="card.card_number" class="ml-2 body-text">{{ card.card_number }}</label>
+              <label :for="card.card_number" class="ml-2 body-text dark:text-[#ccc]">{{ card.card_number }}</label>
             </div>
           </li>
         </ul>
-        <p v-else class="mt-2">
+        <p v-else class="mt-2 dark:text-[#ccc]">
           {{
             selectedProduct?.title
               ? 'Product has no keys associated with it.'

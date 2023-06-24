@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="flex items-cente dark:text-white">
+    <div class="flex items-cente">
       <select v-model="currency" name="account-balance" class="mx-2 py-1 sm:py-2 px-1 ring-2 ring-gray/40 hover:ring-purple/40 rounded-md">
         <option
           v-for="(value, index) in accountStore.currencies"
@@ -9,7 +9,7 @@
           v-text="value"
         ></option>
       </select>
-      <p class="heading-xl">{{ accountStore.displayBalance }}</p>
+      <p class="heading-xl dark:text-white">{{ accountStore.displayBalance }}</p>
     </div>
   </div>
 </template>

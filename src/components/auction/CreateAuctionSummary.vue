@@ -1,6 +1,6 @@
 <template>
   <div class="ml-[2rem] mt-10 mr-10 py-10 px-10">
-    <div class="heading-lg mb-4">Auction Summary</div>
+    <div class="heading-lg mb-4 dark:text-[#ccc]">Auction Summary</div>
     <div class="flex flex-col items-center">
       <div
         v-if="props.product"

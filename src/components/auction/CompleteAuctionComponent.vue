@@ -1,7 +1,7 @@
 <template>
   <div class="ml-[2rem] mt-10 mr-10 py-10 px-10">
     <div class="flex flex-col items-center">
-      <div class="heading-lg mb-4">Let's finish up!</div>
+      <div class="heading-lg mb-4 dark:text-white">Let's finish up!</div>
       <form class="bg-white min-w-[200px] sm:min-w-[450px] p-6 rounded shadow-sm">
         <p class="text-gray-400 text-xs mb-4">Please fill the form to continue</p>
         <div class="mb-6">

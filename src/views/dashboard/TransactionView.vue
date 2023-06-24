@@ -2,7 +2,7 @@
     <div class="ml-[2rem] md:ml-[11rem] p-2 md:p-4 lg:p-8">
     <Navbar iconName="eneba" :showSearchBar="false" />
     <div class="mt-10">
-      <h4 class="heading-xl uppercase">Transactions</h4>
+      <h4 class="heading-xl uppercase dark:text-white">Transactions</h4>
     </div>
     <div>
       <div class="w-11/12 pt-5 flex justify-end">

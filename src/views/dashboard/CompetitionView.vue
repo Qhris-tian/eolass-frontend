@@ -1,7 +1,7 @@
 <template>
-  <div class="ml-[2rem] md:ml-[12rem]">
+  <div class="ml-[2rem] md:ml-[11rem] p-2 md:p-4 lg:p-8">
     <Navbar iconName="eneba" :showSearchBar="false" />
-    <div class="mt-10">
+    <div class="mt-10 dark:text-white">
       <header>
         <span>Auctions for {{ singleProductStore.singleProductDetails?.name }}</span>
       </header>
@@ -9,7 +9,7 @@
 
     <div>
       <div class="w-11/12 pt-5 flex justify-between items-center">
-        <div class="w-[40%] md:w-[30%] flex justify-between font-medium text-[13px] mb-5">
+        <div class="w-[40%] md:w-[30%] flex justify-between font-medium text-[13px] mb-5 dark:text-[#ccc]">
           <span>AVERAGE: {{ singleProductStore.auctionsAverage }}</span>
           <span>MAX: {{ singleProductStore.auctionsMax }}</span>
           <span>MIN: {{ singleProductStore.auctionsMin }}</span>

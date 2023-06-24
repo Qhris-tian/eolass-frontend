@@ -1,5 +1,5 @@
 <template>
-  <div class="ml-[2rem] sm:ml-[12rem] mt-5">
+  <div class="ml-[2rem] sm:ml-[11rem]">
     <div class="px-5">
       <div class="flex justify-center items-center flex-col w-full">
         <create-auction-progress :step="step" class="mb-4" />
@@ -82,8 +82,8 @@ import CreateAuctionSummary from '../../../components/auction/CreateAuctionSumma
 import AlertComponent from '@/components/ui/AlertComponent.vue'
 import ButtonComponent from '@/components/ui/ButtonComponent.vue'
 import { useAuctionStore } from '@/stores/auctions'
-import type { CreateAuctionForm } from '@/interfaces/auction'
-import type { Product } from '@/interfaces/auction'
+import type { CreateAuctionForm, Product } from '@/interfaces/auction'
+// import type { Product } from '@/interfaces/auction'
 
 const step = ref<number>(1)
 
