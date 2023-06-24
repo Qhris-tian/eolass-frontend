@@ -4,13 +4,11 @@
     aria-label="Sidebar"
   >
 
-        
-
     <div class="flex justify-center mt-3">
       <svg-component :name="'sun'" class="w-[24px] pr-2 text-white" />
       <div class="pr-2">
         <label class="relative inline-flex items-center cursor-pointer">
-          <input type="checkbox" value="" @change="toggleDark()" class="sr-only peer" />
+          <input type="checkbox" :checked="isDark" value="" @change="toggleDark()" class="sr-only peer" />
           <div
             class="w-11 h-4 bg-[#ccc] peer-focus:outline-none rounded-full peer dark:bg-purple-light 
               peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] 

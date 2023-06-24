@@ -5,9 +5,9 @@
       <div class="relative my-3 w-[50%]">
         <form @submit.prevent="searchInventory">
           <div
-            class="flex items-center bg-purple-light border border-purple/50 rounded h-10 shadow-sm"
+            class="flex items-center bg-purple-light dark:bg-[#2B2C37] border border-purple/50 dark:border-[#ccc] rounded h-10 shadow-sm"
           >
-            <svg-component name="search" class="text-white w-6 h-6 absolute ml-5" />
+            <svg-component name="search" class="text-white dark:text-[#ccc] w-6 h-6 absolute ml-5" />
 
             <div class="w-full rounded">
               <input
@@ -16,7 +16,8 @@
                 aria-label="Search catalog"
                 placeholder="Search inventory"
                 autocomplete="off"
-                class="flex bg-transparent h-[40px] md:h-[60px] w-[100%] placeholder:text-white text-center text-white border-0 focus:outline-none relative z-10"
+                class="flex bg-transparent h-[40px] md:h-[60px] w-[100%] placeholder:text-white dark:placeholder-[#ccc] 
+                  text-center text-white border-0 focus:outline-none relative z-10"
               />
             </div>
             <button v-show="needle" type="button" class="btn mr-6" @click="needle = null">
