@@ -1,10 +1,10 @@
 <template>
   <aside
-    class="fixed top-0 left-0 z-40 w-15 sm:w-30 bg-white h-screen transition-transform sm:translate-x-0"
+    class="fixed top-0 left-0 z-40 w-15 sm:w-30 bg-white dark:bg-[#2B2C37] h-screen transition-transform sm:translate-x-0"
     aria-label="Sidebar"
   >
-    <div class="flex justify-center items-center flex-col pt-16 capitalize">
-      <SvgComponent name="circle-user" class="block text-purple w-16 pb-4" />
+    <div class="flex justify-center items-center flex-col pt-16 capitalize dark:text-white">
+      <SvgComponent name="circle-user" class="block text-purple dark:text-[#ccc] w-16 pb-4" />
       {{ KeyCloakService.getUserName() }}
     </div>
     <div class=" sm:pr-3 overflow-y-auto sm:pt-11 2xl:pt-24">
@@ -41,6 +41,11 @@
         </li>
       </ul>
     </div>
+    <div>
+      <label for="darkModeToggle">{{ isDark ? "Dark": "Light"}} Mode</label>
+      <input type="checkbox" id="darkModeToggle"
+        @change="toggleDark()">
+    </div>
     <div class="absolute bottom-3 w-full flex justify-center">
     <button-component
       :label="'Logout'"
@@ -57,6 +62,10 @@ import { ref } from 'vue'
 import ButtonComponent from './ui/ButtonComponent.vue'
 import SvgComponent from './ui/SvgComponent.vue'
 import KeyCloakService from '@/authentication/KeycloakService'
+import { useDark, useToggle } from '@vueuse/core'
+
+const isDark = useDark()
+const toggleDark = useToggle(isDark )
 
 const isBusy = ref<boolean>(false)
 const logout = () => {
@@ -78,6 +87,13 @@ const logout = () => {
 }
 .sidebar-link:hover {
   @apply bg-purple-light/10;
+}
+.dark .sidebar-item {
+  @apply my-6 text-[#828FA3]
+}
+.dark .sidebar-link:hover {
+  @apply bg-white;
+  @apply text-purple;
 }
 .sidebar-link:active,
 .sidebar-link:focus {
