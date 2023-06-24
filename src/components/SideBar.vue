@@ -3,6 +3,26 @@
     class="fixed top-0 left-0 z-40 w-15 sm:w-30 bg-white dark:bg-[#2B2C37] h-screen transition-transform sm:translate-x-0"
     aria-label="Sidebar"
   >
+
+        
+
+    <div class="flex justify-center mt-3">
+      <svg-component :name="'sun'" class="w-[24px] pr-2 text-white" />
+      <div class="pr-2">
+        <label class="relative inline-flex items-center cursor-pointer">
+          <input type="checkbox" value="" @change="toggleDark()" class="sr-only peer" />
+          <div
+            class="w-11 h-4 bg-[#ccc] peer-focus:outline-none rounded-full peer dark:bg-purple-light 
+              peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] 
+              after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-white after:border 
+              after:rounded-full after:h-3 after:w-5 after:transition-all dark:border-purple-light 
+              peer-checked:bg-purple-light"
+          ></div>
+        </label>
+      </div>
+      <svg-component :name="'moon'" class="w-[24px] pr-2 text-white" />
+    </div>
+
     <div class="flex justify-center items-center flex-col pt-16 capitalize dark:text-white">
       <SvgComponent name="circle-user" class="block text-purple dark:text-[#ccc] w-16 pb-4" />
       {{ KeyCloakService.getUserName() }}
@@ -40,11 +60,6 @@
           </router-link>
         </li>
       </ul>
-    </div>
-    <div>
-      <label for="darkModeToggle">{{ isDark ? "Dark": "Light"}} Mode</label>
-      <input type="checkbox" id="darkModeToggle"
-        @change="toggleDark()">
     </div>
     <div class="absolute bottom-3 w-full flex justify-center">
     <button-component
