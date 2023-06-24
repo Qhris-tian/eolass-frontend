@@ -1,5 +1,5 @@
 <template>
-    <div class="ml-[2rem] md:ml-[12rem p-2 md:p-4 lg:p-8">
+    <div class="ml-[2rem] md:ml-[11rem] p-2 md:p-4 lg:p-8">
     <Navbar iconName="eneba" :showSearchBar="false" />
     <div class="mt-10">
       <h4 class="heading-xl uppercase">Transactions</h4>
