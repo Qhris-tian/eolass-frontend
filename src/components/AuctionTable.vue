@@ -21,8 +21,8 @@
             <option value="DISABLED">DISABLED</option>
           </select>
         </div> -->
-        <table class="w-full text-[12px] text-center text-gray-500 dark:text-gray-400" aria-label="Auction Table">
-            <thead class="text-gray-700 dark:text-gray-400 bg-white">
+        <table class="w-full text-[12px] text-center text-gray-500" aria-label="Auction Table">
+            <thead class="text-gray-700 bg-white">
                 <tr class="border-b border-[#ccc]">
                     <th scope="col" class="px-6 py-3 border-r border-[#ccc]">
                         Product
@@ -73,13 +73,13 @@
                 </template>
                 <template v-for="(auction, index) in auctionStore.auctions" :key="index">
                     <tr class="bg-white border-b border-[#ccc]">
-                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
                             {{ auction['node']['product']['name'] }}
                         </th>
-                        <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                        <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
                             {{ auction['node']['price']['amount'] }} ({{ auction['node']['price']['currency'] }})
                         </td>
-                        <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                        <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
                             <button v-if="auction['node']['status'] == 'ACTIVE'" class="outline outline-offset-2 outline-1 w-20 py-1 px-2 text-[#6AE86A] rounded">
                                 {{ auction['node']['status'] }}
                             </button>
@@ -87,16 +87,16 @@
                                 {{ auction['node']['status'] }}
                             </button>
                         </td>
-                        <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                        <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
                             {{ auction['node']['unitsSold'] }}
                         </td>
-                        <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                        <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
                             {{ auction['node']['onHand'] }}
                         </td>
-                        <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                        <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
                             {{ getFormattedDate(auction['node']['expiresAt']) }}
                         </td>
-                        <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                        <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
                             <div class="flex">
                                 <img :src="auctionRowStates[index] == false || auctionRowStates[index] == null ? eyeOnIcon : eyeOffIcon" 
                                     alt="n/a" width="18" height="18" class="cursor-pointer" @click="toggleAuctionView(index)">

@@ -12,7 +12,7 @@
     <div class="relative flex flex-wrap">
       <div class="w-full md:w-3/5 sm:rounded-lg overflow-x-auto px-2">
         <div class="flex justify-between items-center mb-2">
-          <h2 class="text-sm md:text-lg">Available Inventory</h2>
+          <h2 class="text-sm md:text-lg dark:text-white">Available Inventory</h2>
           <div>
             <input v-model="needle" type="text" placeholder="Search" class="h-7 md:h-8" />
           </div>
@@ -62,7 +62,7 @@
       </div>
       <div class="w-full md:w-2/5 sm:rounded-lg overflow-x-auto px-2 mt-3 md:mt-0">
         <div class="flex justify-between items-center">
-          <h2 class="text-sm md:text-lg">
+          <h2 class="text-sm md:text-lg dark:text-white">
             {{ selectedProduct?.title ? selectedProduct?.title : 'Product' }} Keys
           </h2>
 

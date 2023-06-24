@@ -106,7 +106,7 @@
     <nav class="flex items-center justify-between pt-4" aria-label="Order Table navigation">
       <span class="text-xs sm:text-sm font-normal text-gray-500"
         >Showing
-        <span class="font-semibold text-gray-900">
+        <span class="font-semibold text-gray-900 dark:text-white">
           {{
             perPage * currentPage > props.orderHistory.count
               ? props.orderHistory.count
@@ -114,7 +114,7 @@
           }}
         </span>
         of
-        <span class="font-semibold text-gray-900">{{ props.orderHistory.count }}</span></span
+        <span class="font-semibold text-gray-900 dark:text-white">{{ props.orderHistory.count }}</span></span
       >
       <ul class="inline-flex items-center -space-x-px">
         <li class="mr-2">

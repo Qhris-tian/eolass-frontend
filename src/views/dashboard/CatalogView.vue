@@ -43,7 +43,7 @@
     </div>
     <div class="w-full p-2 md:p-10 pt-1 md:pt-3">
       <div class="p-2 sm:px-5 flex justify-between">
-        <h4 class="heading-xl uppercase">Catalog</h4>
+        <h4 class="heading-xl uppercase dark:text-white">Catalog</h4>
         <AccountBalanceComponent />
       </div>
 
