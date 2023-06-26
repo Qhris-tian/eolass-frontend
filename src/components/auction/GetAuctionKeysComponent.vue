@@ -5,7 +5,7 @@
       <div class="relative my-3 w-[50%]">
         <form @submit.prevent="searchInventory">
           <div
-            class="flex items-center bg-purple-light dark:bg-[#2B2C37] border border-purple/50 dark:border-[#ccc] rounded h-10 shadow-sm"
+            class="flex items-center bg-purple-light dark:bg-[#2B2C37] border border-purple/50 dark:border-gray-700 rounded h-10 shadow-sm"
           >
             <svg-component name="search" class="text-white dark:text-[#ccc] w-6 h-6 absolute ml-5" />
 
@@ -44,7 +44,7 @@
         <p class="heading-lg dark:text-[#ccc]">Available Inventory</p>
         <ul>
           <li
-            class="border p-3 border-line bg-white hover:bg-gray-50"
+            class="border p-3 border-line bg-white hover:bg-gray-50 dark:bg-[#2B2C37] dark:text-white dark:border-gray-700"
             v-for="(product, index) in availableInventory"
             :key="index"
           >
