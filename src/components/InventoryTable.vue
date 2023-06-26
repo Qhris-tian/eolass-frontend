@@ -21,7 +21,7 @@
           class="w-full text-xs sm:text-sm text-left text-gray-500"
           aria-label="Inventory Table"
         >
-          <thead class="text-xs text-gray uppercase bg-white">
+          <thead class="text-xs text-gray uppercase bg-white dark:text-white dark:bg-black dark:border-b">
             <tr>
               <th scope="col" class="px-1 sm:px-4 py-1 sm:py-2 uppercase text-left">Product</th>
               <th scope="col" class="px-1 sm:px-4 py-1 sm:py-2 uppercase text-center">Region</th>
@@ -35,7 +35,8 @@
               <tr
                 v-for="(product, index) in inventory"
                 :key="index"
-                class="bg-white border border-line cursor-pointer hover:bg-gray-100"
+                class="bg-white border border-line cursor-pointer hover:bg-gray-100 
+                  dark:text-white dark:bg-black dark:border-none"
                 @click="selectProduct(product)"
               >
                 <td class="capitalize px-1 sm:px-6 py-1 sm:py-4 text-left">{{ product.title }}</td>
@@ -48,7 +49,8 @@
               </tr>
             </template>
             <template v-else>
-              <tr class="bg-white border border-line cursor-pointer hover:bg-gray-100">
+              <tr class="bg-white border border-line cursor-pointer hover:bg-gray-100 dark:text-white 
+                dark:bg-black dark:border-none">
                 <td v-if="!inventoryStore.inventoryLoaded" colspan="3" class="text-center pt-3">
                   <dot-loader-component :type="DotType.flashing" />
                 </td>
@@ -79,7 +81,7 @@
         </div>
         <div class="overflow-x-auto mt-2">
           <table class="w-full text-sm text-left text-gray-500" aria-label="Inventory Cards Table">
-            <thead class="text-xs text-gray uppercase bg-white">
+            <thead class="text-xs text-gray uppercase bg-white dark:text-white dark:bg-black dark:border-b">
               <th scope="col" class="px-1 sm:px-4 py-1 sm:py-2 uppercase text-left">Number</th>
               <th scope="col" class="px-1 sm:px-4 py-1 sm:py-2 uppercase text-center">Pin</th>
               <th scope="col" class="px-1 sm:px-4 py-1 sm:py-2 uppercase text-left">Expiry</th>
@@ -90,7 +92,7 @@
                 <tr
                   v-for="(card, index) in productCards"
                   :key="index"
-                  class="bg-white border border-line"
+                  class="bg-white border border-line dark:text-white dark:bg-black dark:border-none"
                 >
                   <td class="px-1 sm:px-6 py-1 sm:py-4 text-left text-xs">
                     {{ card.card_number }}
@@ -107,7 +109,8 @@
                 </tr>
               </template>
               <template v-else>
-                <tr class="bg-white border border-line cursor-pointer hover:bg-gray-100">
+                <tr class="bg-white border border-line cursor-pointer hover:bg-gray-100 
+                  dark:text-white dark:bg-black dark:border-none">
                   <td colspan="4" v-if="loadingProductCard">
                     <dot-loader-component :type="DotType.flashing" />
                   </td>

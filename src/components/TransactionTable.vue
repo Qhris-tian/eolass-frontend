@@ -1,7 +1,7 @@
 <template>
     <div class="relative overflow-x-auto shadow-md w-11/12">
         <table class="w-full text-[12px] text-center text-gray-500 dark:text-gray-400" aria-label="Auction Table">
-            <thead class="text-gray-700 dark:text-gray-400 bg-white">
+            <thead class="text-gray-700 bg-white dark:text-white dark:bg-black">
                 <tr class="border-b border-[#ccc]">
                     <th scope="col" class="px-6 py-3 border-r border-[#ccc]">
                         Code
@@ -35,12 +35,12 @@
             </thead>
             <tbody>
                 <template v-if="transactionStore.transactions?.length == 0">
-                    <tr class="bg-white border-b border-[#ccc]">
+                    <tr class="bg-white border-b border-[#ccc] dark:text-white dark:bg-black">
                         <td colspan="6" class="text-purple text-center p-3">No transactions available</td>
                     </tr>
                 </template>
                 <template v-else v-for="(transaction, index) in transactionStore.transactions" :key="index">
-                    <tr class="bg-white border-b border-[#ccc]">
+                    <tr class="bg-white border-b border-[#ccc] dark:text-white dark:bg-black">
                         <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                             {{ transaction['node']['code'] }}
                         </td>

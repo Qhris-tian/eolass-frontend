@@ -1,6 +1,6 @@
 <template>
     <div class="relative w-[47%] md:w-[22%] 2xl:w-[15%] bg-white border border-line rounded-lg shadow-sm ml-2 md:ml-6
-        mt-5 md:mt-10">
+        mt-5 md:mt-10 dark:text-white dark:bg-black dark:border-none">
         <div class="relative">
             <object class="rounded-t-lg w-[100%] h-[80px] md:h-[200px]" :data="product.image" type="image/jpg">
                 <img src="@/assets/default.svg" alt="Stack Overflow logo and icons and such" />

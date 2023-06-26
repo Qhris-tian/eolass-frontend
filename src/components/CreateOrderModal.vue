@@ -1,5 +1,5 @@
 <template>
-  <Modal :content-class="'w-[350px] sm:w-[650px]'" position="top">
+  <Modal :content-class="'w-[350px] sm:w-[650px] dark:text-white dark:bg-[#2B2C37]'" position="top">
     <template v-slot:header>
       <div>
         <div class="flex justify-between items-start">
@@ -60,7 +60,7 @@
                 v-model="form.quantity"
                 type="number"
                 min="1"
-                class="block px-1 py-3 border border-line w-full placeholder:p-2"
+                class="block px-1 py-3 border border-line w-full placeholder:p-2 dark:bg-[#2B2C37]"
                 placeholder="Enter number of products"
                 required
                 :disabled="canOrder"
@@ -71,7 +71,7 @@
               <input
                 v-model="form.price"
                 type="number"
-                class="block px-1 py-3 border border-line w-full placeholder:p-2"
+                class="block px-1 py-3 border border-line w-full placeholder:p-2 dark:bg-[#2B2C37]"
                 placeholder="Enter price"
                 :min="props.product?.min_price"
                 :max="props.product?.max_price"
@@ -97,7 +97,7 @@
               />
             </div>
           </form>
-          <div id="description" class="hidden sm:block mt-5 text-black/50">
+          <div id="description" class="hidden sm:block mt-5 text-black/50 dark:text-white">
             <!-- {{ props.product.description }} -->
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt maxime eos maiores
             quia minima id, architecto rerum doloribus cupiditate mollitia provident quaerat placeat
