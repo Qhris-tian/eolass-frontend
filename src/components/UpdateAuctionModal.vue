@@ -2,7 +2,7 @@
   <Modal
     v-if="props.isUpdateAuctionModalOpen"
     @close-modal="emit('closeUpdateAuctionModal')"
-    :content-class="'w-[80vw] max-w-[700px]]'"
+    :content-class="'w-[80vw] max-w-[700px]] dark:text-white dark:bg-[#2B2C37]'"
   >
     <template v-slot:header>
       <header>
@@ -70,7 +70,8 @@
                   <select
                     id="auctionType"
                     v-model="auctionType"
-                    class="w-full border px-4 pr-8 py-2 rounded focus:border-blue-500 focus:shadow-outline outline-none"
+                    class="w-full border px-4 pr-8 py-2 rounded focus:border-blue-500 focus:shadow-outline outline-none
+                      dark:bg-[#2B2C37]"
                   >
                     <option value="plain">Plain</option>
                     <option value="preorder">Pre Order</option>
@@ -97,7 +98,8 @@
                       <select
                         id="currency"
                         v-model="currency"
-                        class="w-full border py-2 rounded focus:border-blue-500 focus:shadow-outline outline-none"
+                        class="w-full border py-2 rounded focus:border-blue-500 focus:shadow-outline outline-none
+                          dark:bg-[#2B2C37]"
                       >
                         <option value="EUR">EUR</option>
                         <option value="USD">USD</option>
@@ -108,7 +110,8 @@
                         id="amount"
                         v-model="amount"
                         required
-                        class="w-full border px-4 py-2 rounded focus:border-blue-500 focus:shadow-outline outline-none"
+                        class="w-full border px-4 py-2 rounded focus:border-blue-500 focus:shadow-outline outline-none
+                          dark:bg-[#2B2C37]"
                         type="text"
                         placeholder="Amount"
                       />
@@ -122,7 +125,8 @@
                     id="onHand"
                     v-model="onHand"
                     required
-                    class="w-[40%] border px-4 py-2 rounded focus:border-blue-500 focus:shadow-outline outline-none"
+                    class="w-[40%] border px-4 py-2 rounded focus:border-blue-500 focus:shadow-outline outline-none
+                      dark:bg-[#2B2C37]"
                     type="number"
                     placeholder="onHand"
                   />
@@ -133,7 +137,8 @@
                     id="declaredStock"
                     v-model="declaredStock"
                     required
-                    class="w-[40%] border px-4 py-2 rounded focus:border-blue-500 focus:shadow-outline outline-none"
+                    class="w-[40%] border px-4 py-2 rounded focus:border-blue-500 focus:shadow-outline outline-none
+                      dark:bg-[#2B2C37]"
                     type="number"
                     placeholder="declared stock"
                   />

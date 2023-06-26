@@ -6,13 +6,13 @@
     </div>
     <div>
       <div class="w-11/12 pt-5 flex justify-end">
-        <router-link
+        <!-- <router-link
           :to="{ name: 'transactions' }"
           class="bg-purple py-3 px-5 mb-5 rounded hover:border border-line text-white text-[12px] font-medium flex justify-center items-center"
         >
         <svg-component :name="'plus'" class="w-[24px] pr-2 text-white" />
           <span>Some Action</span>
-        </router-link>
+        </router-link> -->
       </div>
       <TransactionTable />
     </div>

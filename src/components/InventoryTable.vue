@@ -14,7 +14,7 @@
         <div class="flex justify-between items-center mb-2">
           <h2 class="text-sm md:text-lg dark:text-white">Available Inventory</h2>
           <div>
-            <input v-model="needle" type="text" placeholder="Search" class="h-7 md:h-8" />
+            <input v-model="needle" type="text" placeholder="Search" class="h-7 md:h-8 dark:bg-[#2B2C37]" />
           </div>
         </div>
         <table
