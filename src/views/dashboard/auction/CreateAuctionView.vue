@@ -1,5 +1,5 @@
 <template>
-  <div class="ml-[2rem] sm:ml-[11rem]">
+  <div class="ml-[2rem] sm:ml-[10rem]">
     <div class="px-5">
       <div class="flex justify-center items-center flex-col w-full">
         <create-auction-progress :step="step" class="mb-4" />
