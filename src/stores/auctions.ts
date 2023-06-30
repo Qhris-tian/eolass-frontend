@@ -27,8 +27,8 @@ const useAuctionStore = defineStore('auctions', () => {
           })
     }
 
-    function createAuction(type:string, auctionForm: CreateAuctionForm) {
-        return axios.post(`/api/v1/auctions/?type=${type}`, {...auctionForm})
+    function createAuction(type:string, inventory_id:string, auctionForm: CreateAuctionForm) {
+        return axios.post(`/api/v1/auctions/?type=${type}&inventory_id=${inventory_id}`, {...auctionForm})
     }
 
     return { auctions, getAuctionData, createAuction, endCursor, startCursor, hasNextPage, hasPreviousPage, rateLimitError }

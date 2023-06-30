@@ -82,6 +82,7 @@ import CreateAuctionSummary from '../../../components/auction/CreateAuctionSumma
 import AlertComponent from '@/components/ui/AlertComponent.vue'
 import ButtonComponent from '@/components/ui/ButtonComponent.vue'
 import { useAuctionStore } from '@/stores/auctions'
+import { useInventoryStore } from '@/stores/inventory'
 import type { CreateAuctionForm, Product } from '@/interfaces/auction'
 // import type { Product } from '@/interfaces/auction'
 
@@ -153,13 +154,14 @@ function goNext() {
 }
 
 const auctionStore = useAuctionStore()
+const inventoryStore = useInventoryStore()
 const submitted = ref<boolean>(false)
 
 function submit() {
   if (form.value.type) {
     busy.value = true
     auctionStore
-      .createAuction(form.value.type, form.value)
+      .createAuction(form.value.type, inventoryStore.inventory.sku, form.value)
       .then(({ data: { response } }) => {
         if (response.errors?.length > 0) {
           alertType.value = 'danger'
