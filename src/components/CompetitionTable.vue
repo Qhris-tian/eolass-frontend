@@ -1,7 +1,7 @@
 <template>
     <div class="relative overflow-x-auto shadow-md w-11/12">
-        <table class="w-full text-[12px] text-center text-gray-500 dark:text-gray-400" aria-label="Auction Competition Table">
-            <thead class="text-gray-700 dark:text-gray-400 bg-white">
+        <table class="w-full text-[12px] text-center text-gray-500" aria-label="Auction Competition Table">
+            <thead class="text-gray-700 bg-white dark:text-white dark:bg-black">
                 <tr class="border-b border-[#ccc]">
                     <th scope="col" class="px-6 py-3 border-r border-[#ccc]">
                         Merchant Name
@@ -19,15 +19,15 @@
             </thead>
             <tbody>
                 <template v-for="(auction, index) in productAuctions" :key="index">
-                    <tr v-if="!auction.belongs_to_you" class="bg-white border-b border-[#ccc]">
-                        <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                    <tr v-if="!auction.belongs_to_you" class="bg-white border-b border-[#ccc] dark:text-white dark:bg-black">
+                        <td class="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap">
                             {{ auction.merchant_name }}
                         </td>
-                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap">
                             {{ auction.price.currency }}
                             {{ auction.price.amount }}
                         </th>
-                        <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                        <td class="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap">
                             {{ auction.is_in_stock }}
                         </td>
                     </tr>

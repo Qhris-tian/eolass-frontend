@@ -34,8 +34,8 @@
         </transition>
         <div v-if="productDetails != null" class="mt-10">
             <div>
-                <h4>{{ productDetails.name }}</h4>
-                <p class="md:w-[40%] flex flex-wrap font-medium text-[11px] pt-4">
+                <h4 class="dark:text-white">{{ productDetails.name }}</h4>
+                <p class="md:w-[40%] flex flex-wrap font-medium text-[11px] pt-4 dark:text-[#ccc]">
                     <span v-for="(language, index) in productDetails.languages" :key="index" class="pr-4">
                         {{ language }}
                     </span>

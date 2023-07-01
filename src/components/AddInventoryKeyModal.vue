@@ -1,5 +1,5 @@
 <template>
-  <modal :content-class="'w-[350px] sm:w-[650px]'" position="top" @close-modal="emit('close-modal', 'none')">
+  <modal :content-class="'w-[350px] sm:w-[650px] dark:bg-[#2B2C37] dark:text-white'" position="top" @close-modal="emit('close-modal', 'none')">
     <template v-slot:header>
       <div class="block overflow-y-auto">
         <div class="flex justify-between items-start">
@@ -17,24 +17,28 @@
     <template v-slot:body>
       <form @submit.prevent="submitKeys">
         <div class="mb-3">
-          <label class="block mb-2 text-sm font-medium text-gray-900">Key <span class="text-danger">*</span></label>
+          <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Key <span class="text-danger">*</span></label>
           <input v-model="form.card_number" type="text" placeholder="Enter key" required
-            class="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-purple focus:purple block w-full p-2.5" />
+            class="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-purple focus:purple block w-full p-2.5
+              dark:bg-[#2B2C37] dark:text-white" />
         </div>
         <div class="mb-3">
-          <label class="block mb-2 text-sm font-medium text-gray-900">PIN</label>
+          <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">PIN</label>
           <input v-model="form.pin_code" type="text" placeholder="Enter pin"
-            class="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-purple focus:purple block w-full p-2.5" />
+            class="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-purple focus:purple block w-full p-2.5
+              dark:bg-[#2B2C37] dark:text-white" />
         </div>
         <div class="mb-3">
-          <label class="block mb-2 text-sm font-medium text-gray-900">Expiry</label>
+          <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Expiry</label>
           <input v-model="form.expire_date" type="date" :min="today"
-            class="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-purple focus:purple block w-full p-2.5" />
+            class="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-purple focus:purple block w-full p-2.5
+              dark:bg-[#2B2C37] dark:text-white" />
         </div>
         <div class="mb-3">
-          <label class="block mb-2 text-sm font-medium text-gray-900">Claim URL</label>
+          <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Claim URL</label>
           <input v-model="form.claim_url" type="text" placeholder="Enter claim url"
-            class="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-purple focus:purple block w-full p-2.5" />
+            class="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-purple focus:purple block w-full p-2.5
+              dark:bg-[#2B2C37] dark:text-white" />
         </div>
         <div class="flex flex-row-reverse">
           <button-component :label="'Save'" :is-loading="busy" :loading-label="'Saving'" />

@@ -10,7 +10,7 @@
     </select>
     <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
       <table class="w-full text-xs sm:text-sm text-left text-gray-500" aria-label="Order Table">
-        <thead class="text-xs text-gray uppercase bg-white">
+        <thead class="text-xs text-gray uppercase bg-white dark:text-white dark:bg-black dark:border-b">
           <tr>
             <th scope="col" class="px-1 sm:px-6 py-1 sm:py-3">Product</th>
             <th scope="col" class="px-1 sm:px-6 py-1 sm:py-3 text-right">Total Cost</th>
@@ -25,8 +25,8 @@
         <tbody>
           <template v-if="props.orderHistory.results.length > 0">
             <template v-for="(order, index) in props.orderHistory.results" :key="index">
-              <tr class="bg-white border border-line">
-                <td class="px-1 sm:px-6 py-1 sm:py-4 font-medium text-gray-900 whitespace-nowrap">
+              <tr class="bg-white border border-line dark:text-white dark:bg-black">
+                <td class="px-1 sm:px-6 py-1 sm:py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap">
                   {{ order.product.title }}({{ order.count }})
                 </td>
                 <td class="capitalize px-1 sm:px-6 py-1 sm:py-4 text-right">
@@ -91,7 +91,7 @@
             </template>
           </template>
           <template v-else>
-            <tr class="bg-white border border-line">
+            <tr class="bg-white border border-line dark:text-white dark:bg-black dark:border-none">
               <td v-if="!orderStore.orderHistoryLoaded" colspan="6" class="text-center pt-3">
                 <dot-loader-component :type="DotType.collision" />
               </td>
@@ -106,7 +106,7 @@
     <nav class="flex items-center justify-between pt-4" aria-label="Order Table navigation">
       <span class="text-xs sm:text-sm font-normal text-gray-500"
         >Showing
-        <span class="font-semibold text-gray-900">
+        <span class="font-semibold text-gray-900 dark:text-white">
           {{
             perPage * currentPage > props.orderHistory.count
               ? props.orderHistory.count
@@ -114,7 +114,7 @@
           }}
         </span>
         of
-        <span class="font-semibold text-gray-900">{{ props.orderHistory.count }}</span></span
+        <span class="font-semibold text-gray-900 dark:text-white">{{ props.orderHistory.count }}</span></span
       >
       <ul class="inline-flex items-center -space-x-px">
         <li class="mr-2">

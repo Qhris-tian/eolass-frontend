@@ -1,6 +1,6 @@
 <template>
   <div class="ml-[2rem] mt-10 mr-10 py-10 px-10">
-    <h2 class="heading-lg mb-4">Select Product</h2>
+    <h2 class="heading-lg mb-4 dark:text-white">Select Product</h2>
     <CreateAuctionStepTwo
       :product="props?.product"
       @update-selected-product="updateSelectedProduct"

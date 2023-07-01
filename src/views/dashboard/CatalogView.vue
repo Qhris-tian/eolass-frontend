@@ -7,18 +7,19 @@
       <div class="w-full md:w-3/4 flex justify-between items-center">
         <form class="md:w-[500px]" @submit.prevent="search">
           <div
-            class="flex items-center bg-purple-light border border-purple/50 rounded-full shadow-sm"
+            class="flex items-center bg-purple-light border border-purple/50 dark:border-[#ccc] rounded-full shadow-sm"
           >
-            <SvgComponent name="search" class="text-white w-5 sm:w-7 absolute ml-3 sm:ml-5" />
+            <SvgComponent name="search" class="text-white dark:text-[#ccc] w-5 sm:w-7 absolute ml-3 sm:ml-5" />
 
-            <div class="w-full rounded-full">
+            <div class="w-full rounded-full dark:bg-[#2B2C37]">
               <input
                 v-model="needle"
                 type="text"
                 aria-label="Search catalog"
                 placeholder="Search catalog"
                 autocomplete="off"
-                class="flex bg-transparent h-[35px] md:h-[60px] w-[100%] placeholder:text-white indent-5 sm:indent-[55px] heading-xl text-white border-0 focus:outline-none relative z-10"
+                class="flex bg-transparent h-[35px] md:h-[60px] w-[100%] placeholder:text-white dark:placeholder:text-[#ccc] 
+                  indent-5 sm:indent-[55px] heading-xl text-white border-0 focus:outline-none relative z-10"
               />
             </div>
             <button v-show="needle" type="button" class="mr-2 sm:mr-6" @click="needle = null">
@@ -42,7 +43,7 @@
     </div>
     <div class="w-full p-2 md:p-10 pt-1 md:pt-3">
       <div class="p-2 sm:px-5 flex justify-between">
-        <h4 class="heading-xl uppercase">Catalog</h4>
+        <h4 class="heading-xl uppercase dark:text-white">Catalog</h4>
         <AccountBalanceComponent />
       </div>
 

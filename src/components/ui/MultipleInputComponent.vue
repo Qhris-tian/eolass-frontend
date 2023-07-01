@@ -16,7 +16,7 @@
     <input
       v-model="multiInput"
       type="text"
-      class="w-full md:w-1/2 text-sm border-line"
+      class="w-full md:w-1/2 text-sm border-line dark:bg-[#2B2C37]"
       placeholder="Enter key"
       @input="emit('updateNewItem', multiInput)"
       @keyup.enter="addkey()"

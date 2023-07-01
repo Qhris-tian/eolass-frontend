@@ -9,7 +9,7 @@
     </header>
 
     <div class="px-2 md:px-14">
-      <div class="heading-xl mb-3 sm:mb-8 uppercase">Orders</div>
+      <div class="heading-xl mb-3 sm:mb-8 uppercase dark:text-white">Orders</div>
       <div id="table">
         <order-table-component :order-history="orderStore.orderHistory"> </order-table-component>
       </div>

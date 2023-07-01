@@ -1,14 +1,15 @@
 <template>
   <div class="ml-[2rem] mt-10 mr-10 py-10 px-10">
     <div class="flex flex-col items-center">
-      <div class="heading-lg mb-4">Let's finish up!</div>
-      <form class="bg-white min-w-[200px] sm:min-w-[450px] p-6 rounded shadow-sm">
-        <p class="text-gray-400 text-xs mb-4">Please fill the form to continue</p>
+      <div class="heading-lg mb-4 dark:text-white">Let's finish up!</div>
+      <form class="bg-white min-w-[200px] sm:min-w-[450px] p-6 rounded shadow-sm dark:bg-[#2B2C37] dark:text-white">
+        <p class="text-gray-400 dark:text-white text-xs mb-4">Please fill the form to continue</p>
         <div class="mb-6">
-          <label class="block mb-2 text-sm font-medium text-gray-900">Auction Type</label>
+          <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Auction Type</label>
           <select
             v-model="auctionType"
-            class="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+            class="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 
+              focus:border-blue-500 block w-full p-2.5 dark:bg-[#2B2C37] dark:text-white dark:border-gray-700"
             required
           >
             <option :value="null" selected disabled>Selet an auction type</option>
@@ -19,16 +20,17 @@
         </div>
 
         <div class="mb-6">
-          <label class="block mb-2 text-sm font-medium text-gray-900">Price</label>
+          <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Price</label>
           <div class="flex">
-            <select v-model="currency" class="rounded-l-lg shadow w-20 text-sm p-2.5">
+            <select v-model="currency" class="rounded-l-lg shadow w-20 text-sm p-2.5 dark:bg-[#2B2C37]">
               <option class="block px-4 py-2 hover:bg-gray-100">USD</option>
               <option class="block px-4 py-2 hover:bg-gray-100">EUR</option>
             </select>
             <input
               v-model.number="amount"
               type="number"
-              class="block w-full text-sm text-gray-900 rounded-r-lg border-l-gray-100 border-l-2 p-2.5"
+              class="block w-full text-sm text-gray-900 rounded-r-lg border-l-gray-100 border-l-2 p-2.5
+                dark:bg-[#2B2C37] dark:border-gray-700 dark:text-white"
               placeholder="Enter price to auction product keys"
               min="0"
               required
@@ -48,11 +50,12 @@
           />
         </div> -->
         <div class="mb-6" v-if="auctionType === 'declaredstock'">
-          <label class="block mb-2 text-sm font-medium text-gray-900">Declared Stock</label>
+          <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Declared Stock</label>
           <input
             v-model="declaredStock"
             type="number"
-            class="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+            class="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 
+            focus:border-blue-500 block w-full p-2.5 dark:bg-[#2B2C37] dark:border-gray-700 dark:text-white"
             placeholder="Enter number of stocks"
             required
           />
@@ -68,7 +71,7 @@
               required
             />
           </div>
-          <label for="remember" class="ml-2 text-sm font-medium text-gray-900">Auto Renew</label>
+          <label for="remember" class="ml-2 text-sm font-medium text-gray-900 dark:text-white">Auto Renew</label>
         </div>
       </form>
     </div>
