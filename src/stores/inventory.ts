@@ -7,6 +7,7 @@ import type { Result } from '@/interfaces/catalog'
 export const useInventoryStore = defineStore('inventory', () => {
   const inventory = ref<Array<Product>>([])
   const inventoryLoaded = ref<boolean>(false)
+  const singleInventory = ref<Product>()
 
   function getInventoryData() {
     axios.get('/api/v1/inventory/').then(({ data }) => {
@@ -22,5 +23,5 @@ export const useInventoryStore = defineStore('inventory', () => {
       region: product.regions[0]?.name
     })
   }
-  return { inventory, inventoryLoaded, getInventoryData, createInventory }
+  return { inventory, inventoryLoaded, singleInventory, getInventoryData, createInventory }
 })

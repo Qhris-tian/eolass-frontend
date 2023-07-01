@@ -158,10 +158,10 @@ const inventoryStore = useInventoryStore()
 const submitted = ref<boolean>(false)
 
 function submit() {
-  if (form.value.type) {
+  if (form.value.type && inventoryStore.singleInventory !== undefined) {
     busy.value = true
     auctionStore
-      .createAuction(form.value.type, inventoryStore.inventory.sku, form.value)
+      .createAuction(form.value.type, inventoryStore.singleInventory.sku, form.value)
       .then(({ data: { response } }) => {
         if (response.errors?.length > 0) {
           alertType.value = 'danger'

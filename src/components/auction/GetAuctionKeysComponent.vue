@@ -142,7 +142,7 @@ function selectProduct(product: Product) {
       productCards.value = data
       searchedItems.value = []
       emit('update-product-name', selectedProduct.value?.title ?? null)
-      inventoryStore.inventory = product
+      inventoryStore.singleInventory = product
     })
   }
   searchedItems.value = []
